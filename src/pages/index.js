@@ -1,18 +1,37 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Layout from '../components/layout';
+import styles from '../components/styles/Home.module.css'
+import { useUser } from '@auth0/nextjs-auth0';
 
 export default function Home() {
+  const { user, error, isLoading } = useUser();
+
+
   return (
+    <Layout>
+    {isLoading && <p>Loading login info...</p>}
+    {error && (
+      <div>
+        <h4>Error</h4>
+        <pre>{error.message}</pre>
+      </div>
+    )}
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Activate Lab</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+
+        {user
+          ?(
+            <h1>Welcome {user.name} !</h1>
+          )
+          : (
+            <h1 className={styles.title}>Welcome to <a href="https://nextjs.org">Next.js!</a></h1>
+            )
+        }
 
         <p className={styles.description}>
           Get started by editing{' '}
@@ -61,5 +80,6 @@ export default function Home() {
         </a>
       </footer>
     </div>
+    </Layout>
   )
 }
