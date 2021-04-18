@@ -15,6 +15,17 @@ const TodosProvider = ({ children }) => {
         }
     };
 
+    const getTodosK = async ( profile ) => {
+        try {
+            const res = await fetch('/api/getTodos');
+            const latestTodos = await res.json();
+            //setTodos(latestTodos);
+            return latestTodos;
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
     const addTodo = async ( profile ) => {
         try {
             const res = await fetch('/api/createTodo', {
@@ -27,7 +38,7 @@ const TodosProvider = ({ children }) => {
                 return [newTodo, ...prevTodos];
             });
         } catch (err) {
-            console.error(err + "aaa");
+            console.error(err);
         }
     };
 
@@ -76,6 +87,7 @@ const TodosProvider = ({ children }) => {
                 updateTodo,
                 deleteTodo,
                 addTodo,
+                getTodosK,
             }}
         >
             {children}
