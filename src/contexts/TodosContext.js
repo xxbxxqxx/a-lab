@@ -3,13 +3,13 @@ import { createContext, useState } from 'react';
 const TodosContext = createContext();
 
 const TodosProvider = ({ children }) => {
-    const [todos, setTodos] = useState([]);
+    const [profile, setProfile] = useState([]);
 
     const refreshTodos = async () => {
         try {
             const res = await fetch('/api/getTodos');
             const latestTodos = await res.json();
-            setTodos(latestTodos);
+            setProfile(latestTodos);
         } catch (err) {
             console.error(err);
         }
@@ -34,7 +34,7 @@ const TodosProvider = ({ children }) => {
                 headers: { 'Content-Type': 'application/json' },
             });
             const newTodo = await res.json();
-            setTodos((prevTodos) => {
+            setProfile((prevTodos) => {
                 return [newTodo, ...prevTodos];
             });
         } catch (err) {
@@ -50,7 +50,7 @@ const TodosProvider = ({ children }) => {
                 headers: { 'Content-Type': 'application/json' },
             });
             await res.json();
-            setTodos((prevTodos) => {
+            setProfile((prevTodos) => {
                 const existingTodos = [...prevTodos];
                 const existingTodo = existingTodos.find(
                     (todo) => todo.id === updatedTodo.id
@@ -71,7 +71,7 @@ const TodosProvider = ({ children }) => {
                 headers: { 'Content-Type': 'application/json' },
             });
 
-            setTodos((prevTodos) => {
+            setProfile((prevTodos) => {
                 return prevTodos.filter((todo) => todo.id !== id);
             });
         } catch (err) {
@@ -81,8 +81,8 @@ const TodosProvider = ({ children }) => {
     return (
         <TodosContext.Provider
             value={{
-                todos,
-                setTodos,
+                profile,
+                setProfile,
                 refreshTodos,
                 updateTodo,
                 deleteTodo,

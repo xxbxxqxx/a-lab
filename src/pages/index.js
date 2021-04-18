@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Layout from '../components/layout';
-import styles from '../components/styles/Home.module.css'
-import { useUser } from '@auth0/nextjs-auth0';
+import { useUser, getSession } from '@auth0/nextjs-auth0';
+const { decycle, encycle } = require('json-cyclic');
 
-export default function Home() {
+export default function Home({ session_auth0, contextreq, contextres}) {
   const { user, error, isLoading } = useUser();
 
 
@@ -16,70 +16,46 @@ export default function Home() {
         <pre>{error.message}</pre>
       </div>
     )}
-    <div className={styles.container}>
+    <div className="container">
       <Head>
         <title>Activate Lab</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main>
 
         {user
           ?(
             <h1>Welcome {user.name} !</h1>
           )
           : (
-            <h1 className={styles.title}>Welcome to <a href="https://nextjs.org">Next.js!</a></h1>
+            <h1>Welcome to <a href="https://nextjs.org">Next.js!</a></h1>
             )
         }
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div href="https://nextjs.org/docs" className="myp-block-wrapper block-indevelopment">
+          <span className="label">開発用</span>
+          <h3>Sessions</h3>
+          <pre data-testid="profile"><code>{session_auth0}</code></pre>
         </div>
+
+
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
     </div>
     </Layout>
   )
+}
+
+export async function getServerSideProps(context) {
+    const session = await getSession(context.req, context.res);
+    return {
+        props: {
+            session_auth0: session ? JSON.stringify(session) : "NO SESSION",
+            //session_auth0_user: session.user,
+            //ressds:  JSON.stringify(session),
+            contextreq: JSON.stringify(decycle(context.req)),
+            contextres: JSON.stringify(decycle(context.res)),
+        },
+    };
 }

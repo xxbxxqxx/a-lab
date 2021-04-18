@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import Head from 'next/head'
 import Layout from '../components/layout';
-import styles from '../components/styles/Home.module.css'
 import { useUser, getSession } from '@auth0/nextjs-auth0';
 
 import { table, minifyRecords } from './api/utils/airtable';
@@ -9,15 +8,16 @@ import Todo from '../components/Todo';
 import { TodosContext } from '../contexts/TodosContext';
 import TodoForm from '../components/TodoForm';
 import ShowProfile from '../components/ShowProfile';
-import auth0 from '../lib/auth0';
+//import auth0 from '../lib/auth0';
 const { decycle, encycle } = require('json-cyclic');
 
-export default function Home({ initialTodos, session_auth0_user, contextreq, contextres }) {
+export default function Home({ initialProfile, session_auth0_user }) {
   const { user, error, isLoading } = useUser();
 
-  const { todos, setTodos, getTodosK } = useContext(TodosContext);
+  const { profile, setProfile, getTodosK } = useContext(TodosContext);
+
   useEffect(() => {
-      setTodos(initialTodos);
+      setProfile(initialProfile);
   }, []);
   
   const handleToggleUpdate2 = (e) => {
@@ -33,71 +33,69 @@ export default function Home({ initialTodos, session_auth0_user, contextreq, con
         <pre>{error.message}</pre>
       </div>
     )}
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Mypage | Activate Lab</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main>
         <div style={{wordBreak: "break-all"}}>
+        {/*}
           <button
             type="button"
             onClick={handleToggleUpdate2}
           >
             ユーザー情報取得
           </button>
+        */}
         </div>
-        <h1 className={styles.title}>Mypage</h1>
+        <h1>Mypage</h1>
         {user &&(
             <div>
-              Welcome {user.name}!
+              Welcome {session_auth0_user.nickname} （ {session_auth0_user.sub} ）!
             </div>
         )}
-        <div className={styles.grid}>
+        <div>
           <div href="https://nextjs.org/learn" className="myp-block-wrapper">
-            <h3>Airtableの情報更新パネル</h3>
-            <hr />
-            <p>Airtable 経由で取得したレコード（JSON.stringify(todos)）</p>
-            {JSON.stringify(todos)}
-            <hr />
-            <ShowProfile RecordId={todos[0] ? todos[0]["id"] : "aaa"} />
+            <h3>プロフィール編集</h3>
+
+            <ShowProfile atRecord={profile} />
+
           </div>
 
-          <div href="https://nextjs.org/docs" className="myp-block-wrapper">
+          {/* 開発用情報 消さないで （ここから） */}
+          <div href="https://nextjs.org/docs" className="myp-block-wrapper block-indevelopment">
+            <span className="label">開発用</span>
+            <h3>Record from Airtable</h3>
+            <pre data-testid="profile"><code>{JSON.stringify(profile)}</code></pre>
+          </div>
+
+          <div href="https://nextjs.org/docs" className="myp-block-wrapper block-indevelopment">
+            <span className="label">開発用</span>
             <h3>Auth0 Profile</h3>
             <pre data-testid="profile"><code>{JSON.stringify(user, null, 1)}</code></pre>
           </div>
+          {/* 開発用情報 消さないで （ここまで） */}
 
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
     </div>
     </Layout>
   )
 }
 
 export async function getServerSideProps(context) {
-    const session = await getSession(context.req, context.res);
+    const { user } = await getSession(context.req, context.res);
     //let todos = await table.find('rec1PDbe0ww22feo3');
-    let todos = await table.select({maxRecords: 1,filterByFormula: "{uid} = 'sdasad'"}).firstPage();
+    //const user_only_id = user.sub.split("|")[1];
+    let at_record = await table.select({maxRecords: 1, filterByFormula: `{uid} = '${user.sub}'`}).firstPage();
     return {
         props: {
-            initialTodos: minifyRecords(todos),
-            //session_auth0_user: session.user,
-            //ressds:  JSON.stringify(session),
-            contextreq: JSON.stringify(decycle(context.req)),
-            contextres: JSON.stringify(decycle(context.res)),
+            initialProfile: minifyRecords(at_record),
+            //session_auth0: JSON.stringify(session),
+            session_auth0_user: user,
+            //uhsaid: user_only_id,
         },
     };
 }

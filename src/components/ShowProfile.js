@@ -2,12 +2,13 @@ import React, { useState, useContext } from 'react';
 import { TodosContext } from '../contexts/TodosContext';
 import { useUser } from '@auth0/nextjs-auth0';
 
-export default function showProfile({ RecordId }) {
+export default function showProfile( atRecord ) {
   const { user, error, isLoading } = useUser();
 
   const [profile, setProfile] = useState({
-    email: "",
-    description: ""
+    uid: atRecord["atRecord"][0] ? atRecord["atRecord"][0].fields.uid : "",
+    email: atRecord["atRecord"][0] ? atRecord["atRecord"][0].fields.email : "",
+    description: atRecord["atRecord"][0] ? atRecord["atRecord"][0].fields.description : "",
   })
   const { addTodo, updateTodo } = useContext(TodosContext);
 
@@ -28,7 +29,7 @@ export default function showProfile({ RecordId }) {
 
   const handleToggleUpdate = (e) => {
       e.preventDefault();
-      const updatedTodo = { id: RecordId, fields: profile };
+      const updatedTodo = { id: atRecord, fields: profile };
       updateTodo(updatedTodo);
       //setProfile('');
   };
@@ -36,21 +37,19 @@ export default function showProfile({ RecordId }) {
   return (
     <form className="form my-6 myp-form" onSubmit={e => handleSubmit(e)}>
       <div>
-        <p>
-          （確認用）useState の profile （ここの値が更新される）: 
-          {JSON.stringify(profile)}
-        </p>
-        <hr />
-        <div className="labelblock">
-          <span>Airtable Record ID</span>
-          {RecordId}
+        <div className="form-group">
+          <label for="uid">Auth0 User ID</label>
+          <input
+            type="text"
+            class="form-control"
+            id="uid"
+            aria-describedby="disabledTextInput"
+            placeholder={profile.uid}
+            disabled
+          />
         </div>
-        <div className="labelblock">
-          <span>Auth0 User ID</span>
-          {user && user.sub}
-        </div>
-        <label htmlFor="email" className="labelblock">
-          <span>email</span>
+        <div className="form-group">
+          <label for="email">email</label>
           <input
             type="text"
             name="email"
@@ -58,10 +57,11 @@ export default function showProfile({ RecordId }) {
             value={profile.email}
             onChange={handleChange}
             placeholder="ex. test@example.com"
+            className="form-control"
           />
-        </label>
-        <label htmlFor="email" className="labelblock">
-          <span>description</span>
+        </div>
+        <div className="form-group">
+          <label for="description">description</label>
           <input
             type="text"
             name="description"
@@ -69,15 +69,27 @@ export default function showProfile({ RecordId }) {
             value={profile.description}
             onChange={handleChange}
             placeholder="ex. Learn about authentication"
+            className="form-control"
           />
-        </label>
+        </div>
         <button
           type="button"
-          className="w-full rounded bg-blue-500 hover:bg-blue-600 text-white py-2 px-4"
+          className="btn btn-primary btn-md"
           onClick={handleToggleUpdate}
         >
           ユーザー情報更新
         </button>
+        <hr />
+        <div className="myp-block-wrapper block-indevelopment">
+          <span className="label">開発用</span>
+          <h3>引数 atRecord の中身</h3>
+          {JSON.stringify(atRecord)}
+        </div>
+        <div className="myp-block-wrapper block-indevelopment">
+          <span className="label">開発用</span>
+          <h3>useState の profile （ここの値が更新される）: </h3>
+          {JSON.stringify(profile)}
+        </div>
       </div>
     </form>
   );

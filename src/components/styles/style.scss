@@ -54,19 +54,21 @@ button{
   width: 100%;
   margin: 20px 0;
 }
-form{
-  &.myp-form{
-    .labelblock{
-      display: block;
-      margin: 20px 0;
-      span{
-        width: 145px;
-        display: inline-block;
-      }
-    }
-    button{
-      background: #ddd;
-      padding: 10px 25px; 
+
+.block-indevelopment{
+  background: #eee;
+  .label{
+    color: red;
+    font-size: 14px;
+    display: block;
+  }
+  h3{
+    font-size: 18px;
+  }
+  pre{
+    max-width: 100%;
+    code{
+      word-break: break-all;
     }
   }
 }
