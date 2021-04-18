@@ -6,9 +6,9 @@ export default function showProfile( atRecord ) {
   const { user, error, isLoading } = useUser();
 
   const [profile, setProfile] = useState({
-    uid: atRecord["atRecord"][0] ? atRecord["atRecord"][0].fields.uid : "",
-    email: atRecord["atRecord"][0] ? atRecord["atRecord"][0].fields.email : "",
-    description: atRecord["atRecord"][0] ? atRecord["atRecord"][0].fields.description : "",
+    uid: atRecord.atRecord[0] ? atRecord.atRecord[0].fields.uid : "",
+    email: atRecord.atRecord[0] ? atRecord.atRecord[0].fields.email : "",
+    description: atRecord.atRecord[0] ? atRecord.atRecord[0].fields.description : "",
   })
   const { addTodo, updateTodo } = useContext(TodosContext);
 
@@ -83,7 +83,7 @@ export default function showProfile( atRecord ) {
         <div className="myp-block-wrapper block-indevelopment">
           <span className="label">開発用</span>
           <h3>引数 atRecord の中身</h3>
-          {JSON.stringify(atRecord)}
+          {JSON.stringify(atRecord.atRecord)}
         </div>
         <div className="myp-block-wrapper block-indevelopment">
           <span className="label">開発用</span>

@@ -6,7 +6,7 @@ const Header = () => {
   const { user } = useUser();
 
   return (
-    <header>
+    <header className="header-common">
       <nav>
         <ul>
           <li>
@@ -16,6 +16,11 @@ const Header = () => {
           </li>
           {user ? (
             <>
+              <li>
+                <Link href="/jobs">
+                  <a>求人情報</a>
+                </Link>
+              </li>
               <li>
                 <Link href="/mypage">
                   <a>Mypage</a>
