@@ -12,9 +12,11 @@ npm run dev
 ## Git運用方針
 可能であれば適宜ブランチを切っていただけると嬉しいです（例えば "dev-style-edit-20210418" みたいなブランチ名で）。
 
-## ファイル構成
+## 主なファイル構成
 - `src/pages/index.js` TOPページ
 - `src/components/styles/style.scss` 全ページに適用されるSCSSファイル
+- `src/components/header.js` 共通ヘッダー
+- `public/images` 画像はとりあえずここに入れておいてもらえると。
 
 ## ざっくり書き方
 ※不明点いろいろ出てくると思うので、都度お聞きください。
@@ -33,17 +35,17 @@ npm run dev
 <div className="XXXX">
 ```
 
-**Write inline styles with {{}}**
+**Write inline styles with {{}} and can't use "-"**
 ```
 <div style="margin-top: 10px, font-size: 20px">
 ↓
-<div style={{margin-top: "10px", fontSize: "20px"}}>
+<div style={{marginTop: "10px", fontSize: "20px"}}>
 ```
 
 **Internal `a` tag can be written with `<Link>`**
 ```
 <a href="/page">
 =
-<Link to="/page">
+<Link href="/page">
 ```
 
