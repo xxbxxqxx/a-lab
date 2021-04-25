@@ -7,23 +7,21 @@ import { table, minifyRecords } from './api/utils/airtable';
 import Todo from '../components/Todo';
 import { TodosContext } from '../contexts/TodosContext';
 import TodoForm from '../components/TodoForm';
-import ShowProfile from '../components/ShowProfile';
-//import auth0 from '../lib/auth0';
+
+import ShowProfile from '../components/AtShowProfile';
+import CreateProfile from '../components/AtCreateProfile';
+
 const { decycle, encycle } = require('json-cyclic');
 
 export default function Home({ initialProfile, session_auth0_user }) {
   const { user, error, isLoading } = useUser();
 
-  const { profile, setProfile, getTodosK } = useContext(TodosContext);
+  const { profile, setProfile } = useContext(TodosContext);
 
   useEffect(() => {
       setProfile(initialProfile);
   }, []);
   
-  const handleToggleUpdate2 = (e) => {
-    const sdadsad = getTodosK();
-    console.log(sdadsad);
-  };
   return (
     <Layout>
     {isLoading && <p>Loading login info...</p>}
@@ -40,16 +38,6 @@ export default function Home({ initialProfile, session_auth0_user }) {
       </Head>
 
       <main>
-        <div style={{wordBreak: "break-all"}}>
-        {/*}
-          <button
-            type="button"
-            onClick={handleToggleUpdate2}
-          >
-            ユーザー情報取得
-          </button>
-        */}
-        </div>
         <h1>Mypage</h1>
         {user &&(
             <div>
@@ -57,12 +45,10 @@ export default function Home({ initialProfile, session_auth0_user }) {
             </div>
         )}
         <div>
-          <div href="https://nextjs.org/learn" className="myp-block-wrapper">
-            <h3>プロフィール編集</h3>
-
-            <ShowProfile atRecord={profile} />
-
-          </div>
+          {initialProfile.length === 0
+            ? <CreateProfile profile={initialProfile} />
+            : <ShowProfile atRecord={initialProfile} />
+          }
 
           {/* 開発用情報 消さないで （ここから） */}
           <div href="https://nextjs.org/docs" className="myp-block-wrapper block-indevelopment">
@@ -77,7 +63,6 @@ export default function Home({ initialProfile, session_auth0_user }) {
             <pre data-testid="profile"><code>{JSON.stringify(user, null, 1)}</code></pre>
           </div>
           {/* 開発用情報 消さないで （ここまで） */}
-
         </div>
       </main>
     </div>

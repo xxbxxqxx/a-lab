@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import Head from 'next/head'
 import Layout from '../components/layout';
+import { fetchEntries } from '../lib/contentfulPosts'
 
-export default function Home() {
+export default function Jobs({ posts }) {
 
   return (
     <Layout>
@@ -14,6 +15,11 @@ export default function Home() {
       <main>
         <div style={{wordBreak: "break-all"}}>
           求人情報 via Contentful
+          <div className="posts">
+            {posts.map((p) => {
+              return <p>{p.title}</p>
+            })}
+          </div>
         </div>
       </main>
     </Layout>
@@ -34,3 +40,16 @@ export default function Home() {
 //        },
 //    };
 //}
+
+export async function getStaticProps() {
+  const res = await fetchEntries()
+  const posts = await res.map((p) => {
+    return p.fields
+  })
+
+  return {
+    props: {
+      posts,
+    },
+  }
+}
