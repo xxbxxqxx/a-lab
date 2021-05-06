@@ -13,7 +13,7 @@ export default function Jobs({ posts }) {
       </Head>
 
       <main>
-        <div style={{wordBreak: "break-all"}}>
+        <div style={{ wordBreak: "break-all" }}>
           求人情報 via Contentful
           <div className="posts">
             {posts.map((p) => {
