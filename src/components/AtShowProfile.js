@@ -6,11 +6,11 @@ export default function showProfile( atRecord ) {
   const { user, error, isLoading } = useUser();
 
   const [profile, setProfile] = useState({
-    uid: atRecord["atRecord"][0] ? atRecord["atRecord"][0].fields.uid : "",
-    email: atRecord["atRecord"][0] ? atRecord["atRecord"][0].fields.email : "",
-    description: atRecord["atRecord"][0] ? atRecord["atRecord"][0].fields.description : "",
+    uid: atRecord.atRecord[0] ? atRecord.atRecord[0].fields.uid : "",
+    email: atRecord.atRecord[0] ? atRecord.atRecord[0].fields.email : "",
+    description: atRecord.atRecord[0] ? atRecord.atRecord[0].fields.description : "",
   })
-  const { addTodo, updateTodo } = useContext(TodosContext);
+  const { updateUserOnAirtable } = useContext(TodosContext);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -20,28 +20,34 @@ export default function showProfile( atRecord ) {
     });
   }
   
-  //const handleSubmit = (e) => {
-  //  e.preventDefault();
-  //  addTodo(profile);
-  //  //updateTodo(profile);
+  const handleSubmit = (e) => {
+    const updatedRecord = {
+      id: (atRecord.atRecord[0].id),
+      fields: profile,
+    }
+    console.log(updatedRecord);
+    e.preventDefault();
+    updateUserOnAirtable(updatedRecord);
   //  setProfile('');
-  //}
+  }
 
-  const handleToggleUpdate = (e) => {
-      e.preventDefault();
-      const updatedTodo = { id: atRecord, fields: profile };
-      updateTodo(updatedTodo);
-      //setProfile('');
-  };
+  //const handleToggleUpdate = (e) => {
+  //    e.preventDefault();
+  //    const updatedTodo = { id: atRecord, fields: profile };
+  //    updateTodo(updatedTodo);
+  //    //setProfile('');
+  //};
 
   return (
+    <div className="myp-block-wrapper">
+    <h3>プロフィール更新</h3>
     <form className="form my-6 myp-form" onSubmit={e => handleSubmit(e)}>
       <div>
         <div className="form-group">
-          <label for="uid">Auth0 User ID</label>
+          <label htmlFor="uid">Auth0 User ID</label>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="uid"
             aria-describedby="disabledTextInput"
             placeholder={profile.uid}
@@ -49,7 +55,7 @@ export default function showProfile( atRecord ) {
           />
         </div>
         <div className="form-group">
-          <label for="email">email</label>
+          <label htmlFor="email">email</label>
           <input
             type="text"
             name="email"
@@ -61,7 +67,7 @@ export default function showProfile( atRecord ) {
           />
         </div>
         <div className="form-group">
-          <label for="description">description</label>
+          <label htmlFor="description">description</label>
           <input
             type="text"
             name="description"
@@ -73,9 +79,9 @@ export default function showProfile( atRecord ) {
           />
         </div>
         <button
-          type="button"
+          type="submit"
           className="btn btn-primary btn-md"
-          onClick={handleToggleUpdate}
+          //onClick={handleToggleUpdate}
         >
           ユーザー情報更新
         </button>
@@ -83,7 +89,7 @@ export default function showProfile( atRecord ) {
         <div className="myp-block-wrapper block-indevelopment">
           <span className="label">開発用</span>
           <h3>引数 atRecord の中身</h3>
-          {JSON.stringify(atRecord)}
+          {JSON.stringify(atRecord.atRecord)}
         </div>
         <div className="myp-block-wrapper block-indevelopment">
           <span className="label">開発用</span>
@@ -92,5 +98,6 @@ export default function showProfile( atRecord ) {
         </div>
       </div>
     </form>
+    </div>
   );
 }
