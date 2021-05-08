@@ -1,9 +1,11 @@
 import Head from 'next/head'
 import Layout from '../components/layout';
 import { useUser, getSession } from '@auth0/nextjs-auth0';
+
+import { fetchEntries } from '../lib/contentfulPosts'
 const { decycle, encycle } = require('json-cyclic');
 
-export default function Home({ session_auth0, contextreq, contextres }) {
+export default function Home({ session_auth0, contextreq, contextres, contentfulposts }) {
   const { user, error, isLoading } = useUser();
 
 
@@ -79,8 +81,6 @@ export default function Home({ session_auth0, contextreq, contextres }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-
-
         <main>
 
           {user
@@ -96,9 +96,24 @@ export default function Home({ session_auth0, contextreq, contextres }) {
             <span className="label">開発用</span>
             <h3>Sessions</h3>
             <pre data-testid="profile"><code>{session_auth0}</code></pre>
+            <hr style={{borderColor: "#000"}} />
+
+            <h3>求人情報</h3>
+            <div className="block-indevelopment-posts">
+              {contentfulposts.map((p) => {
+                return <div className="block-indevelopment-posts-post">
+                  <p>Title: {p.title}</p>
+                  <p>Slug: {p.slug}</p>
+                  <p>業界: {p.industry}</p>
+                  <p>年収: {p.income}</p>
+                  <p>雇用形態: {p.employmentType}</p>
+                  <p>業務: {p.job}</p>
+                  <p>場所: {p.location}</p>
+                  <p>本文: {p.content}</p>
+                </div>
+              })}
+            </div>
           </div>
-
-
 
           <section className="service-top-col">
             <h2>サービス紹介文</h2>
@@ -180,7 +195,13 @@ export default function Home({ session_auth0, contextreq, contextres }) {
 }
 
 export async function getServerSideProps(context) {
+  //Airtable
   const session = await getSession(context.req, context.res);
+  //Contentful
+  const res = await fetchEntries()
+  const posts = await res.map((p) => {
+    return p.fields
+  })
   return {
     props: {
       session_auth0: session ? JSON.stringify(session) : "NO SESSION",
@@ -188,6 +209,7 @@ export async function getServerSideProps(context) {
       //ressds:  JSON.stringify(session),
       contextreq: JSON.stringify(decycle(context.req)),
       contextres: JSON.stringify(decycle(context.res)),
+      contentfulposts: posts,
     },
   };
 }
