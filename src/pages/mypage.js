@@ -31,7 +31,7 @@ export default function Home({ initialProfile, session_auth0_user }) {
         <pre>{error.message}</pre>
       </div>
     )}
-    <div>
+    <div className="container">
       <Head>
         <title>Mypage | Activate Lab</title>
         <link rel="icon" href="/favicon.ico" />
