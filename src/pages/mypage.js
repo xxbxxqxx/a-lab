@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Layout from '../components/layout';
 import { useUser, getSession } from '@auth0/nextjs-auth0';
 
-import { table, minifyRecords } from './api/utils/airtable';
+import { table, minifyRecords } from './api/utils/Airtable';
 import Todo from '../components/Todo';
 import { TodosContext } from '../contexts/TodosContext';
 import TodoForm from '../components/TodoForm';
