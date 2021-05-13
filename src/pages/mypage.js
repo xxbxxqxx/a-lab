@@ -21,6 +21,30 @@ export default function Home({ initialProfile, session_auth0_user }) {
   useEffect(() => {
       setProfile(initialProfile);
   }, []);
+
+  const uploadPhoto = async (e) => {
+    const file = e.target.files[0];
+    const filename = encodeURIComponent(file.name);
+    const res = await fetch(`/api/s3Upload?file=${filename}`);
+    const { url, fields } = await res.json();
+    const formData = new FormData();
+
+    Object.entries({ ...fields, file }).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
+    const upload = await fetch(url, {
+      //mode: "no-cors",
+      method: 'POST',
+      body: formData,
+    });
+
+    if (upload.ok) {
+      console.log('Uploaded successfully!');
+    } else {
+      console.error(url);
+    }
+  };
   
   return (
     <Layout>
@@ -44,6 +68,15 @@ export default function Home({ initialProfile, session_auth0_user }) {
               Welcome {session_auth0_user.nickname} （ {session_auth0_user.sub} ）!
             </div>
         )}
+        <div className="myp-block-wrapper block-indevelopment">
+          <span className="label">開発用</span>
+          <h3>履歴書アップロード</h3>
+          <input
+            onChange={uploadPhoto}
+            type="file"
+            accept="image/png, image/jpeg"
+          />
+        </div>
         <div>
           {initialProfile.length === 0
             ? <CreateProfile profile={initialProfile} />
@@ -57,7 +90,7 @@ export default function Home({ initialProfile, session_auth0_user }) {
             <pre data-testid="profile"><code>{JSON.stringify(profile)}</code></pre>
           </div>
 
-          <div href="https://nextjs.org/docs" className="myp-block-wrapper block-indevelopment">
+          <div className="myp-block-wrapper block-indevelopment">
             <span className="label">開発用</span>
             <h3>Auth0 Profile</h3>
             <pre data-testid="profile"><code>{JSON.stringify(user, null, 1)}</code></pre>
