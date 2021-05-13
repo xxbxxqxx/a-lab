@@ -1,6 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Head from 'next/head'
 import Layout from '../components/layout';
+import ShowFlash from '../components/ShowFlash';
 import { useUser, getSession } from '@auth0/nextjs-auth0';
 
 import { table, minifyRecords } from './api/utils/Airtable';
@@ -14,6 +15,9 @@ import CreateProfile from '../components/AtCreateProfile';
 const { decycle, encycle } = require('json-cyclic');
 
 export default function Home({ initialProfile, session_auth0_user }) {
+
+  const [isOpen, setOpen] = useState(false)
+
   const { user, error, isLoading } = useUser();
 
   const { profile, setProfile } = useContext(TodosContext);
@@ -21,6 +25,35 @@ export default function Home({ initialProfile, session_auth0_user }) {
   useEffect(() => {
       setProfile(initialProfile);
   }, []);
+
+  const uploadPhoto = async (e) => {
+    const file = e.target.files[0];
+    const filename = encodeURIComponent(file.name);
+    const res = await fetch(`/api/s3Upload?file=${filename}`);
+    const { url, fields } = await res.json();
+    const formData = new FormData();
+
+    Object.entries({ ...fields, file }).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
+    const upload = await fetch(url, {
+      //mode: "no-cors",
+      method: 'POST',
+      body: formData,
+    });
+
+    if (upload.ok) {
+      //ここでAirtableにpostする必要がある。
+      console.log('Uploaded successfully!');
+    } else {
+      console.error(url);
+    }
+  };
+
+  const switchFlash = () =>{
+    this.setState({ open: !this.state.open })
+  }
   
   return (
     <Layout>
@@ -44,6 +77,19 @@ export default function Home({ initialProfile, session_auth0_user }) {
               Welcome {session_auth0_user.nickname} （ {session_auth0_user.sub} ）!
             </div>
         )}
+        <div className="myp-block-wrapper block-indevelopment">
+          <span className="label">開発用</span>
+          <h3>履歴書アップロード</h3>
+          <input
+            onChange={uploadPhoto}
+            type="file"
+            accept="image/png, image/jpeg"
+          />
+          <h3>フラッシュメッセージテスト</h3>
+          <button type="button" onClick={() => setOpen(true)}>表示</button>
+          <button type="button" onClick={() => setOpen(false)}>非表示</button>
+          <ShowFlash message="メッセージ" open={isOpen} setOpen={setOpen} />
+        </div>
         <div>
           {initialProfile.length === 0
             ? <CreateProfile profile={initialProfile} />
@@ -57,7 +103,7 @@ export default function Home({ initialProfile, session_auth0_user }) {
             <pre data-testid="profile"><code>{JSON.stringify(profile)}</code></pre>
           </div>
 
-          <div href="https://nextjs.org/docs" className="myp-block-wrapper block-indevelopment">
+          <div className="myp-block-wrapper block-indevelopment">
             <span className="label">開発用</span>
             <h3>Auth0 Profile</h3>
             <pre data-testid="profile"><code>{JSON.stringify(user, null, 1)}</code></pre>
