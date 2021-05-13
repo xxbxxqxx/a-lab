@@ -1,6 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Head from 'next/head'
 import Layout from '../components/layout';
+import ShowFlash from '../components/ShowFlash';
 import { useUser, getSession } from '@auth0/nextjs-auth0';
 
 import { table, minifyRecords } from './api/utils/Airtable';
@@ -14,6 +15,9 @@ import CreateProfile from '../components/AtCreateProfile';
 const { decycle, encycle } = require('json-cyclic');
 
 export default function Home({ initialProfile, session_auth0_user }) {
+
+  const [isOpen, setOpen] = useState(false)
+
   const { user, error, isLoading } = useUser();
 
   const { profile, setProfile } = useContext(TodosContext);
@@ -40,11 +44,16 @@ export default function Home({ initialProfile, session_auth0_user }) {
     });
 
     if (upload.ok) {
+      //ここでAirtableにpostする必要がある。
       console.log('Uploaded successfully!');
     } else {
       console.error(url);
     }
   };
+
+  const switchFlash = () =>{
+    this.setState({ open: !this.state.open })
+  }
   
   return (
     <Layout>
@@ -76,6 +85,10 @@ export default function Home({ initialProfile, session_auth0_user }) {
             type="file"
             accept="image/png, image/jpeg"
           />
+          <h3>フラッシュメッセージテスト</h3>
+          <button type="button" onClick={() => setOpen(true)}>表示</button>
+          <button type="button" onClick={() => setOpen(false)}>非表示</button>
+          <ShowFlash message="メッセージ" open={isOpen} setOpen={setOpen} />
         </div>
         <div>
           {initialProfile.length === 0
