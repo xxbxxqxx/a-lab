@@ -43,7 +43,7 @@ export default function Home({ session_auth0, contextreq, contextres }) {
       </div>
 
       <section className="service-point-col">
-        <h2 className="service-cap">サービスのポイント</h2>
+        <h2 className="title">サービスのポイント</h2>
 
         <div className="reasons-col-in container">
 
@@ -103,7 +103,7 @@ export default function Home({ session_auth0, contextreq, contextres }) {
       </section>
 
       <section className="message">
-        <h2 className="service-cap">MESSAGE</h2>
+        <h2 className="title">MESSAGE</h2>
 
         <div className="message-col-in container">
 

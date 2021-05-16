@@ -46,7 +46,7 @@ export default function Home({ session_auth0, contextreq, contextres }) {
 
       <section className="reasons-col">
 
-        <h2 className="service-cap">選ばれる理由</h2>
+        <h2 className="title">選ばれる理由</h2>
 
         <div className="reasons-col-in container">
 
@@ -77,7 +77,7 @@ export default function Home({ session_auth0, contextreq, contextres }) {
 
       <section className="job-col">
 
-        <h2 className="service-cap">求人紹介</h2>
+        <h2 className="title">求人紹介</h2>
 
         <div className="job-col-in container">
 
@@ -260,7 +260,7 @@ export default function Home({ session_auth0, contextreq, contextres }) {
 
 
       <section className="open-gate-col">
-        <h2 className="service-cap">日本最大規模の身体障害者SNS・OpenGate</h2>
+        <h2 className="title">日本最大規模の身体障害者SNS・OpenGate</h2>
 
         <div className="open-gate-col-in">
 
@@ -280,7 +280,7 @@ export default function Home({ session_auth0, contextreq, contextres }) {
 
 
       <section className="users-voice-col">
-        <h2 className="service-cap">利用者の声</h2>
+        <h2 className="title">利用者の声</h2>
 
         <div className="users-voice-col-in container">
 
@@ -368,7 +368,7 @@ export default function Home({ session_auth0, contextreq, contextres }) {
 
       <section className="flow-col">
 
-        <h2 className="service-cap">ご利用の流れ</h2>
+        <h2 className="title">ご利用の流れ</h2>
 
         <div className="flow-col-in container">
 
@@ -513,7 +513,7 @@ export default function Home({ session_auth0, contextreq, contextres }) {
       </section>
 
       <section className="qa-col">
-        <h2 className="service-cap">Q&A</h2>
+        <h2 className="title">Q&A</h2>
 
         <div className="qa-col-in container">
           <dl>
