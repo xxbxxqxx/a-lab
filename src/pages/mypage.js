@@ -21,7 +21,7 @@ export default function Home({ initialProfile, session_auth0_user }) {
   const dateNow = Date.now();
   const moment = require("moment");
 
-  const [isOpen, setOpen] = useState(false)
+  //const [isOpen, setOpen] = useState(false)
 
   //Auth0 Login Status
   const { user, error, isLoading } = useUser();
@@ -111,7 +111,7 @@ export default function Home({ initialProfile, session_auth0_user }) {
             <h3>フラッシュメッセージテスト</h3>
             <button type="button" onClick={() => setOpen(true)}>表示</button>
             <button type="button" onClick={() => setOpen(false)}>非表示</button>
-            <ShowFlash message="メッセージ" open={isOpen} setOpen={setOpen} />
+            {/*<ShowFlash message="メッセージ" open={isOpen} setOpen={setOpen} />*/}
           </div>
         </div>
         <div>
