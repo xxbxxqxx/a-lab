@@ -7,42 +7,86 @@ const Header = () => {
 
   return (
     <header className="header-common">
-      <nav>
-        <ul>
-          <li>
-            <Link href="/">
-              <a>Home</a>
-            </Link>
-          </li>
-          {user ? (
-            <>
+      <div className="header-common-in container">
+        <div className="row">
+          <div className="header-left col-sm-4">
+            <img src="/top-test.png" />
+          </div>
+
+          <div className="header-right col-sm-8">
+            <nav>
+              <ul>
+                <li>
+                  <Link href="/">
+                    <a>Home</a>
+                  </Link>
+                </li>
+                {user ? (
+                  <>
+                    <li>
+                      <Link href="/jobs">
+                        <a>求人情報</a>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/mypage">
+                        <a>Mypage</a>
+                      </Link>
+                    </li>
+                    <li>
+                      <a href="/api/auth/logout" data-testid="logout" className="log-btn">
+                        Logout
+                      </a>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <a href="/api/auth/login" data-testid="login" className="log-btn">
+                        Login
+                      </a>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </nav>
+
+            <ul className="navi-bottom">
               <li>
-                <Link href="/jobs">
+                <Link href="#">
+                  <a>選ばれる理由</a>
+                </Link>
+              </li>
+
+              <li>
+                <Link href="#">
                   <a>求人情報</a>
                 </Link>
               </li>
+
               <li>
-                <Link href="/mypage">
-                  <a>Mypage</a>
+                <Link href="#">
+                  <a>利用者の声</a>
                 </Link>
               </li>
               <li>
-                <a href="/api/auth/logout" data-testid="logout" className="text-secondary">
-                  Logout
-                </a>
+                <Link href="#">
+                  <a>Q&A</a>
+                </Link>
               </li>
-            </>
-          ) : (
-            <>
+
               <li>
-                <a href="/api/auth/login" data-testid="login" className="text-secondary">
-                  Login
-                </a>
+                <Link href="#">
+                  <a>OpenGate</a>
+                </Link>
               </li>
-            </>
-          )}
-        </ul>
-      </nav>
+
+            </ul>
+          </div>{/* header-right */}
+
+
+        </div>
+      </div>
     </header>
   );
 };
