@@ -8,7 +8,6 @@ const { decycle, encycle } = require('json-cyclic');
 export default function Home({ session_auth0, contextreq, contextres, contentfulposts }) {
   const { user, error, isLoading } = useUser();
 
-
   return (
     <Layout>
       {isLoading && <p>Loading login info...</p>}
