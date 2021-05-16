@@ -12,6 +12,8 @@ import TodoForm from '../components/TodoForm';
 import ShowProfile from '../components/AtShowProfile';
 import CreateProfile from '../components/AtCreateProfile';
 
+import Moment from 'react-moment';
+
 const { decycle, encycle } = require('json-cyclic');
 
 export default function Home({ initialProfile, session_auth0_user }) {
@@ -54,6 +56,8 @@ export default function Home({ initialProfile, session_auth0_user }) {
   const switchFlash = () =>{
     this.setState({ open: !this.state.open })
   }
+
+  const dateToFormat = '1976-04-19T12:59-0500';
   
   return (
     <Layout>
@@ -80,6 +84,7 @@ export default function Home({ initialProfile, session_auth0_user }) {
         <div className="myp-block-wrapper block-indevelopment">
           <span className="label">開発用</span>
           <h3>履歴書アップロード</h3>
+          <Moment>{dateToFormat}</Moment>
           <input
             onChange={uploadPhoto}
             type="file"
