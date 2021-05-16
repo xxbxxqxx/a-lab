@@ -78,7 +78,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main>
+
 
         {user
           ? (
@@ -93,7 +93,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
           <span className="label">開発用</span>
           <h3>Sessions</h3>
           <pre data-testid="profile"><code>{session_auth0}</code></pre>
-          <hr style={{borderColor: "#000"}} />
+          <hr style={{ borderColor: "#000" }} />
 
           <h3>求人情報</h3>
           <div className="block-indevelopment-posts">
@@ -111,6 +111,10 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
             })}
           </div>
         </div>
+      </div>
+      {/* container */}
+
+      <main>
 
         <section className="reasons-col BG-Orang">
 
@@ -677,7 +681,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
         </section> */}
 
       </main>
-      </div>
+
     </Layout>
   )
 }
