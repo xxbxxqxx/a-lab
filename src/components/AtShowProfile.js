@@ -9,6 +9,8 @@ export default function showProfile( atRecord ) {
     uid: atRecord.atRecord[0] ? atRecord.atRecord[0].fields.uid : "",
     email: atRecord.atRecord[0] ? atRecord.atRecord[0].fields.email : "",
     description: atRecord.atRecord[0] ? atRecord.atRecord[0].fields.description : "",
+    FirstName: atRecord.atRecord[0] ? atRecord.atRecord[0].fields.FirstName : "",
+    LastName: atRecord.atRecord[0] ? atRecord.atRecord[0].fields.LastName : "",
   })
   const { updateUserOnAirtable } = useContext(TodosContext);
 
@@ -52,6 +54,30 @@ export default function showProfile( atRecord ) {
             aria-describedby="disabledTextInput"
             placeholder={profile.uid}
             disabled
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Last Name</label>
+          <input
+            type="text"
+            name="LastName"
+            id="LastName"
+            value={profile.LastName}
+            onChange={handleChange}
+            placeholder="ex. 田中"
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">First Name</label>
+          <input
+            type="text"
+            name="FirstName"
+            id="FirstName"
+            value={profile.FirstName}
+            onChange={handleChange}
+            placeholder="ex. 太郎"
+            className="form-control"
           />
         </div>
         <div className="form-group">
