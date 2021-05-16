@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Head from 'next/head'
 import Layout from '../components/layout';
-import ShowFlash from '../components/ShowFlash';
 import { useUser, getSession } from '@auth0/nextjs-auth0';
 
 import { table, minifyRecords } from './api/utils/Airtable';
