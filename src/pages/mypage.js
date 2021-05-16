@@ -18,8 +18,13 @@ const { decycle, encycle } = require('json-cyclic');
 
 export default function Home({ initialProfile, session_auth0_user }) {
 
+  //S3用現在時刻取得
+  const dateNow = Date.now();
+  const moment = require("moment");
+
   const [isOpen, setOpen] = useState(false)
 
+  //Auth0 Login Status
   const { user, error, isLoading } = useUser();
 
   const { profile, setProfile } = useContext(TodosContext);
@@ -28,9 +33,16 @@ export default function Home({ initialProfile, session_auth0_user }) {
       setProfile(initialProfile);
   }, []);
 
+  const { updateUserOnAirtable } = useContext(TodosContext);
   const uploadPhoto = async (e) => {
     const file = e.target.files[0];
-    const filename = encodeURIComponent(file.name);
+    //const filename = encodeURIComponent(file.name);
+    const filename =
+      moment().format("YYYYMMDD-HH:mm:ss")
+      + "-CV-"
+      + initialProfile[0].fields.LastName
+      + initialProfile[0].fields.FirstName
+      + "-" + initialProfile[0].fields.uid;
     const res = await fetch(`/api/s3Upload?file=${filename}`);
     const { url, fields } = await res.json();
     const formData = new FormData();
@@ -47,6 +59,13 @@ export default function Home({ initialProfile, session_auth0_user }) {
 
     if (upload.ok) {
       //ここでAirtableにpostする必要がある。
+      const updatedRecord = {
+        id: (initialProfile[0].id),
+        fields: {
+          CV: "https://presignedtest-rk.s3-ap-northeast-1.amazonaws.com/" + filename
+        }
+      }
+      updateUserOnAirtable(updatedRecord);
       console.log('Uploaded successfully!');
     } else {
       console.error(url);
@@ -56,9 +75,6 @@ export default function Home({ initialProfile, session_auth0_user }) {
   const switchFlash = () =>{
     this.setState({ open: !this.state.open })
   }
-
-  const dateToFormat = '1976-04-19T12:59-0500';
-  
   return (
     <Layout>
     {isLoading && <p>Loading login info...</p>}
@@ -81,19 +97,23 @@ export default function Home({ initialProfile, session_auth0_user }) {
               Welcome {session_auth0_user.nickname} （ {session_auth0_user.sub} ）!
             </div>
         )}
-        <div className="myp-block-wrapper block-indevelopment">
-          <span className="label">開発用</span>
+        <div className="myp-block-wrapper">
           <h3>履歴書アップロード</h3>
-          <Moment>{dateToFormat}</Moment>
+          {initialProfile[0].fields.CV.length === 0
+            ? <p>まだ履歴書が投稿されていません</p>
+            : <p>initialProfile[0].fields.CV</p>
+          }
           <input
             onChange={uploadPhoto}
             type="file"
             accept="image/png, image/jpeg"
           />
-          <h3>フラッシュメッセージテスト</h3>
-          <button type="button" onClick={() => setOpen(true)}>表示</button>
-          <button type="button" onClick={() => setOpen(false)}>非表示</button>
-          <ShowFlash message="メッセージ" open={isOpen} setOpen={setOpen} />
+          <div className="myp-block-wrapper block-indevelopment">
+            <h3>フラッシュメッセージテスト</h3>
+            <button type="button" onClick={() => setOpen(true)}>表示</button>
+            <button type="button" onClick={() => setOpen(false)}>非表示</button>
+            <ShowFlash message="メッセージ" open={isOpen} setOpen={setOpen} />
+          </div>
         </div>
         <div>
           {initialProfile.length === 0
@@ -102,7 +122,7 @@ export default function Home({ initialProfile, session_auth0_user }) {
           }
 
           {/* 開発用情報 消さないで （ここから） */}
-          <div href="https://nextjs.org/docs" className="myp-block-wrapper block-indevelopment">
+          <div className="myp-block-wrapper block-indevelopment">
             <span className="label">開発用</span>
             <h3>Record from Airtable</h3>
             <pre data-testid="profile"><code>{JSON.stringify(profile)}</code></pre>
