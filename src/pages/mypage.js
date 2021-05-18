@@ -17,6 +17,24 @@ const { decycle, encycle } = require('json-cyclic');
 
 export default function Home({ initialProfile, session_auth0_user }) {
 
+  //Send Email
+  const handleSubmit = (e) => { 
+    e.preventDefault()
+    console.log('Sending')
+    let data = {
+      name: "nname",
+      message: "mmesagge",
+    }
+    fetch('/api/sendMail', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+  }
+
   //S3用現在時刻取得
   const dateNow = Date.now();
   const moment = require("moment");
@@ -108,6 +126,8 @@ export default function Home({ initialProfile, session_auth0_user }) {
             accept="image/png, image/jpeg"
           />
           <div className="myp-block-wrapper block-indevelopment">
+            <h3>Eメール送信</h3>
+            <input type='submit' onClick={(e)=>{handleSubmit(e)}} />
             <h3>フラッシュメッセージテスト</h3>
             <button type="button" onClick={() => setOpen(true)}>表示</button>
             <button type="button" onClick={() => setOpen(false)}>非表示</button>

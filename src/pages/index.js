@@ -122,7 +122,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
           <div className="reasons-col-in container">
 
-            <div class="row">
+            <div className="row">
               <div className="col-sm-4 reasons-cont">
                 <div className="reasons-cont-in">
                   <h3>専門性の高い スタッフが多数常駐。あなたの就職活動を全力</h3>
@@ -161,7 +161,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
           <div className="job-col-in container">
 
-            <div class="row">
+            <div className="row">
 
               <div className="col-sm-6 job-col-in-cont">
                 <div className="job-col-in-cont-in">
@@ -361,7 +361,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
           <div className="users-voice-col-in container">
 
-            <div class="row">
+            <div className="row">
 
               <div className="col-sm-6 users-voice-cont">
                 <div className="users-voice-cont-in">
@@ -447,7 +447,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
         <section className="flow-col">
           <h2 className="title">ご利用の流れ</h2>
           <div className="flow-col-in container">
-            <div class="row">
+            <div className="row">
               <div className="col-sm-4 flow-col-in-cont">
                 <div className="flow-col-in-cont-out">
                   <div className="flow-col-in-cont-head">
