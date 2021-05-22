@@ -3,10 +3,10 @@ import { TodosContext } from '../contexts/TodosContext';
 import { useUser } from '@auth0/nextjs-auth0';
 import Moment from 'react-moment';
 
-export default function showProfile( atRecord ) {
+export default function showProfile({ atRecord, flashMessage, setFlashMessage, flashType, setFlashType }) {
   const { user, error, isLoading } = useUser();
 
-  const prf = atRecord.atRecord[0];
+  const prf = atRecord[0];
 
   const [profile, setProfile] = useState({
     uid: prf ? prf.fields.uid ? prf.fields.uid : "" : "",
@@ -28,13 +28,16 @@ export default function showProfile( atRecord ) {
   
   const handleSubmit = (e) => {
     const updatedRecord = {
-      id: (atRecord.atRecord[0].id),
+      id: (atRecord[0].id),
       fields: profile,
     }
     console.log(updatedRecord);
     e.preventDefault();
     updateUserOnAirtable(updatedRecord);
   //  setProfile('');
+    console.log('I missed ya!')
+    setFlashType("welldone")
+    setFlashMessage(true)
   }
 
   //const handleToggleUpdate = (e) => {
@@ -72,7 +75,6 @@ export default function showProfile( atRecord ) {
     });
 
     if (upload.ok) {
-      //ここでAirtableにpostする必要がある。
       const updatedRecord = {
         id: (prf.id),
         fields: {

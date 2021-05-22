@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import Head from 'next/head'
 import Layout from '../components/layout';
 import { useUser, getSession } from '@auth0/nextjs-auth0';
@@ -10,7 +10,8 @@ import TodoForm from '../components/TodoForm';
 
 import ShowProfile from '../components/AtShowProfile';
 import CreateProfile from '../components/AtCreateProfile';
-
+import ShowFlashMessage from '../components/ShowFlashMessage';
+import TestComponent from '../components/TestComponent';
 
 const { decycle, encycle } = require('json-cyclic');
 
@@ -31,10 +32,10 @@ export default function Home({ initialProfile, session_auth0_user }) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
-    })
+    }).then(
+      console.log('done, ya!')
+    )
   }
-
-  //const [isOpen, setOpen] = useState(false)
 
   //Auth0 Login Status
   const { user, error, isLoading } = useUser();
@@ -42,14 +43,15 @@ export default function Home({ initialProfile, session_auth0_user }) {
   const { profile, setProfile } = useContext(TodosContext);
 
   useEffect(() => {
-      setProfile(initialProfile);
+    setProfile(initialProfile);
   }, []);
 
   const { updateUserOnAirtable } = useContext(TodosContext);
 
-  const switchFlash = () =>{
-    this.setState({ open: !this.state.open })
-  }
+  //Flash Message
+  const [flashMessage, setFlashMessage] = useState(false)
+  const [flashType, setFlashType] = useState("info")
+
   return (
     <Layout>
     {isLoading && <p>Loading login info...</p>}
@@ -66,7 +68,10 @@ export default function Home({ initialProfile, session_auth0_user }) {
       </Head>
 
       <main>
-        <h1>Mypage</h1>
+        {/* フラッシュメッセージ ここから */}
+        <ShowFlashMessage flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} />
+        {/* フラッシュメッセージ ここまで */}
+        <h1>Mypage | {typeof initialProfile}</h1>
         {user &&(
             <div>
               Welcome {session_auth0_user.nickname} （ {session_auth0_user.sub} ）!
@@ -76,16 +81,12 @@ export default function Home({ initialProfile, session_auth0_user }) {
           <div className="myp-block-wrapper block-indevelopment">
             <h3>Eメール送信</h3>
             <input type='submit' onClick={(e)=>{handleSubmit(e)}} />
-            <h3>フラッシュメッセージテスト</h3>
-            <button type="button" onClick={() => setOpen(true)}>表示</button>
-            <button type="button" onClick={() => setOpen(false)}>非表示</button>
-            {/*<ShowFlash message="メッセージ" open={isOpen} setOpen={setOpen} />*/}
           </div>
         </div>
         <div>
           {initialProfile.length === 0
             ? <CreateProfile profile={initialProfile} />
-            : <ShowProfile atRecord={initialProfile} />
+            : <ShowProfile atRecord={initialProfile} flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} setFlashType={setFlashType}/>
           }
 
           {/* 開発用情報 消さないで （ここから） */}
