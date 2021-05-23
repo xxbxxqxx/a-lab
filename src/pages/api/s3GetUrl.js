@@ -1,6 +1,6 @@
 import aws from 'aws-sdk';
 
-export default async function handler(req, res) {
+export default async (req, res) => {
   aws.config.update({
     accessKeyId: process.env.AWS_R_ACCESS_KEY,
     secretAccessKey: process.env.AWS_R_SECRET_KEY,
@@ -9,16 +9,21 @@ export default async function handler(req, res) {
   });
 
   const s3 = new aws.S3();
-  const post = await s3.createPresignedPost({
+  var params = {
     Bucket: process.env.AWS_S3_BUCKET_NAME,
-    Fields: {
-      key: req.query.file,
-    },
+    Key: req.query.file,
     Expires: 180, // seconds
-    Conditions: [
-      ['content-length-range', 0, 1048576], // up to 1 MB
-    ],
-  });
+  };
 
-  res.status(200).json(post);
+  s3.getSignedUrl(
+    'getObject',
+    params,
+    (err, url) => {
+      if (err) {
+        res.json({ msg: "Cloudn't get URL...!" });
+      } else {
+        res.json({ msg: url });;
+      }
+    }
+  )
 }

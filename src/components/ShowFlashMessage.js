@@ -7,7 +7,7 @@ export default function showFlashMessage({ flashMessage, setFlashMessage, flashT
     let flashBoxMessage = ""
     if(flashType == "welldone"){
       flashBoxClassName = "alert-success"
-      flashBoxMessage = "Well done! You successfullyread this important.";
+      flashBoxMessage = "Well done! Successfully changed.";
     } else if(flashType == "error"){
       flashBoxClassName = "alert-danger"
       flashBoxMessage = "Oh snap! Change a few things up and try submitting again.";
@@ -25,7 +25,7 @@ export default function showFlashMessage({ flashMessage, setFlashMessage, flashT
         <hr />
 
         <div className={`alert fade alert-simple alert-dismissible text-left font__family-montserrat font__size-16 brk-library-rendered rendered show ${flashBoxClassName}`}>
-          <button type="button" onClick={()=>{setFlashMessage(false)}} class="close" data-dismiss="alert"><span>Close</span></button>
+          <button type="button" onClick={()=>{setFlashMessage(false)}} className="close" data-dismiss="alert"><span>Close</span></button>
           {flashBoxMessage}
         </div>
 

@@ -34,8 +34,7 @@ export default function showProfile({ atRecord, flashMessage, setFlashMessage, f
     console.log(updatedRecord);
     e.preventDefault();
     updateUserOnAirtable(updatedRecord);
-  //  setProfile('');
-    console.log('I missed ya!')
+    //  setProfile('');
     setFlashType("welldone")
     setFlashMessage(true)
   }
@@ -52,14 +51,18 @@ export default function showProfile({ atRecord, flashMessage, setFlashMessage, f
   const moment = require("moment");
 
   const uploadPhoto = async (e) => {
-    const file = e.target.files[0];
+    e.preventDefault()
+   //const file = e.target.files[0];
+   const file = e.target.myimage.files[0];
     //const filename = encodeURIComponent(file.name);
+    //console.log("ここから！", file, "ここまで")
     const filename =
       moment().format("YYYYMMDD-HH:mm:ss")
-      + "-CV-"
+      + "-aCV-"
       + prf.fields.LastName
       + prf.fields.FirstName
-      + "-" + prf.fields.uid;
+      + "-" + prf.fields.uid
+      + "-" + file.name;
     const res = await fetch(`/api/s3Upload?file=${filename}`);
     const { url, fields } = await res.json();
     const formData = new FormData();
@@ -75,6 +78,26 @@ export default function showProfile({ atRecord, flashMessage, setFlashMessage, f
     });
 
     if (upload.ok) {
+      //管理者向けメー送信関連処理
+      const res = await fetch(`/api/s3GetUrl?file=${filename}`);
+      const data = await res.json();
+      console.log("ここからだお", data.msg, "ここまで")
+      const jsonBody = {
+        emailBody: "履歴書がアップロードされました。",
+        attachmentFile: data.msg
+      }
+      fetch('/api/sendMail', {
+        method: 'POST',
+        headers: {
+        //  'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonBody)
+      }).then(
+        console.log('Email sent, ya!')
+      )
+
+      //Airtableに格納処理
       const updatedRecord = {
         id: (prf.id),
         fields: {
@@ -97,11 +120,17 @@ export default function showProfile({ atRecord, flashMessage, setFlashMessage, f
           ? <p>まだ履歴書が投稿されていません</p>
           : <p>profile.CV</p>
         }
+        <form 
+          onSubmit={uploadPhoto}
+        >
         <input
-          onChange={uploadPhoto}
+          //onChange={uploadPhoto}
           type="file"
+          name="myimage"
           accept="image/png, image/jpeg"
         />
+        <button type="submit">送信</button>
+        </form>
       </div>
       <form className="form my-6 myp-form" onSubmit={e => handleSubmit(e)}>
         <div>

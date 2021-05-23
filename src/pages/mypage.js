@@ -18,20 +18,22 @@ const { decycle, encycle } = require('json-cyclic');
 export default function Home({ initialProfile, session_auth0_user }) {
 
   //Send Email
-  const handleSubmit = (e) => { 
+  const handleSubmit = async (e) => { 
     e.preventDefault()
-    console.log('Sending')
-    let data = {
-      name: "nname",
-      message: "mmesagge",
+    console.log('Sending...')
+
+    console.log(event.target.myFile.value)
+    const jsonBody = {
+      myText: e.target.myText.value,
+      myFile: e.target.myFile.value
     }
     fetch('/api/sendMail', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json, text/plain, */*',
+      //  'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(jsonBody)
     }).then(
       console.log('done, ya!')
     )
@@ -52,6 +54,17 @@ export default function Home({ initialProfile, session_auth0_user }) {
   const [flashMessage, setFlashMessage] = useState(false)
   const [flashType, setFlashType] = useState("info")
 
+  //const [cvFile, setCvFile] = useState("")
+  //const handleChangeCV = async (e) => {
+  //  e.preventDefault();
+  //  const myTextValue = e.target.myText.value;
+  //  const myFileValue = e.target.myFile.value;
+  //  console.log("start --")
+  //  console.log(myTextValue)
+  //  console.log(myFileValue)
+  //  console.log("-- end!")
+  //}
+
   return (
     <Layout>
     {isLoading && <p>Loading login info...</p>}
@@ -71,18 +84,12 @@ export default function Home({ initialProfile, session_auth0_user }) {
         {/* フラッシュメッセージ ここから */}
         <ShowFlashMessage flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} />
         {/* フラッシュメッセージ ここまで */}
-        <h1>Mypage | {typeof initialProfile}</h1>
+        <h1>Mypage</h1>
         {user &&(
             <div>
               Welcome {session_auth0_user.nickname} （ {session_auth0_user.sub} ）!
             </div>
         )}
-        <div className="myp-block-wrapper">
-          <div className="myp-block-wrapper block-indevelopment">
-            <h3>Eメール送信</h3>
-            <input type='submit' onClick={(e)=>{handleSubmit(e)}} />
-          </div>
-        </div>
         <div>
           {initialProfile.length === 0
             ? <CreateProfile profile={initialProfile} />
@@ -103,6 +110,16 @@ export default function Home({ initialProfile, session_auth0_user }) {
           </div>
           {/* 開発用情報 消さないで （ここまで） */}
         </div>
+
+        <div className="myp-block-wrapper">
+          <div className="myp-block-wrapper block-indevelopment">
+            <span className="label">開発用</span>
+            <h3>Eメール送信</h3>
+            {/*<form onSubmit={e => handleChangeCV(e)}>*/}
+            <TestComponent />
+          </div>
+        </div>
+
       </main>
     </div>
     </Layout>
