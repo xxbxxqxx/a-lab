@@ -16,16 +16,17 @@ export default async (req, res) => {
     //subject: `Message From ${req.body.name}`,
     subject: "Message",
     //text: req.body.message + " | Sent from: " + req.body.email,
-    attachments: [
+    html: `<p>${req.body.emailBody}</p>`,
+  }
+  
+  if(req.body.attachmentFile){
+    mailData.attachments  = [
       {   // utf-8 string as an attachment
         //filename: 'text1.txt',
         path: req.body.attachmentFile
-        //path: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXvrNkiWwenKVqjViAV8wG1dYn7SzpcAqH1g&usqp=CAU"
       }
-    ],
-    html: `<p>${req.body.emailBody}</p>`,
+    ]
   }
-
   transporter.sendMail(mailData, function (err, info) {
     if(err)
       console.log(err)

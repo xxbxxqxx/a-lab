@@ -3,19 +3,19 @@ import { TodosContext } from '../contexts/TodosContext';
 import { useUser } from '@auth0/nextjs-auth0';
 import Moment from 'react-moment';
 
-export default function showProfile({ atRecord, flashMessage, setFlashMessage, flashType, setFlashType }) {
+export default function showProfile({ atRecord, flashMessage, setFlashMessage, flashType, setFlashType, profile, setProfile }) {
   const { user, error, isLoading } = useUser();
 
-  const prf = atRecord[0];
-
-  const [profile, setProfile] = useState({
-    uid: prf ? prf.fields.uid ? prf.fields.uid : "" : "",
-    email: prf ? prf.fields.email ? prf.fields.email : "" : "",
-    description: prf ? prf.fields.description ? prf.fields.description : "" : "",
-    FirstName: prf ? prf.fields.FirstName ? prf.fields.FirstName : "" : "",
-    LastName: prf ? prf.fields.LastName ? prf.fields.LastName : "" : "",
-    CV: prf ? prf.fields.CV ? prf.fields.CV : "" : "",
-  })
+  //const prf = atRecord[0];
+//
+  //const [profile, setProfile] = useState({
+  //  uid: prf ? prf.fields.uid ? prf.fields.uid : "" : "",
+  //  email: prf ? prf.fields.email ? prf.fields.email : "" : "",
+  //  description: prf ? prf.fields.description ? prf.fields.description : "" : "",
+  //  FirstName: prf ? prf.fields.FirstName ? prf.fields.FirstName : "" : "",
+  //  LastName: prf ? prf.fields.LastName ? prf.fields.LastName : "" : "",
+  //  CV: prf ? prf.fields.CV ? prf.fields.CV : "" : "",
+  //})
   const { updateUserOnAirtable } = useContext(TodosContext);
 
   const handleChange = (e) => {
@@ -26,6 +26,7 @@ export default function showProfile({ atRecord, flashMessage, setFlashMessage, f
     });
   }
   
+  //プロフィールアップデート処理
   const handleSubmit = (e) => {
     const updatedRecord = {
       id: (atRecord[0].id),
@@ -39,13 +40,6 @@ export default function showProfile({ atRecord, flashMessage, setFlashMessage, f
     setFlashMessage(true)
   }
 
-  //const handleToggleUpdate = (e) => {
-  //    e.preventDefault();
-  //    const updatedTodo = { id: atRecord, fields: profile };
-  //    updateTodo(updatedTodo);
-  //    //setProfile('');
-  //};
-
   //S3用現在時刻取得
   const dateNow = Date.now();
   const moment = require("moment");
@@ -55,7 +49,6 @@ export default function showProfile({ atRecord, flashMessage, setFlashMessage, f
    //const file = e.target.files[0];
    const file = e.target.myimage.files[0];
     //const filename = encodeURIComponent(file.name);
-    //console.log("ここから！", file, "ここまで")
     const filename =
       moment().format("YYYYMMDD-HH:mm:ss")
       + "-aCV-"
@@ -81,7 +74,6 @@ export default function showProfile({ atRecord, flashMessage, setFlashMessage, f
       //管理者向けメー送信関連処理
       const res = await fetch(`/api/s3GetUrl?file=${filename}`);
       const data = await res.json();
-      console.log("ここからだお", data.msg, "ここまで")
       const jsonBody = {
         emailBody: "履歴書がアップロードされました。",
         attachmentFile: data.msg
@@ -105,6 +97,8 @@ export default function showProfile({ atRecord, flashMessage, setFlashMessage, f
         }
       }
       updateUserOnAirtable(updatedRecord);
+      setFlashType("welldone")
+      setFlashMessage(true)
       console.log('Uploaded successfully!');
     } else {
       console.error(url);
@@ -196,7 +190,6 @@ export default function showProfile({ atRecord, flashMessage, setFlashMessage, f
           <button
             type="submit"
             className="btn btn-primary btn-md"
-            //onClick={handleToggleUpdate}
           >
             ユーザー情報更新
           </button>
@@ -204,7 +197,7 @@ export default function showProfile({ atRecord, flashMessage, setFlashMessage, f
           <div className="myp-block-wrapper block-indevelopment">
             <span className="label">開発用</span>
             <h3>引数 atRecord の中身</h3>
-            {JSON.stringify(atRecord.atRecord)}
+            {JSON.stringify(atRecord)}
           </div>
           <div className="myp-block-wrapper block-indevelopment">
             <span className="label">開発用</span>

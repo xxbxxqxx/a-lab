@@ -17,36 +17,45 @@ const { decycle, encycle } = require('json-cyclic');
 
 export default function Home({ initialProfile, session_auth0_user }) {
 
-  //Send Email
-  const handleSubmit = async (e) => { 
-    e.preventDefault()
-    console.log('Sending...')
+  //プロフィール用State作成
+  const prf = initialProfile ? initialProfile[0] : "";
+  const [profile, setProfile] = useState({
+    uid: prf ? prf.fields.uid ? prf.fields.uid : "" : "",
+    email: prf ? prf.fields.email ? prf.fields.email : "" : "",
+    description: prf ? prf.fields.description ? prf.fields.description : "" : "",
+    FirstName: prf ? prf.fields.FirstName ? prf.fields.FirstName : "" : "",
+    LastName: prf ? prf.fields.LastName ? prf.fields.LastName : "" : "",
+    CV: prf ? prf.fields.CV ? prf.fields.CV : "" : "",
+  })
 
-    console.log(event.target.myFile.value)
-    const jsonBody = {
-      myText: e.target.myText.value,
-      myFile: e.target.myFile.value
-    }
-    fetch('/api/sendMail', {
-      method: 'POST',
-      headers: {
-      //  'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(jsonBody)
-    }).then(
-      console.log('done, ya!')
-    )
-  }
+  ////Send Email
+  //const handleSubmit = async (e) => { 
+  //  e.preventDefault()
+  //  console.log('Sending...')
+
+  //  console.log(event.target.myFile.value)
+  //  const jsonBody = {
+  //    myText: e.target.myText.value,
+  //    myFile: e.target.myFile.value
+  //  }
+  //  fetch('/api/sendMail', {
+  //    method: 'POST',
+  //    headers: {
+  //    //  'Accept': 'application/json, text/plain, */*',
+  //      'Content-Type': 'application/json'
+  //    },
+  //    body: JSON.stringify(jsonBody)
+  //  }).then(
+  //    console.log('done, ya!')
+  //  )
+  //}
 
   //Auth0 Login Status
   const { user, error, isLoading } = useUser();
 
-  const { profile, setProfile } = useContext(TodosContext);
-
-  useEffect(() => {
-    setProfile(initialProfile);
-  }, []);
+  //useEffect(() => {
+  //  setProfile(initialProfile);
+  //}, []);
 
   const { updateUserOnAirtable } = useContext(TodosContext);
 
@@ -54,16 +63,16 @@ export default function Home({ initialProfile, session_auth0_user }) {
   const [flashMessage, setFlashMessage] = useState(false)
   const [flashType, setFlashType] = useState("info")
 
-  //const [cvFile, setCvFile] = useState("")
-  //const handleChangeCV = async (e) => {
-  //  e.preventDefault();
-  //  const myTextValue = e.target.myText.value;
-  //  const myFileValue = e.target.myFile.value;
-  //  console.log("start --")
-  //  console.log(myTextValue)
-  //  console.log(myFileValue)
-  //  console.log("-- end!")
-  //}
+  //初期登録か、それ以降かを判定
+  const registerFlag = (initialProfile.length === 0) ? "false" : "true" 
+  const [ initialReister, setInitialReister ] = useState()
+
+  useEffect(() => {
+    if(initialProfile.length === 0 && initialReister !== false){
+      setFlashType("NotYetRegistered")
+      setFlashMessage(true)
+    }
+  }, []);
 
   return (
     <Layout>
@@ -76,7 +85,7 @@ export default function Home({ initialProfile, session_auth0_user }) {
     )}
     <div className="container">
       <Head>
-        <title>Mypage | Activate Lab</title>
+        <title>Mypage</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -91,9 +100,10 @@ export default function Home({ initialProfile, session_auth0_user }) {
             </div>
         )}
         <div>
-          {initialProfile.length === 0
-            ? <CreateProfile profile={initialProfile} />
-            : <ShowProfile atRecord={initialProfile} flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} setFlashType={setFlashType}/>
+          {
+            initialProfile.length === 0 && initialReister !== false
+            ? <CreateProfile profile={initialProfile} flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} setFlashType={setFlashType} profile={profile} setProfile={setProfile}  initialReister={initialReister} setInitialReister={setInitialReister} />
+            : <ShowProfile atRecord={initialProfile} flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} setFlashType={setFlashType} profile={profile} setProfile={setProfile} />
           }
 
           {/* 開発用情報 消さないで （ここから） */}
@@ -111,14 +121,14 @@ export default function Home({ initialProfile, session_auth0_user }) {
           {/* 開発用情報 消さないで （ここまで） */}
         </div>
 
-        <div className="myp-block-wrapper">
+        {/*<div className="myp-block-wrapper">
           <div className="myp-block-wrapper block-indevelopment">
             <span className="label">開発用</span>
             <h3>Eメール送信</h3>
-            {/*<form onSubmit={e => handleChangeCV(e)}>*/}
+            <form onSubmit={e => handleChangeCV(e)}>
             <TestComponent />
           </div>
-        </div>
+        </div>*/}
 
       </main>
     </div>

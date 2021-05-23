@@ -17,12 +17,15 @@ export default function showFlashMessage({ flashMessage, setFlashMessage, flashT
     } else if(flashType == "warning"){
       flashBoxClassName = "alert-warning"
       flashBoxMessage = "Warning! Better check yourself, you're not looking too good.";
+    }  else if(flashType == "NotYetRegistered"){
+      flashBoxClassName = "alert-danger"
+      flashBoxMessage = "まだ登録が完了していません。";
     } 
 
     return (
-      <div className="myp-block-wrapper block-indevelopment">
-        <p>フラッシュメッセージフラグ: {flashMessage ? "true" : "false"}</p>
-        <hr />
+      <div>
+        {/*<p>フラッシュメッセージフラグ: {flashMessage ? "true" : "false"}</p>
+        <hr />*/}
 
         <div className={`alert fade alert-simple alert-dismissible text-left font__family-montserrat font__size-16 brk-library-rendered rendered show ${flashBoxClassName}`}>
           <button type="button" onClick={()=>{setFlashMessage(false)}} className="close" data-dismiss="alert"><span>Close</span></button>
