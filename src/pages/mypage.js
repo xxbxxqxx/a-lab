@@ -102,8 +102,26 @@ export default function Home({ initialProfile, session_auth0_user }) {
         <div>
           {
             initialProfile.length === 0 && initialReister !== false
-            ? <CreateProfile profile={initialProfile} flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} setFlashType={setFlashType} profile={profile} setProfile={setProfile}  initialReister={initialReister} setInitialReister={setInitialReister} />
-            : <ShowProfile atRecord={initialProfile} flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} setFlashType={setFlashType} profile={profile} setProfile={setProfile} />
+            ? <CreateProfile
+                profile={initialProfile}
+                flashMessage={flashMessage}
+                setFlashMessage={setFlashMessage}
+                flashType={flashType}
+                setFlashType={setFlashType}
+                profile={profile}
+                setProfile={setProfile}
+                initialReister={initialReister}
+                setInitialReister={setInitialReister}
+              />
+            : <ShowProfile
+                atRecord={initialProfile}
+                flashMessage={flashMessage}
+                setFlashMessage={setFlashMessage}
+                flashType={flashType}
+                setFlashType={setFlashType}
+                profile={profile}
+                setProfile={setProfile}
+              />
           }
 
           {/* 開発用情報 消さないで （ここから） */}

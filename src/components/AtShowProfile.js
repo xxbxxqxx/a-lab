@@ -3,11 +3,18 @@ import { TodosContext } from '../contexts/TodosContext';
 import { useUser } from '@auth0/nextjs-auth0';
 import Moment from 'react-moment';
 
-export default function showProfile({ atRecord, flashMessage, setFlashMessage, flashType, setFlashType, profile, setProfile }) {
+export default function showProfile({
+  atRecord,
+  flashMessage,
+  setFlashMessage,
+  flashType,
+  setFlashType,
+  profile,
+  setProfile
+}) {
   const { user, error, isLoading } = useUser();
 
   //const prf = atRecord[0];
-//
   //const [profile, setProfile] = useState({
   //  uid: prf ? prf.fields.uid ? prf.fields.uid : "" : "",
   //  email: prf ? prf.fields.email ? prf.fields.email : "" : "",
@@ -32,7 +39,7 @@ export default function showProfile({ atRecord, flashMessage, setFlashMessage, f
       id: (atRecord[0].id),
       fields: profile,
     }
-    console.log(updatedRecord);
+    //console.log(updatedRecord);
     e.preventDefault();
     updateUserOnAirtable(updatedRecord);
     //  setProfile('');

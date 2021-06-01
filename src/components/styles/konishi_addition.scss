@@ -9,3 +9,63 @@
     }
   }
 }
+
+
+$c-red1: rgb(248, 105, 77);
+$c-lightgray3: #e6e6e6;
+$c-lightgray4: #f3f3f3;
+
+.hamburger-react{
+  z-index: 99;
+}
+.menuSlide{
+  z-index: 98;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: $c-lightgray4;
+  border-left: solid 1px $c-lightgray3;
+  height: 100vh;
+  text-align: left;
+  padding: 2rem 3rem;
+  //position: absolute; これだと右にはみ出ちゃう
+  position: fixed;
+  top: 0;
+  right: 0;
+  transition: transform 0.3s ease-in-out;
+  @media (max-width: 200px) {
+    width: 100%;
+  }
+  .menuTitle{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    padding: 2rem 0;
+    font-weight: bold;
+    letter-spacing: 0.35rem;
+    text-decoration: none;
+    transition: color 0.1s linear;
+    .icon{
+      margin-right: 5px;
+    }
+    a {
+      transition: 0.3s;
+      @media (max-width: 200px) {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+      &:hover {
+        color: $c-red1;
+        text-decoration: underline;
+      }
+    }
+    .categories{
+      list-style: none;
+      margin-top: 20px;
+      margin-left: 40px;
+      li{
+        font-size: 1.0rem;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}

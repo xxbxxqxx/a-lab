@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from "react"
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0';
 
+import Menu from "../components/menu";
+import Hamburger from 'hamburger-react'
+
 const Header = () => {
   const { user } = useUser();
+
+  //ハンガーメニュー
+  const [isOpen, setOpen] = useState(false)
 
   return (
     <header className="header-common">
@@ -15,6 +21,8 @@ const Header = () => {
 
           <div className="header-right col-sm-8">
             <nav>
+              <Hamburger toggled={isOpen} toggle={setOpen} color="#000" />
+              <Menu open={isOpen} setOpen={setOpen} />
               <ul>
                 <li>
                   <Link href="/">
