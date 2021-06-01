@@ -116,7 +116,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
       <main>
 
-        <section className="reasons-col BG-Orang">
+        <section id="reasons" className="reasons-col BG-Orang">
 
           <h2 className="title">選ばれる理由</h2>
 
