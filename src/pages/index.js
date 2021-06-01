@@ -116,7 +116,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
       <main>
 
-        <section className="reasons-col BG-Orang">
+        <section id="reasons" className="reasons-col BG-Orang">
 
           <h2 className="title">選ばれる理由</h2>
 
@@ -162,6 +162,64 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
           <div className="job-col-in container">
 
             <div className="row">
+
+
+
+
+
+              {contentfulposts.map((p) => {
+                return <div className="col-sm-6 job-col-in-cont">
+                  <div className="job-col-in-cont-in">
+                    <h3>1</h3>
+                    <div className="ttl-cap">
+                      <p>{p.title}</p>
+                    </div>
+
+                    <div className="job-info">
+
+                      <table>
+                        <tbody>
+                          <tr>
+                            <th>Slug</th>
+                            <td>{p.slug}</td>
+                          </tr>
+                          <tr>
+                            <th>業界</th>
+                            <td>{p.industry}</td>
+                          </tr>
+                          <tr>
+                            <th>年収</th>
+                            <td>{p.income}</td>
+                          </tr>
+
+                          <tr>
+                            <th>雇用形態</th>
+                            <td>{p.employmentType}</td>
+                          </tr>
+
+                          <tr>
+                            <th>業務</th>
+                            <td>{p.job}</td>
+                          </tr>
+
+                          <tr>
+                            <th>場所</th>
+                            <td>{p.location}</td>
+                          </tr>
+                          <tr>
+                            <th>本文</th>
+                            <td>{p.content}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              })}
+
+
+
+
 
               <div className="col-sm-6 job-col-in-cont">
                 <div className="job-col-in-cont-in">

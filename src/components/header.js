@@ -1,6 +1,13 @@
 import React, { useState } from "react"
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0';
+import { Link as LinkRS, animateScroll as scroll } from "react-scroll"
+
+
+
+
+
+
 
 import Menu from "../components/menu";
 import Hamburger from 'hamburger-react'
@@ -61,9 +68,10 @@ const Header = () => {
 
             <ul className="navi-bottom">
               <li>
-                <Link href="#">
-                  <a>選ばれる理由</a>
-                </Link>
+                <LinkRS to="reasons">
+                  選ばれる理由
+                </LinkRS>
+
               </li>
 
               <li>
