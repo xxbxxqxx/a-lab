@@ -10,6 +10,16 @@
   }
 }
 
+.form-group-shogaisabetsu, 
+.form-group-oshigotostatus{
+  input{
+    display: inline-block;
+    width: auto;
+  }
+  label{
+    margin-right: 10px;
+  }
+}
 
 $c-red1: rgb(248, 105, 77);
 $c-lightgray3: #e6e6e6;

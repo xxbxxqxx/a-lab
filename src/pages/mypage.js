@@ -25,6 +25,13 @@ export default function Home({ initialProfile, session_auth0_user }) {
     description: prf ? prf.fields.description ? prf.fields.description : "" : "",
     FirstName: prf ? prf.fields.FirstName ? prf.fields.FirstName : "" : "",
     LastName: prf ? prf.fields.LastName ? prf.fields.LastName : "" : "",
+    FirstNameKana: prf ? prf.fields.FirstNameKana ? prf.fields.FirstNameKana : "" : "",
+    LastNameKana: prf ? prf.fields.LastNameKana ? prf.fields.LastNameKana : "" : "",
+    Birthday: prf ? prf.fields.Birthday ? prf.fields.Birthday : "1985-01-01" : "1985-01-01",
+    Prefecture: prf ? prf.fields.Prefecture ? prf.fields.Prefecture : "" : "",
+    Address: prf ? prf.fields.Address ? prf.fields.Address : "" : "",
+    TelNo: prf ? prf.fields.TelNo ? prf.fields.TelNo : "" : "",
+    HearingImpairment: prf ? prf.fields.HearingImpairment ? prf.fields.HearingImpairment : "" : "",
     CV: prf ? prf.fields.CV ? prf.fields.CV : "" : "",
   })
 
