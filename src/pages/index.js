@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Layout from '../components/layout';
+import Link from 'next/link';
 import { useUser, getSession } from '@auth0/nextjs-auth0';
 
 import { fetchEntries } from '../lib/contentfulPosts'
 const { decycle, encycle } = require('json-cyclic');
+
+
+
 
 export default function Home({ session_auth0, contextreq, contextres, contentfulposts }) {
   const { user, error, isLoading } = useUser();
@@ -69,8 +73,46 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
           </form>
         </div> */}
 
+        <div className="top-image-btn">
+          <p>あなたにかわって<br />
+            障害を翻訳します</p>
+          <a href="#"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+無料登録で使ってみる</a>
+        </div>
+
       </section>
       {/*top画像ここまで　*/}
+
+
+      <section className="top-main-bottom">
+
+        <div className="container">
+
+          <div className="row">
+
+            <div className="col-sm-2 top-main-bottom-l">
+              <img src="image/y0870.png" />
+            </div>
+
+            <div className="col-sm-10 top-main-bottom-r">
+              <p>
+                あなたの障害の症状を理解することで、<br />
+              あなたの強みやスキル、キャリアにあわせた企業とのマッチングを可能にしていきます。<br />
+              一人ひとりが、自分らしさを大切に、やりたいことが見つかるように。<br />
+              我々があなたに合う仕事を紹介します。
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/*
+        
 
       <div className="container">
         <Head>
@@ -88,6 +130,8 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
             <h1>Welcome to <a href="https://nextjs.org">Next.js!</a></h1>
           )
         }
+
+
 
         <div href="https://nextjs.org/docs" className="myp-block-wrapper block-indevelopment">
           <span className="label">開発用</span>
@@ -112,42 +156,69 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
           </div>
         </div>
       </div>
+
+          */}
+
+
       {/* container */}
 
       <main>
 
-        <section id="reasons" className="reasons-col BG-Orang">
+        <section id="reasons" className="reasons-col">
 
-          <h2 className="title">選ばれる理由</h2>
+          <h2 className="title">OpenGate Careersが選ばれる理由</h2>
 
           <div className="reasons-col-in container">
 
             <div className="row">
               <div className="col-sm-4 reasons-cont">
                 <div className="reasons-cont-in">
-                  <h3>専門性の高い スタッフが多数常駐。あなたの就職活動を全力</h3>
+                  <h3>
+                    世界初！<br />
+                    障害者翻訳システムで<br />
+                    不安を軽減
+                  </h3>
+                  <img src="/image/reasons-cont-in-1.jpg" />
                   <p>
-                    ・専門的な観点から、あなたのご要望にあったおすすめの求人をご紹介します。ヒアリングを通じて、やりがい・働く環境・あなたのスキルにぴったりな職場を一緒に探していきましょう。
-                    ・出勤前、お昼休み、仕事終わり等、あなたのご都合の良いタイミングで面談します。お仕事でお忙しい方でも気軽にご連絡ください。
+                    当社独自の翻訳システムを使用し、自分<br />
+                    の症状を翻訳することで人事担当者の障<br />
+                    害に対するハードルを下げます。必要な<br />
+                    配慮をしっかり伝え、自信をもって面接<br />
+                    に臨めるように伴奏し、皆さんの「こん<br />
+                    な仕事をしたい」を一緒に考えます。<br />
                   </p>
                 </div>
               </div>
 
               <div className="col-sm-4 reasons-cont">
                 <div className="reasons-cont-in">
-                  <h3>あなたにかわって障害を翻訳します！</h3>
+                  <h3>経験豊富なスタッフが<br />
+                      就職を全力サポート</h3>
+                  <img src="/image/reasons-cont-in-2.jpg" />
                   <p>
-                    ・当社のもつ「翻訳システム」を使用して、あなたの障害を翻訳します。人事の担当者にどう自分の症状を伝えたらよいか・・そんな風に悩む必要がありません！あなたの障害を翻訳して、必要な配慮をしっかり伝え、できることを自身でも認識したうえで自信をもって面接に臨めるようにサポートいたします。
+                    専門的な観点から、あなたのご要望にあ<br />
+                  ったおすすめの求人をご紹介。自身も障<br />
+                  害を持ち、障害者の就職活動に対する不<br />
+                  安や葛藤を知る代表の増本自らアドバイ<br />
+                  ザーとして、可能な限り求職者の皆さん<br />
+                  の就職活動をサポートします。
                   </p>
                 </div>
               </div>
 
               <div className="col-sm-4 reasons-cont">
                 <div className="reasons-cont-in">
-                  <h3>就職から定着までアフターフォローも充実しています。</h3>
+                  <h3>就職から定着まで<br />
+                      アフターフォローも<br />
+                      充実</h3>
+                  <img src="/image/reasons-cont-in-3.png" />
                   <p>
-                    ・ヒアリングのみならず、履歴書添削や模擬面談を通じて、あなたの就職を全面的にサポートします。
-                    ・企業側との交渉も我々にお任せください！就職後の職場での働き方やコミュニケーションの方法、自ら伝えずらい部分は一緒に解決方法を考えましょう。
+                    ヒアリングのみならず、履歴書添削など<br />
+                  あなたの就職を全面的にサポートします。<br />
+                  企業側との交渉も我々にお任せください。<br />
+                  就職後の職場での働き方やコミュニケー<br />
+                  ションの方法、自ら伝えづらい部分は一<br />
+                  緒に解決方法を考えていきましょう。
                   </p>
                 </div>
               </div>
@@ -155,22 +226,19 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
           </div> {/* //container */}
         </section>
 
-        <section className="job-col">
+        <section id="job" className="job-col">
 
-          <h2 className="title">求人紹介</h2>
+          <h2 className="title"> <img src="/image/job-col-icon1.png" />求人紹介</h2>
 
           <div className="job-col-in container">
 
             <div className="row">
 
 
-
-
-
               {contentfulposts.map((p) => {
                 return <div className="col-sm-6 job-col-in-cont">
                   <div className="job-col-in-cont-in">
-                    <h3>1</h3>
+                    <h3><img src="/image/job-col-icon2.png" /></h3>
                     <div className="ttl-cap">
                       <p>{p.title}</p>
                     </div>
@@ -218,413 +286,333 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
               })}
 
 
-
-
-
-              <div className="col-sm-6 job-col-in-cont">
-                <div className="job-col-in-cont-in">
-                  <h3>1</h3>
-                  <div className="ttl-cap">
-                    <p>テキストです<br />テキストですテキストです</p>
-                  </div>
-
-                  <div className="job-info">
-                    <table>
-                      <tbody>
-                        <tr>
-                          <th>業界</th>
-                          <td>東証一部上場大手ブライダル企業</td>
-                        </tr>
-                        <tr>
-                          <th>年収</th>
-                          <td>400万円〜600万円</td>
-                        </tr>
-                        <tr>
-                          <th>雇用形態</th>
-                          <td>正社員</td>
-                        </tr>
-                        <tr>
-                          <th>職種</th>
-                          <td>エンジニア職</td>
-                        </tr>
-                        <tr>
-                          <th>勤務地</th>
-                          <td>東京都、千代田区</td>
-                        </tr>
-                        <tr>
-                          <th>特徴</th>
-                          <td>
-                            <ul>
-                              <li>・テストテストテストテストテストテストテストテストテストテストテストテスト</li>
-                              <li>・テストテストテストテストテストテスト</li>
-                              <li>・テストテストテストテストテストテスト</li>
-                            </ul>
-
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>{/* //job-info */}
-                </div>
-              </div>{/* job-col-in-cont */}
-
-              <div className="col-sm-6 job-col-in-cont">
-                <div className="job-col-in-cont-in">
-                  <h3>2</h3>
-                  <div className="ttl-cap">
-                    <p>テキストです<br />テキストですテキストです</p>
-                  </div>
-
-                  <div className="job-info">
-                    <table>
-                      <tbody>
-                        <tr>
-                          <th>業界</th>
-                          <td>東証一部上場大手ブライダル企業</td>
-                        </tr>
-                        <tr>
-                          <th>年収</th>
-                          <td>400万円〜600万円</td>
-                        </tr>
-                        <tr>
-                          <th>雇用形態</th>
-                          <td>正社員</td>
-                        </tr>
-                        <tr>
-                          <th>職種</th>
-                          <td>エンジニア職</td>
-                        </tr>
-                        <tr>
-                          <th>勤務地</th>
-                          <td>東京都、千代田区</td>
-                        </tr>
-                        <tr>
-                          <th>特徴</th>
-                          <td>
-                            <ul>
-                              <li>・テストテストテストテストテストテストテストテストテストテストテストテスト</li>
-                              <li>・テストテストテストテストテストテスト</li>
-                              <li>・テストテストテストテストテストテスト</li>
-                            </ul>
-
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>{/* //job-info */}
-                </div>
-              </div>{/* job-col-in-cont */}
-
-              <div className="col-sm-6 job-col-in-cont">
-                <div className="job-col-in-cont-in">
-                  <h3>3</h3>
-                  <div className="ttl-cap">
-                    <p>テキストです<br />テキストですテキストです</p>
-                  </div>
-
-                  <div className="job-info">
-                    <table>
-                      <tbody>
-                        <tr>
-                          <th>業界</th>
-                          <td>東証一部上場大手ブライダル企業</td>
-                        </tr>
-                        <tr>
-                          <th>年収</th>
-                          <td>400万円〜600万円</td>
-                        </tr>
-                        <tr>
-                          <th>雇用形態</th>
-                          <td>正社員</td>
-                        </tr>
-                        <tr>
-                          <th>職種</th>
-                          <td>エンジニア職</td>
-                        </tr>
-                        <tr>
-                          <th>勤務地</th>
-                          <td>東京都、千代田区</td>
-                        </tr>
-                        <tr>
-                          <th>特徴</th>
-                          <td>
-                            <ul>
-                              <li>・テストテストテストテストテストテストテストテストテストテストテストテスト</li>
-                              <li>・テストテストテストテストテストテスト</li>
-                              <li>・テストテストテストテストテストテスト</li>
-                            </ul>
-
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>{/* //job-info */}
-                </div>
-              </div>{/* job-col-in-cont */}
-
-              <div className="col-sm-6 job-col-in-cont">
-                <div className="job-col-in-cont-in">
-                  <h3>4</h3>
-                  <div className="ttl-cap">
-                    <p>テキストです<br />テキストですテキストです</p>
-                  </div>
-
-                  <div className="job-info">
-                    <table>
-                      <tbody>
-                        <tr>
-                          <th>業界</th>
-                          <td>東証一部上場大手ブライダル企業</td>
-                        </tr>
-                        <tr>
-                          <th>年収</th>
-                          <td>400万円〜600万円</td>
-                        </tr>
-                        <tr>
-                          <th>雇用形態</th>
-                          <td>正社員</td>
-                        </tr>
-                        <tr>
-                          <th>職種</th>
-                          <td>エンジニア職</td>
-                        </tr>
-                        <tr>
-                          <th>勤務地</th>
-                          <td>東京都、千代田区</td>
-                        </tr>
-                        <tr>
-                          <th>特徴</th>
-                          <td>
-                            <ul>
-                              <li>・テストテストテストテストテストテストテストテストテストテストテストテスト</li>
-                              <li>・テストテストテストテストテストテスト</li>
-                              <li>・テストテストテストテストテストテスト</li>
-                            </ul>
-
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>{/* //job-info */}
-                </div>
-              </div>{/* job-col-in-cont */}
-
             </div>{/* row */}
 
           </div>{/* //container */}
         </section>
 
-        <section className="users-voice-col BG-Orang">
+        <section id="users-voice" className="users-voice-col">
           <h2 className="title">利用者の声</h2>
 
           <div className="users-voice-col-in container">
 
             <div className="row">
 
-              <div className="col-sm-6 users-voice-cont">
+              <div className="col-sm-12 users-voice-cont">
                 <div className="users-voice-cont-in">
                   <div className="users-voice-cont-in-head">
                     <ul>
-                      <li><img src="/voiceuser.png" /></li>
-                      <li>1対1の親身な姿勢に、本当に感謝の気持ちで一杯。</li>
+                      <li><img src="/image/users-voice-1.png/" /></li>
+                      <li>
+                        <h3>私に代わって障害を企業に丁寧に説明してくれました。</h3>
+                        <p>
+                          以前は、不動産会社の事務をしていましたがADHDと強迫性障害を患いながら仕事をすることはとても大変で、自分の障害<br />
+                        がどんなものかを周りの人に理解されないことが一番辛かったです。思い切って転職活動を始め利用したのがこのオープン<br />
+                        ゲートキャリアズ。“障害翻訳”って何？という感じでしたが、はじめての面談のときからしっかりヒアリングしてくれて、<br />
+                        自分が相手にどうしてほしいのか、必要な配慮はどこまでか深く理解したうえで、担当の方が私に代わって企業に説明して<br />
+                        くれたので、私自身は思い切って面接に挑むことができました。最初にきちんとヒアリングをしてくれるので、私は安心し<br />
+                        てお任せすることができました。
+                        </p>
+                      </li>
                     </ul>
-                  </div>
-
-                  <div className="users-voice-cont-in-cont">
-                    {/* <strong>T・K さん「大手金融機関へ転職成功」</strong>
-                    <h3>転職したいと思った理由</h3> */}
-                    <p>
-                      ガス・電気のインフラ業界のコールセンターとバックオフィスの事業に勤めていました。私はバックオフィス事業で入社しましたが、在籍4年の間に3回の異動があり腰を据えて業務経験を積むことが難しいと思ったことや、入社時に説明を受けていないバックオフィスからコールセンターへの配置転換を余儀なくされたことが挙げられます。また、精神障害を患っているので障害を理解して頂ける会社でかつ腰を据えて業務経験を積んで行きたいとの思いから転職したいと思いました。
-                </p>
-                  </div>
-                </div>
-              </div>{/* users-voice-cont */}
-
-              <div className="col-sm-6 users-voice-cont">
-                <div className="users-voice-cont-in">
-                  <div className="users-voice-cont-in-head">
-                    <ul>
-                      <li><img src="/voiceuser.png" /></li>
-                      <li>1対1の親身な姿勢に、本当に感謝の気持ちで一杯。</li>
-                    </ul>
-                  </div>
-
-                  <div className="users-voice-cont-in-cont">
-                    {/* <strong>T・K さん「大手金融機関へ転職成功」</strong>
-                    <h3>転職したいと思った理由</h3> */}
-                    <p>
-                      ガス・電気のインフラ業界のコールセンターとバックオフィスの事業に勤めていました。私はバックオフィス事業で入社しましたが、在籍4年の間に3回の異動があり腰を据えて業務経験を積むことが難しいと思ったことや、入社時に説明を受けていないバックオフィスからコールセンターへの配置転換を余儀なくされたことが挙げられます。また、精神障害を患っているので障害を理解して頂ける会社でかつ腰を据えて業務経験を積んで行きたいとの思いから転職したいと思いました。
-                </p>
                   </div>
                 </div>
               </div>{/* users-voice-cont */}
 
 
-              <div className="col-sm-6 users-voice-cont">
+              <div className="col-sm-12 users-voice-cont">
                 <div className="users-voice-cont-in">
                   <div className="users-voice-cont-in-head">
                     <ul>
-                      <li><img src="/voiceuser.png" /></li>
-                      <li>1対1の親身な姿勢に、本当に感謝の気持ちで一杯。</li>
+                      <li><img src="/image/users-voice-2.png/" /></li>
+                      <li>
+                        <h3>不安な私にも親身に寄り添ってくれました。</h3>
+                        <p>
+                          正直、はじめは障害者採用にあまりいいイメージがなく。というのも私自身、障害を周りにはクローズにしており障害者雇<br />
+                        用の枠で就職することを悩んでいました。まずは面談だけ、と思ってサイトに登録してみましたが、担当の方が親身に私の<br />
+                        話を聞いてくれて。私は指の欠損なので、実際に周りから気づかれないことも多くあります。ただ、障害があるからといっ<br />
+                        て、負い目に感じる必要はなく、難しい部分を周りにサポートしてもらい私自身のスキルをどんどん発揮していけばよいと<br />
+                        背中を押していただいて、今はとてもやりがいのある仕事に就くことができました。自分の可能性を広げて挑戦して本当に<br />
+                        良かったと思っています。
+                        </p>
+                      </li>
                     </ul>
-                  </div>
-
-                  <div className="users-voice-cont-in-cont">
-                    {/* <strong>T・K さん「大手金融機関へ転職成功」</strong>
-                    <h3>転職したいと思った理由</h3> */}
-                    <p>
-                      ガス・電気のインフラ業界のコールセンターとバックオフィスの事業に勤めていました。私はバックオフィス事業で入社しましたが、在籍4年の間に3回の異動があり腰を据えて業務経験を積むことが難しいと思ったことや、入社時に説明を受けていないバックオフィスからコールセンターへの配置転換を余儀なくされたことが挙げられます。また、精神障害を患っているので障害を理解して頂ける会社でかつ腰を据えて業務経験を積んで行きたいとの思いから転職したいと思いました。
-                </p>
                   </div>
                 </div>
               </div>{/* users-voice-cont */}
 
-              <div className="col-sm-6 users-voice-cont">
-                <div className="users-voice-cont-in">
-                  <div className="users-voice-cont-in-head">
-                    <ul>
-                      <li><img src="/voiceuser.png" /></li>
-                      <li>1対1の親身な姿勢に、本当に感謝の気持ちで一杯。</li>
-                    </ul>
-                  </div>
 
-                  <div className="users-voice-cont-in-cont">
-                    {/* <strong>T・K さん「大手金融機関へ転職成功」</strong>
-                    <h3>転職したいと思った理由</h3> */}
-                    <p>
-                      ガス・電気のインフラ業界のコールセンターとバックオフィスの事業に勤めていました。私はバックオフィス事業で入社しましたが、在籍4年の間に3回の異動があり腰を据えて業務経験を積むことが難しいと思ったことや、入社時に説明を受けていないバックオフィスからコールセンターへの配置転換を余儀なくされたことが挙げられます。また、精神障害を患っているので障害を理解して頂ける会社でかつ腰を据えて業務経験を積んで行きたいとの思いから転職したいと思いました。
-                </p>
-                  </div>
-                </div>
-              </div>{/* users-voice-cont */}
 
             </div>{/* row */}
           </div>
         </section>
 
-        <section className="flow-col">
+        <section id="flow" className="flow-col">
           <h2 className="title">ご利用の流れ</h2>
           <div className="flow-col-in container">
             <div className="row">
-              <div className="col-sm-4 flow-col-in-cont">
+              <div className="col-sm-3 flow-col-in-cont">
                 <div className="flow-col-in-cont-out">
                   <div className="flow-col-in-cont-head">
                     <dl>
                       <dt>01</dt>
-                      <dd>登録</dd>
+                      <dd>
+                        <h4>Registration</h4>
+                        <p>無料登録</p>
+
+                      </dd>
                     </dl>
                   </div>{/* //flow-col-in-cont-head */}
                   <div className="flow-col-in-cont-cont">
-                    あなただけのマイページが作成され、
-                    求人の閲覧ができるようになります。
-                    求人だけではなく、就職・転職に
-                    便利なコンテンツを閲覧することも可能です！
+                    <p>
+                      ご登録は1分程度で完了。<br />
+                      アドバイザーより24時間以内に<br />
+                      ご連絡いたします。マイページ<br />
+                      より登録内容を確認できます。<br />
+                    </p>
+                    <img src="/image/flow-1.png" />
+
                   </div>{/* //flow-col-in-cont-cont */}
                 </div>
               </div>{/* //flow-col-in-cont-out */}
-              <div className="col-sm-4 flow-col-in-cont">
+              <div className="col-sm-3 flow-col-in-cont">
                 <div className="flow-col-in-cont-out">
                   <div className="flow-col-in-cont-head">
                     <dl>
                       <dt>02</dt>
-                      <dd>就職・転職相談</dd>
+                      <dd>
+                        <h4>Interview</h4>
+                        <p>
+                          面談<br />
+                          おススメ紹介
+                        </p>
+                      </dd>
                     </dl>
                   </div>{/* //flow-col-in-cont-head */}
                   <div className="flow-col-in-cont-cont">
-                    あなただけのマイページが作成され、
-                    求人の閲覧ができるようになります。
-                    求人だけではなく、就職・転職に
-                    便利なコンテンツを閲覧することも可能です！
+                    <p>
+                      電話やWeb面談ツール、対面を<br />
+                      通じてあなたの状況をヒアリン<br />
+                      グし、あなたの状況や症状にあ<br />
+                      わせた求人をご紹介します。<br />
+                    </p>
+                    <img src="/image/flow-2.png" />
                   </div>{/* //flow-col-in-cont-cont */}
                 </div>
               </div>{/* //flow-col-in-cont-out */}
-              <div className="col-sm-4 flow-col-in-cont">
+              <div className="col-sm-3 flow-col-in-cont">
                 <div className="flow-col-in-cont-out">
                   <div className="flow-col-in-cont-head">
                     <dl>
                       <dt>03</dt>
-                      <dd>応募・書類選考開始！</dd>
+                      <dd>
+                        <h4>Applying</h4>
+                        <p>
+                          応募・書類選考
+                          </p>
+                      </dd>
                     </dl>
                   </div>{/* //flow-col-in-cont-head */}
                   <div className="flow-col-in-cont-cont">
-                    あなただけのマイページが作成され、
-                    求人の閲覧ができるようになります。
-                    求人だけではなく、就職・転職に
-                    便利なコンテンツを閲覧することも可能です！
+                    <p>
+                      選考に必要な書類のアドバイス<br />
+                    ・模擬面談などあなたにあわせ<br />
+                    たフォローで最適な情報をバッ<br />
+                    クアップ。企業情報もきちんと<br />
+                    お伝えします。
+                    </p>
+                    <img src="/image/flow-3.png" />
                   </div>{/* //flow-col-in-cont-cont */}
                 </div>
               </div>{/* //flow-col-in-cont-out */}
-              <div className="col-sm-4 flow-col-in-cont">
+              <div className="col-sm-3 flow-col-in-cont">
                 <div className="flow-col-in-cont-out">
                   <div className="flow-col-in-cont-head">
                     <dl>
                       <dt>04</dt>
-                      <dd>面接</dd>
+                      <dd>
+                        <h4>Following</h4>
+                        <p>
+                          フォロー
+                        </p>
+                      </dd>
                     </dl>
                   </div>{/* //flow-col-in-cont-head */}
                   <div className="flow-col-in-cont-cont">
-                    あなただけのマイページが作成され、
-                    求人の閲覧ができるようになります。
-                    求人だけではなく、就職・転職に
-                    便利なコンテンツを閲覧することも可能です！
+                    <p>
+                      入社後、お困りのこともお気軽<br />
+                    にご相談ください。継続的にあ<br />
+                    なたの就職活動をサポートしま<br />
+                    す。
+                    </p>
+                    <img src="/image/flow-4.png" />
                   </div>{/* //flow-col-in-cont-cont */}
                 </div>
               </div>{/* //flow-col-in-cont-out */}
-              <div className="col-sm-4 flow-col-in-cont">
-                <div className="flow-col-in-cont-out">
-                  <div className="flow-col-in-cont-head">
-                    <dl>
-                      <dt>05</dt>
-                      <dd>内定</dd>
-                    </dl>
-                  </div>{/* //flow-col-in-cont-head */}
-                  <div className="flow-col-in-cont-cont">
-                    あなただけのマイページが作成され、
-                    求人の閲覧ができるようになります。
-                    求人だけではなく、就職・転職に
-                    便利なコンテンツを閲覧することも可能です！
-                  </div>{/* //flow-col-in-cont-cont */}
-                </div>
-              </div>{/* //flow-col-in-cont-out */}
-              <div className="col-sm-4 flow-col-in-cont">
-                <div className="flow-col-in-cont-out">
-                  <div className="flow-col-in-cont-head">
-                    <dl>
-                      <dt>06</dt>
-                      <dd>入社</dd>
-                    </dl>
-                  </div>{/* //flow-col-in-cont-head */}
-                  <div className="flow-col-in-cont-cont">
-                    あなただけのマイページが作成され、
-                    求人の閲覧ができるようになります。
-                    求人だけではなく、就職・転職に
-                    便利なコンテンツを閲覧することも可能です！
-                  </div>{/* //flow-col-in-cont-cont */}
-                </div>
-              </div>{/* //flow-col-in-cont-out */}
+
             </div>
           </div>
         </section>
 
-        <section className="open-gate-col BG-Orang">
+        <section id="qa" className="qa-col">
+          <h2 className="title">Q&A</h2>
+
+          <div className="qa-col-in container">
+            <dl>
+              <dt>エリアは特定されていますか？</dt>
+              <dd>首都圏のみならず、他県の求人も多数ございます。まずはあなたのご希望を面談でお聞かせください。</dd>
+              <dt>どのような方が対象ですか？</dt>
+              <dd>身体障害手帳・療育手帳・愛の手帳・精神の手帳・障害者保険福祉手帳をお持ちの方が対象となります。<br />
+              （申請中の方も対象となりますのでお気軽にご相談ください）
+              </dd>
+              <dt>OpenGateとは何ですか？</dt>
+              <dd>
+                「OpenGate」は日本初の障害者・企業・医療従事者をつなぐコミュニケーションSNSです。現在は、身体障害
+                のみですが、今後、精神障害や発達障害の方々も気軽にコミュニケーションをとれるような仕組みにしていく予定で
+                す。
+              </dd>
+              <dt>障害者翻訳システムとは何ですか？</dt>
+              <dd>
+                当社が特許を取得した「障害」を翻訳できるシステムです。言語と同じようにあなたの症状をだれにでもわかりや
+                すくすることで配慮の方法やコミュニケーションを簡単にすることができます。
+              </dd>
+              <dt>登録にお金はかかりますか？</dt>
+              <dd>
+                登録からサポートまですべて無料でご利用いただけます。
+              </dd>
+            </dl>
+          </div>
+        </section>
+
+        <section id="open-gate" className="open-gate-col">
           <h2 className="title">日本最大規模の身体障害者SNS・OpenGate</h2>
 
-          <div className="open-gate-col-in">
+          <div className="open-gate-col-in container">
 
-            <div className="open-gate-col-in-img">
-              <img src="/bukin.jpg" />
-            </div>
-            <div className="open-gate-col-in-txt">
-              <p>
-                身体の不自由な部分をクリック！<br />
-            同境遇の人と出会えて、共感出来て、交流出来ます。
-            </p>
+            <div className="row">
+
+              <div className="col-sm-6 open-gate-col-in-cont-l">
+
+                <h3><img src="/image/opengateCareer-1.png" /></h3>
+
+                <div className="open-gate-col-in-cont-top-img">
+                  <img src="/image/bukin.jpg" />
+                </div>
+
+                <div className="open-gate-col-in-txt">
+                  <p>
+                    我々が運営する障害者・家族・企業・医療従事者をつな<br />
+                げるアプリ「OpenGate」です。<br />
+                このアプリは、障害部位ごとにつながり、語りあえる
+                SNSです。<br />
+                障害部位を登録することで、近い境遇の人やほしい情<br />
+                報・商品・サービスに出会いやすくなります。<br />
+                  </p>
+
+
+                  <span>▼こちらのリンクよりぜひご覧ください！</span>
+                  <Link href="https://open-gate.jp/">OpenGate</Link>
+                </div>
+
+              </div>
+
+              <div className="col-sm-6 open-gate-col-in-cont-r">
+
+                <h3>障害者検索キュレーションサイト</h3>
+
+                <div className="open-gate-col-in-cont-top-img">
+
+                  <img src="/image/opengateCareer-2.png" />
+
+                </div>
+
+                <div className="open-gate-col-in-txt">
+                  <p>
+                    障害に関する様々な情報をその症状ごとに”検索”ができ<br />
+                  る業界初の”おまとめサイト”（キュレーション）です。<br />
+                  あなたの気になる『症状』をクリックするだけで、その<br />
+                  症状に関するニュースや動画が見れます。
+                  </p>
+
+                  <dl>
+                    <dt>▼【身体障害者】専用の検索サイト</dt>
+                    <dd><Link href="https://physical.opengate.site/">https://physical.opengate.site/</Link></dd>
+
+                    <dt>▼【精神症状専用】検索サイトオープン！</dt>
+                    <dd><Link href="https://mental.opengate.site">https://mental.opengate.site</Link></dd>
+
+                    <dt>▼【発達症状、知的症状専用】検索サイトオープン！</dt>
+                    <dd><Link href="https://intellectual.opengate.site">https://intellectual.opengate.site</Link></dd>
+                  </dl>
+
+                </div>
+
+
+              </div>
+
             </div>
 
           </div>
         </section>
 
 
+        <section id="about" className="about-company-col">
+
+          <h2 className="title">会社概要</h2>
+
+          <div className="about-company-col-in container">
+
+            <div className="about-company-col-in">
+
+              <div className="about-company-access">
+                <div className="row">
+
+                  <div className="col-sm-4 about-company-access-L">
+                    <img src="/image/office.jpg" />
+                  </div>
+
+                  <div className="col-sm-4 about-company-access-C">
+                    <h3><img src="/favicon.png" />株式会社アクティベートラボ</h3>
+                    <ul>
+                      <li>【新宿本社】</li>
+                      <li>〒160-0023</li>
+                      <li>東京都新宿区西新宿3-2-9</li>
+                      <li>新宿ワシントンホテルビル本館2F</li>
+                      <li> THE HUB新宿ワシントン37</li>
+                    </ul>
+
+                    <ul className="sns">
+                      <li><a href="https://www.facebook.com/opengate.japan"><img src="/facebook.png" /></a></li>
+                      <li><a href="https://www.instagram.com/opengate_official/?hl=ja"><img src="/insta.png" /></a></li>
+                      <li><a href="https://twitter.com/OpenGate_AL"><img src="/twitter.png" /></a></li>
+                    </ul>
+
+                  </div>
+
+                  <div className="col-sm-4 about-company-access-R">
+
+                    <ul>
+                      <li>
+                        <a href="service">＞企業・法人の皆さまへ<br />
+                      法人・組織向けのご案内</a>
+                      </li>
+                      <li><a href="https://activatelab.co.jp/">＞運営会社について</a></li>
+
+                    </ul>
+
+                    <img src="/image/AL1.png" />
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+        {/* //about-company-col */}
+
+        {/*         
         <section className="about-company-col">
 
           <h2 className="title">会社概要 / アクセス</h2>
@@ -659,6 +647,13 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
         </section>
 
+         */}
+        {/* //about-company-col */}
+
+
+
+        {/* 
+
         <section className="comany-profile-col">
           <div className="comany-profile-col-in container">
             <ul>
@@ -669,6 +664,8 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
             <img src="/top-test.png" />
           </div>
         </section>
+
+        */}
 
         {/* <section className="service-top-col">
           <h2>サービス紹介文</h2>
@@ -740,7 +737,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
       </main>
 
-    </Layout>
+    </Layout >
   )
 }
 

@@ -12,6 +12,7 @@
     "airtable": "^0.10.1",
     "aws-sdk": "^2.906.0",
     "contentful": "^8.3.1",
+    "font-awesome": "^4.7.0",
     "hamburger-react": "^2.4.1",
     "json-cyclic": "^1.0.2",
     "moment": "^2.29.1",
