@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+@mixin breakpoint($point) {
+	@if $point == desktop {
+		@media (min-width: 70em) { @content ; }
+	}
+	@else if $point == laptop {
+		@media (min-width: 64em) { @content ; }
+	}
+	@else if $point == tablet {
+		//@media (min-width: 50em) { @content ; }
+		@media (max-width: 990px) { @content ; }
+	}
+//	@else if $point == phablet {
+//		 @media (min-width: 37.5em)  { @content ; }
+//	}
+	@else if $point == mobile {
+		//@media (max-width: 37.5em)  { @content ; }
+		@media (max-width: 767px)  { @content ; }
+	}
+}
+
+//radius_boxは関数名、()の中はcssから使うときの変数名
+@mixin radius_box($bg: white, $bold: 1px, $color: #ccc) {
+	background-color: $bg;
+	border-radius: 6px;
+	border: solid $bold $color;
+	overflow: hidden;
+}
+
+@mixin border_btm($color: $clr_main) {
+	padding-bottom: 5px;
+	border-bottom: solid 2px $color;
+}
