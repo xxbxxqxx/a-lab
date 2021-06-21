@@ -76,7 +76,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
         <div className="top-image-btn">
           <p>あなたにかわって<br />
             障害を翻訳します</p>
-          <a href="#"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+          <a href="#"><i className="fa fa-lightbulb-o" aria-hidden="true"></i>
 無料登録で使ってみる</a>
         </div>
 

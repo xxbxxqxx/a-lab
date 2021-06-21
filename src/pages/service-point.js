@@ -47,7 +47,7 @@ export default function Home({ session_auth0, contextreq, contextres }) {
 
         <div className="reasons-col-in container">
 
-          <div class="row">
+          <div className="row">
 
             <div className="col-sm-4 reasons-col-in-cont">
               <div className="reasons-col-in-cont-in">
@@ -107,7 +107,7 @@ export default function Home({ session_auth0, contextreq, contextres }) {
 
         <div className="message-col-in container">
 
-          <div class="row">
+          <div className="row">
             <div className="col-sm-4 message-col-in-cont-L">
               <img src="/masumoto.png" />
             </div>

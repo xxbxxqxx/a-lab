@@ -11,7 +11,7 @@ import TodoForm from '../components/TodoForm';
 import ShowProfile from '../components/AtShowProfile';
 import CreateProfile from '../components/AtCreateProfile';
 import ShowFlashMessage from '../components/ShowFlashMessage';
-import TestComponent from '../components/TestComponent';
+//import TestComponent from '../components/TestComponent';
 
 const { decycle, encycle } = require('json-cyclic');
 
