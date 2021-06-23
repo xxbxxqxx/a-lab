@@ -71,9 +71,11 @@ const Header = () => {
         <div className="comany-profile-col-in container">
           <ul>
 
-            <li><a href="/privacy">＞プライバシーポリシー</a></li>
+            <li><a href="/terms">利用規約</a></li>
+            <li><a href="/privacy">プライバシーポリシー</a></li>
+
           </ul>
-          <p>厚生労働大臣許可：14-ユ-301310</p>
+          <p>厚生労働大臣許可：13-ユ-312684</p>
           <img src="/image/top-logo.png" />
         </div>
       </section>

@@ -78,16 +78,9 @@ const Menu = ({ open }) => {
           </li>
 
           <li>
-            <LinkRS
-              activeClass="active"
-              to="about"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-            >
-              会社概要
-            </LinkRS>
+            <Link href="https://open-gate.jp/">
+              <a>OpenGate</a>
+            </Link>
           </li>
         </ul>
       </div>

@@ -731,6 +731,22 @@ h2.title-servoce span {
 
   .job-col-in{
 
+    .row{
+      @include breakpoint(tablet){
+        display: block;
+      }
+    }  
+
+    .job-col-in-cont{
+
+      @include breakpoint(tablet){
+        max-width: 100%;
+        flex: unset;
+        display: block;
+      }
+
+    }
+
     .job-col-in-cont-in{
       border: 15px solid #0d9b3f;
       margin-bottom: 30px;
@@ -1036,7 +1052,19 @@ h2.title-servoce span {
 
   .flow-col-in{
 
+    .row{
+      @include breakpoint(tablet){
+        display: block;
+      }
+    }  
+
     .flow-col-in-cont{
+
+      @include breakpoint(tablet){
+        max-width: 100%;
+        flex: unset;
+        display: block;
+      }
 
       .flow-col-in-cont-out{
         background: #fff;
@@ -1091,6 +1119,16 @@ h2.title-servoce span {
           box-sizing: border-box;
           background: #f6f3dc;  
           height: 430px;
+
+          @include breakpoint(tablet){
+            height: auto;
+          }
+
+          p{
+            @include breakpoint(tablet){
+              font-size: 1.4rem;
+            }
+          }
 
           img{
             width: 100%;
@@ -1151,6 +1189,12 @@ h2.title-servoce span {
 .reasons-col{
 
   text-align: center;
+
+  .row{
+    @include breakpoint(tablet){
+      display: block;
+    }
+  }
   
   h2{
     text-align: center;
@@ -1169,6 +1213,16 @@ h2.title-servoce span {
   .reasons-col-in{
     
     margin: 40px auto;
+
+    .reasons-cont{
+      @include breakpoint(tablet){
+        max-width: 100%;
+        flex: unset;
+        display: block;
+      }
+    }
+
+    
 
     .reasons-cont-in{
       border: 3px solid #d17436;
@@ -1455,15 +1509,15 @@ footer{
         }
   
         li:nth-of-type(1){
-          // flex: 1;
-          //border-right: 1px solid;
+          flex: 1;
+          border-right: 1px solid;
           text-align: right;
           padding: 0px 10px;
   
         }
   
         li:nth-of-type(2){
-          //flex: 1;
+          flex: 1;
           padding: 0px 10px;
           text-align: left;
         }

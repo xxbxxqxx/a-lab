@@ -31,11 +31,11 @@ const Header = () => {
               <Hamburger toggled={isOpen} toggle={setOpen} color="#000" />
               <Menu open={isOpen} setOpen={setOpen} />
               <ul>
-                <li>
+                {/* <li>
                   <Link href="#">
                     <img src="/image/opengateCareer-1.png" />
                   </Link>
-                </li>
+                </li> */}
                 {user ? (
                   <>
                     <li>
@@ -149,16 +149,9 @@ const Header = () => {
           </li>
 
           <li>
-            <LinkRS
-              activeClass="active"
-              to="about"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-            >
-              会社概要
-            </LinkRS>
+            <Link href="https://open-gate.jp/">
+              <a>OpenGate</a>
+            </Link>
           </li>
 
         </ul>

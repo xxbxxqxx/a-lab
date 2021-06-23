@@ -76,7 +76,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
         <div className="top-image-btn">
           <p>あなたにかわって<br />
             障害を翻訳します</p>
-          <a href="#"><i className="fa fa-lightbulb-o" aria-hidden="true"></i>
+          <a href="/api/auth/login" data-testid="login" className="log-btn"><i className="fa fa-lightbulb-o" aria-hidden="true"></i>
 無料登録で使ってみる</a>
         </div>
 
@@ -574,7 +574,6 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                   <div className="col-sm-4 about-company-access-C">
                     <h3><img src="/favicon.png" />株式会社アクティベートラボ</h3>
                     <ul>
-                      <li>【新宿本社】</li>
                       <li>〒160-0023</li>
                       <li>東京都新宿区西新宿3-2-9</li>
                       <li>新宿ワシントンホテルビル本館2F</li>
