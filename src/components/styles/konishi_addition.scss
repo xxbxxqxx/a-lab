@@ -21,6 +21,30 @@
   }
 }
 
+.menuSlide{
+  .menuTitle{
+    ul.categories{
+      li{
+        &:focus-visible {
+          outline: none;
+        }
+        button{
+          color: inherit;
+          font-size: inherit;
+          cursor: inherit;
+          border: inherit;
+          background: inherit;
+          padding: inherit;
+          font: inherit;
+          &:focus-visible {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+}
+
 $c-red1: rgb(248, 105, 77);
 $c-lightgray3: #e6e6e6;
 $c-lightgray4: #f3f3f3;

@@ -2,7 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import { Link as LinkRS, animateScroll as scroll } from "react-scroll"
 
-const Menu = ({ open }) => {
+const Menu = ({ open, setOpen }) => {
+
+  const handleChange2 = (e) => {
+    setOpen(false)
+  }
 
   return (
     <div className="menuSlide" style={open ? { transform: "translateX(0)" } : { transform: "translateX(100%)" }}>
@@ -19,8 +23,10 @@ const Menu = ({ open }) => {
               offset={-70}
               duration={500}
             >
-              選ばれる理由
-                </LinkRS>
+              <button onClick={handleChange2}>
+                選ばれる理由
+              </button>
+            </LinkRS>
 
           </li>
 
@@ -33,7 +39,9 @@ const Menu = ({ open }) => {
               offset={-70}
               duration={500}
             >
-              求人情報
+              <button onClick={handleChange2}>
+                求人情報!
+              </button>
             </LinkRS>
           </li>
 
@@ -46,7 +54,9 @@ const Menu = ({ open }) => {
               offset={-70}
               duration={500}
             >
-              利用者の声
+              <button onClick={handleChange2}>
+                利用者の声
+              </button>
             </LinkRS>
           </li>
 
@@ -59,7 +69,9 @@ const Menu = ({ open }) => {
               offset={-70}
               duration={500}
             >
-              ご利用の流れ
+              <button onClick={handleChange2}>
+                ご利用の流れ
+              </button>
             </LinkRS>
           </li>
 
@@ -73,7 +85,9 @@ const Menu = ({ open }) => {
               offset={-70}
               duration={500}
             >
-              Q&A
+              <button onClick={handleChange2}>
+                Q&A
+              </button>
             </LinkRS>
           </li>
 
