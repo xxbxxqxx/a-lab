@@ -60,7 +60,7 @@ const Header = () => {
 
                       <a href="/api/auth/login" data-testid="login" className="log-btn">
 
-                        <i class="fa fa-external-link" aria-hidden="true"></i>ログイン
+                        <i className="fa fa-external-link" aria-hidden="true"></i>ログイン
                       </a>
                     </li>
                   </>

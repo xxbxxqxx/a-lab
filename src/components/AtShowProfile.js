@@ -26,10 +26,32 @@ export default function showProfile({
 
   const handleChange = (e) => {
     const value = e.target.value;
-    setProfile({
-      ...profile,
-      [e.target.name]: value
-    });
+    const name = e.target.name
+    //console.log(e.target.name);
+    //console.log(value);
+    if(value === "Yes" && profile.HearingImpairment === "Yes"){
+      setProfile({ ...profile, "HearingImpairment" : "No" });
+    }else if(name === "障害種別(身体障害)"){
+      if(profile[name].includes(value)){//すでにレコードに存在するなら
+        setProfile({ ...profile, "障害種別(身体障害)" : profile[name].filter(item => item !== value) });
+      }else{
+        setProfile({ ...profile, "障害種別(身体障害)" : [...profile[name], value] });
+      }
+    }else if(name === "障害種別(精神障害)"){
+      if(profile[name].includes(value)){//すでにレコードに存在するなら
+        setProfile({ ...profile, "障害種別(精神障害)" : profile[name].filter(item => item !== value) });
+      }else{
+        setProfile({ ...profile, "障害種別(精神障害)" : [...profile[name], value] });
+      }
+    }else if(name === "障害種別(発達障害)"){
+      if(profile[name].includes(value)){//すでにレコードに存在するなら
+        setProfile({ ...profile, "障害種別(発達障害)" : profile[name].filter(item => item !== value) });
+      }else{
+        setProfile({ ...profile, "障害種別(発達障害)" : [...profile[name], value] });
+      }
+    }else{
+      setProfile({ ...profile, [name]: value });
+    }
   }
   
   //プロフィールアップデート処理
@@ -113,48 +135,22 @@ export default function showProfile({
 
   const prefectureList = ["北海道","青森","岩手","宮城","秋田","山形","福島","茨城","栃木","群馬","埼玉","千葉","東京","神奈川","新潟","富山","石川","福井","山梨","長野","岐阜","静岡","愛知","三重","滋賀","京都","大阪","兵庫","奈良","和歌山","鳥取","島根","岡山","広島","山口","徳島","香川","愛媛","高知","福岡","佐賀","長崎","熊本","大分","宮崎","鹿児島","沖縄"]
 
+  const shogaiListShintai = ["目","耳","口","右上肢","左上肢","腕下","ひじ下","手首下","手指","腰/お尻","右下肢","左下肢","太もも下","ひざ下","足首下","足指","上半身","下半身","右半身","左半身","全身","内部疾患"]
+  const shogaiListSeishin = ["うつ病","双極性障害(そううつ病）","統合失調症","アルコール依存症","解離性障害","強迫性障害","睡眠障害","摂食障害","適応障害","パーソナリティ障害","不安障害","薬物依存症","PTSD(心的外傷後ストレス障害)","てんかん","高次脳機能障害","気分障害"]
+  const shogaiListHattasu = ["AD(注意欠陥)","HD(多動性障害)","アスペルガー症候群","LD(学習障害)","高機能自閉症","自閉症"]
+  
+  const Checkbox = ({value, type}) => {
+    //const [checked, setChecked] = useState(false);
+    return (
+      <>
+      <input type="checkbox" name={type} id={type+value} value={value} checked={profile[type].includes(value)} onChange={handleChange} className="form-control" key={value} /><label htmlFor={type+value} key={"label-"+value}>{value}</label>
+      </>
+    )
+}
+
   return (
     <div className="myp-block-wrapper">
       <h3>プロフィール更新</h3>
-      
-      <div className="row">
-        <div className="col-sm">
-          <h4>履歴書アップロード</h4>
-          {profile.CV.length === 0
-            ? <p>まだ履歴書が投稿されていません</p>
-            : <p>profile.CV</p>
-          }
-          <form 
-            onSubmit={uploadPhoto}
-          >
-          <input
-            //onChange={uploadPhoto}
-            type="file"
-            name="myimage"
-            accept="image/png, image/jpeg"
-          />
-          <button type="submit">送信</button>
-          </form>
-        </div>
-        <div className="col-sm">
-          <h4>職務経歴書アップロード</h4>
-          {profile.CV.length === 0
-            ? <p>まだ履歴書が投稿されていません</p>
-            : <p>profile.CV</p>
-          }
-          <form 
-            onSubmit={uploadPhoto}
-          >
-          <input
-            //onChange={uploadPhoto}
-            type="file"
-            name="myimage"
-            accept="image/png, image/jpeg"
-          />
-          <button type="submit">送信</button>
-          </form>
-        </div>
-       </div>
 
       <form className="form my-6 myp-form" onSubmit={e => handleSubmit(e)}>
         <div>
@@ -260,13 +256,10 @@ export default function showProfile({
                     id="Prefecture"
                     onChange={handleChange}
                     className="form-control"
+                    defaultValue={profile.Prefecture} 
                   >
                     {prefectureList.map((p) => {
-                      return (
-                        profile.Prefecture === p
-                        ? <option value={p} selected>{p}</option>
-                        : <option value={p}>{p}</option>
-                      )
+                      return <option value={p} key={p}>{p}</option>
                     })}
                   </select>
                 </div>
@@ -300,6 +293,7 @@ export default function showProfile({
                   className="form-control"
                 />
               </div>
+              <p>HearingImpairment: {profile.HearingImpairment}</p>
               <div className="form-group">
                 <input
                     type="checkbox"
@@ -307,6 +301,8 @@ export default function showProfile({
                     name="HearingImpairment"
                     className="form-control"
                     //defaultChecked="checked"
+                    value="Yes"
+                    checked={profile.HearingImpairment === "Yes"}
                     onChange={handleChange}
                     style={{display: "inline-block", width: "auto"}}
                 />
@@ -333,141 +329,90 @@ export default function showProfile({
               <div className="form-group">
                 <label htmlFor="">手帳種類<span style={{color: "red"}}>*</span></label>
                 <select
-                  name="TechoCategory"
+                  name="手帳種類"
                   id="TechoCategory"
                   onChange={handleChange}
+                  defaultValue={profile["手帳種類"]} 
                   className="form-control"
                 >
                   <option value="">選択してください</option>
-                  <option value="shintai-shogai">身体障害</option>
-                  <option value="seishin-shogai">精神（発達）障害</option>
-                  <option value="chiteki-shogai">知的（発達）障害</option>
-                  <option value="shinseichu">申請中（身体・精神・知的）</option>
-                  <option value="shinseimae">申請前</option>
+                  <option value="身体障害">身体障害</option>
+                  <option value="精神（発達）障害">精神（発達）障害</option>
+                  <option value="知的（発達）障害">知的（発達）障害</option>
+                  <option value="申請中（身体・精神・知的）">申請中（身体・精神・知的）</option>
+                  <option value="申請前">申請前</option>
                 </select>
               </div>
             </div>
             <div className="col-sm">
               <div className="form-group">
                 <label htmlFor="">障害等級</label>
-                {profile.TechoCategory === "shintai-shogai"
-                  && (
-                    <select
-                      name=""
-                      id=""
-                      value=""
-                      onChange={handleChange}
-                      className="form-control"
-                    >
-                      <option value="">7級</option>
-                      <option value="">6級</option>
-                      <option value="">5級</option>
-                      <option value="">4級</option>
-                      <option value="">3級</option>
-                      <option value="">2級</option>
-                      <option value="">1級</option>
-                    </select>
-                )}
-                {profile.TechoCategory === "seishin-shogai"
-                  && (
-                    <select
-                      name=""
-                      id=""
-                      value=""
-                      onChange={handleChange}
-                      className="form-control"
-                    >
-                      <option value="">3級</option>
-                      <option value="">2級</option>
-                      <option value="">1級</option>
-                    </select>
-                )}
-                {profile.TechoCategory === "seishin-shogai"
-                  && (
-                    <select
-                      name=""
-                      id=""
-                      value=""
-                      onChange={handleChange}
-                      className="form-control"
-                    >
-                      <option value="">3級</option>
-                      <option value="">2級</option>
-                      <option value="">1級</option>
-                    </select>
-                )}
+                <select
+                  name="障害等級"
+                  id="ShogaiTokyu"
+                  onChange={handleChange}
+                  defaultValue={profile["障害等級"]}
+                  className="form-control"
+                >
+                  {profile["手帳種類"] === "身体障害" || profile["手帳種類"] === "精神（発達）障害" || profile["手帳種類"] === "知的（発達）障害"
+                    ? (
+                        profile["手帳種類"] === "身体障害"
+                        ? (
+                            <>
+                            <option value="7級">7級</option>
+                            <option value="6級">6級</option>
+                            <option value="5級">5級</option>
+                            <option value="4級">4級</option>
+                            <option value="3級">3級</option>
+                            <option value="2級">2級</option>
+                            <option value="1級">1級</option>
+                            </>
+                          )
+                        : (
+                            <>
+                            <option value="3級">3級</option>
+                            <option value="2級">2級</option>
+                            <option value="1級">1級</option>
+                            </>
+                          )
+                       )
+                    : <option value="-">-</option>
+                  }
+                </select>
               </div>
             </div>
           </div>
           <div className="form-group form-group-shogaisabetsu">
-            <p>障害種別</p>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">■身体障害</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">目</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">耳</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">口</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">右上肢</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">左上肢</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">腕下</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">ひじ下</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">手首下</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">手指</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">腰/お尻</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">右下肢</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">左下肢</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">太もも下</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">ひざ下</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">足首下</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">足指</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">上半身</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">下半身</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">右半身</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">左半身</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">全身</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">内部疾患</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">■精神障害</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">うつ病</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">双極性障害(そううつ病）</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">統合失調症</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">アルコール依存症</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">解離性障害</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">強迫性障害</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">睡眠障害</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">摂食障害</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">適応障害</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">パーソナリティ障害</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">不安障害</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">薬物依存症</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">PTSD(心的外傷後ストレス障害)</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">てんかん</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">高次脳機能障害</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">気分障害</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">■発達障害</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">AD(注意欠陥)</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">HD(多動性障害)</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">アスペルガー症候群</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">LD(学習障害)</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">高機能自閉症</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">自閉症</label>
-            <input type="checkbox" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">■その他</label>
+            {shogaiListShintai.map(value => (
+              <Checkbox key={value} value={value} type="障害種別(身体障害)"/>
+            ))}
+            <hr />
+            {shogaiListSeishin.map(value2 => (
+              <Checkbox key={value2} value={value2} type="障害種別(精神障害)"/>
+            ))}
+            <hr />
+            {shogaiListHattasu.map(value3 => (
+              <Checkbox key={value3} value={value3} type="障害種別(発達障害)"/>
+            ))}
           </div>
 
           <div className="form-group">
-            <label htmlFor="description">あなたが必要とする配慮について記載ください。</label>
+            <label htmlFor="Description">あなたが必要とする配慮について記載ください。</label>
             <input
               type="text"
-              name="description"
-              id="description"
-              value={profile.description}
+              name="Description"
+              id="Description"
+              value={profile.Description}
               onChange={handleChange}
-              placeholder="ex. Learn about authentication"
+              placeholder=""
               className="form-control"
             />
           </div>
 
           <div className="form-group form-group-oshigotostatus">
             <p>現在のステータス<span style={{color: "red"}}>*</span></p>
-            <input type="radio" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">仕事を探しています</label>
-            <input type="radio" name="" id="" value="" onChange={handleChange} className="form-control" /><label for="">今は仕事を探していません</label>
+            <input type="radio" name="現在のステータス" value="仕事を探しています" onChange={handleChange} className="form-control" checked={profile["現在のステータス"] === "仕事を探しています"} /><label htmlFor="">仕事を探しています</label>
+            <input type="radio" name="現在のステータス" value="今は仕事を探していません" onChange={handleChange} className="form-control" checked={profile["現在のステータス"] === "今は仕事を探していません"} /><label htmlFor="">今は仕事を探していません</label>
           </div>
 
           <button
@@ -489,6 +434,44 @@ export default function showProfile({
           </div>
         </div>
       </form>
+      <div className="row">
+        <div className="col-sm">
+          <h4>履歴書アップロード</h4>
+          {profile.CV.length === 0
+            ? <p>まだ履歴書が投稿されていません</p>
+            : <p>profile.CV</p>
+          }
+          <form 
+            onSubmit={uploadPhoto}
+          >
+          <input
+            //onChange={uploadPhoto}
+            type="file"
+            name="myimage"
+            accept="image/png, image/jpeg"
+          />
+          <button type="submit">送信</button>
+          </form>
+        </div>
+        <div className="col-sm">
+          <h4>職務経歴書アップロード</h4>
+          {profile.CV.length === 0
+            ? <p>まだ履歴書が投稿されていません</p>
+            : <p>profile.CV</p>
+          }
+          <form 
+            onSubmit={uploadPhoto}
+          >
+          <input
+            //onChange={uploadPhoto}
+            type="file"
+            name="myimage"
+            accept="image/png, image/jpeg"
+          />
+          <button type="submit">送信</button>
+          </form>
+        </div>
+       </div>
     </div>
   );
 }

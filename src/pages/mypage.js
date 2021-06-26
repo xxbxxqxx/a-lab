@@ -22,7 +22,6 @@ export default function Home({ initialProfile, session_auth0_user }) {
   const [profile, setProfile] = useState({
     uid: prf ? prf.fields.uid ? prf.fields.uid : "" : "",
     email: prf ? prf.fields.email ? prf.fields.email : "" : "",
-    description: prf ? prf.fields.description ? prf.fields.description : "" : "",
     FirstName: prf ? prf.fields.FirstName ? prf.fields.FirstName : "" : "",
     LastName: prf ? prf.fields.LastName ? prf.fields.LastName : "" : "",
     FirstNameKana: prf ? prf.fields.FirstNameKana ? prf.fields.FirstNameKana : "" : "",
@@ -31,7 +30,14 @@ export default function Home({ initialProfile, session_auth0_user }) {
     Prefecture: prf ? prf.fields.Prefecture ? prf.fields.Prefecture : "" : "",
     Address: prf ? prf.fields.Address ? prf.fields.Address : "" : "",
     TelNo: prf ? prf.fields.TelNo ? prf.fields.TelNo : "" : "",
-    HearingImpairment: prf ? prf.fields.HearingImpairment ? prf.fields.HearingImpairment : "" : "",
+    HearingImpairment: prf ? prf.fields.HearingImpairment ? prf.fields.HearingImpairment : "No" : "No",
+    "手帳種類": prf ? prf.fields["手帳種類"] ? prf.fields["手帳種類"] : "" : "",
+    "障害等級" : prf ? prf.fields["障害等級"] ? prf.fields["障害等級"] : "" : "",
+    "障害種別(身体障害)" : prf ? prf.fields["障害種別(身体障害)"] ? prf.fields["障害種別(身体障害)"] : [] : [],
+    "障害種別(精神障害)" : prf ? prf.fields["障害種別(精神障害)"] ? prf.fields["障害種別(精神障害)"] : [] : [],
+    "障害種別(発達障害)" : prf ? prf.fields["障害種別(発達障害)"] ? prf.fields["障害種別(発達障害)"] : [] : [],
+    Description: prf ? prf.fields.Description ? prf.fields.Description : "" : "",
+    "現在のステータス": prf ? prf.fields["現在のステータス"] ? prf.fields["現在のステータス"] : "" : "",
     CV: prf ? prf.fields.CV ? prf.fields.CV : "" : "",
   })
 
