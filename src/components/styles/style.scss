@@ -1340,19 +1340,28 @@ h2.title-servoce span {
     padding: 20px;
     background: #fff;
 
+    @include breakpoint(tablet){
+      padding: 0;
+      margin: 0;
+    }
+
     h3{
       font-size: 1.5rem;
     }
 
     h4{
       font-size: 1.1rem;
-    }z
+    }
 
 
     ul{
       list-style: none;
       @include breakpoint(tablet){
         padding: 0;
+      }
+
+      li{
+        word-wrap: break-word;
       }
     }
   }
