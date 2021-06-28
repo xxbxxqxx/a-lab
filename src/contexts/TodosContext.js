@@ -24,6 +24,7 @@ const TodosProvider = ({ children }) => {
         headers: { 'Content-Type': 'application/json' },
       });
       const responseProfile = await res.json();
+      //console.log(res);
       setProfile((prevTodos) => {
         return [responseProfile, ...prevTodos];
       });
@@ -39,6 +40,7 @@ const TodosProvider = ({ children }) => {
         body: JSON.stringify(profile),
         headers: { 'Content-Type': 'application/json' },
       });
+      //console.log(res);
       await res.json();
       //setProfile((prevTodos) => {
       //  const existingTodos = [...prevTodos];

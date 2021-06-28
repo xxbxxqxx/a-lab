@@ -107,13 +107,23 @@ export default function Home({ initialProfile, session_auth0_user }) {
         <ShowFlashMessage flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} />
         {/* フラッシュメッセージ ここまで */}
         <h1>Mypage</h1>
-        {user &&(
+        {/*user &&(
             <div>
               Welcome {session_auth0_user.nickname} （ {session_auth0_user.sub} ）!
             </div>
-        )}
+        )*/}
         <div>
-          {
+        <ShowProfile
+          atRecord={initialProfile}
+          flashMessage={flashMessage}
+          setFlashMessage={setFlashMessage}
+          flashType={flashType}
+          setFlashType={setFlashType}
+          profile={profile}
+          setProfile={setProfile}
+          auth0Profile={session_auth0_user}
+        />
+          {/*
             initialProfile.length === 0 && initialReister !== false
             ? <CreateProfile
                 profile={initialProfile}
@@ -135,7 +145,7 @@ export default function Home({ initialProfile, session_auth0_user }) {
                 profile={profile}
                 setProfile={setProfile}
               />
-          }
+          */}
 
           {/* 開発用情報 消さないで （ここから） */}
           <div className="myp-block-wrapper block-indevelopment">

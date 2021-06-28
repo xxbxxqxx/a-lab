@@ -6,21 +6,16 @@ export default withApiAuthRequired(async (req, res) => {
     const profile = req.body;
     try {
 
-        const createdRecords = await table.create([
-            { fields: {
-                uid: user.sub,
-                email: profile.email,
-                description: profile.description,
-            } },
-        ]);
+        const createdRecords = await table.create(profile);
 
-        const createdRecord = {
-            id: createdRecords[0].id,
-            fields: createdRecords[0].fields,
-            //id: user.sub
-        };
+        //const createdRecord = {
+        //    //id: createdRecords[0].uid,
+        //    id: createdRecords.uid,
+        //    fields: createdRecords.fields,
+        //    //id: user.sub
+        //};
         res.statusCode = 200;
-        res.json(createdRecord);
+        res.json(createdRecords);
     } catch (err) {
         console.error(err);
         res.statusCode = 500;
