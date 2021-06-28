@@ -1340,6 +1340,11 @@ h2.title-servoce span {
     padding: 20px;
     background: #fff;
 
+    @include breakpoint(tablet){
+      padding: 0;
+      margin: 0;
+    }
+
     h3{
       font-size: 1.5rem;
     }
@@ -1369,12 +1374,20 @@ h2.title-servoce span {
 
   .privacy-col-txt{
    
-    margin: 20px 0;
-    padding: 20px;
+    margin: 0 0;
+    padding: 0px;
     background: #fff;
 
     ul{
       list-style: none;
+      @include breakpoint(tablet){
+        padding: 0;
+      }
+   
+
+      li{
+        word-break: break-all;
+      }
     }
   }
 

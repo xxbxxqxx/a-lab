@@ -20,7 +20,7 @@ const Header = () => {
       <div className="header-common-in container">
         <div className="row">
           <div className="header-left col-sm-4">
-            <img src="/top-logo.png" />
+            <a href="/"><img src="/top-logo.png" /></a>
           </div>
 
           <div className="header-right col-sm-8">
@@ -35,11 +35,7 @@ const Header = () => {
                 </li> */}
                 {user ? (
                   <>
-                    <li>
-                      <Link href="/jobs">
-                        <a>求人情報</a>
-                      </Link>
-                    </li>
+
                     <li>
                       <Link href="/mypage">
                         <a>Mypage</a>
@@ -47,7 +43,7 @@ const Header = () => {
                     </li>
                     <li>
                       <a href="/api/auth/logout" data-testid="logout" className="log-btn">
-                        Logout
+                        ログアウト
                       </a>
                     </li>
                   </>
@@ -68,8 +64,8 @@ const Header = () => {
         </div>
 
         {router.pathname == "/"
-        && <ul className="navi-bottom">
-          {/*
+          && <ul className="navi-bottom">
+            {/*
           <li>
             <Link href="#">
               <a>TOP</a>
@@ -78,80 +74,80 @@ const Header = () => {
           */}
 
 
-          <li>
-            <LinkRS
-              activeClass="active"
-              to="reasons"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-            >
-              選ばれる理由
-                </LinkRS>
+            <li>
+              <LinkRS
+                activeClass="active"
+                to="reasons"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+              >
+                選ばれる理由
+              </LinkRS>
 
-          </li>
+            </li>
 
-          <li>
-            <LinkRS
-              activeClass="active"
-              to="job"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-            >
-              求人情報
-            </LinkRS>
-          </li>
+            <li>
+              <LinkRS
+                activeClass="active"
+                to="job"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+              >
+                求人情報
+              </LinkRS>
+            </li>
 
-          <li>
-            <LinkRS
-              activeClass="active"
-              to="users-voice"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-            >
-              利用者の声
-            </LinkRS>
-          </li>
+            <li>
+              <LinkRS
+                activeClass="active"
+                to="users-voice"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+              >
+                利用者の声
+              </LinkRS>
+            </li>
 
-          <li>
-            <LinkRS
-              activeClass="active"
-              to="flow"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-            >
-              ご利用の流れ
-            </LinkRS>
-          </li>
+            <li>
+              <LinkRS
+                activeClass="active"
+                to="flow"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+              >
+                ご利用の流れ
+              </LinkRS>
+            </li>
 
 
-          <li>
-            <LinkRS
-              activeClass="active"
-              to="qa"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-            >
-              Q&A
-            </LinkRS>
-          </li>
+            <li>
+              <LinkRS
+                activeClass="active"
+                to="qa"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+              >
+                Q&A
+              </LinkRS>
+            </li>
 
-          <li>
-            <Link href="https://open-gate.jp/">
-              <a>OpenGate</a>
-            </Link>
-          </li>
+            <li>
+              <Link href="https://open-gate.jp/">
+                <a>OpenGate</a>
+              </Link>
+            </li>
 
-        </ul>
+          </ul>
         }
 
       </div>
