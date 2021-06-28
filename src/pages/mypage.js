@@ -89,6 +89,9 @@ export default function Home({ initialProfile, session_auth0_user }) {
 
   return (
     <Layout>
+      <Head>
+        <title>マイページ | OpenGate Careers</title>
+      </Head>
     {isLoading && <p>Loading login info...</p>}
     {error && (
       <div>
@@ -97,16 +100,13 @@ export default function Home({ initialProfile, session_auth0_user }) {
       </div>
     )}
     <div className="container">
-      <Head>
-        <title>Mypage</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+
 
       <main>
         {/* フラッシュメッセージ ここから */}
         <ShowFlashMessage flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} />
         {/* フラッシュメッセージ ここまで */}
-        <h1>Mypage</h1>
+        <h1>マイページ</h1>
         {/*user &&(
             <div>
               Welcome {session_auth0_user.nickname} （ {session_auth0_user.sub} ）!

@@ -11,6 +11,9 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
   return (
     <Layout>
+      <Head>
+        <title>OpenGate Careers</title>
+      </Head>
       {isLoading && <p>Loading login info...</p>}
       {error && (
         <div>
