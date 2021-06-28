@@ -236,7 +236,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
 
               {contentfulposts.map((p) => {
-                return <div className="col-sm-6 job-col-in-cont">
+                return <div className="col-sm-6 job-col-in-cont" key={p.title}>
                   <div className="job-col-in-cont-in">
                     <h3><img src="/image/job-col-icon2.png" /></h3>
                     <div className="ttl-cap">

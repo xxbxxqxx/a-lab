@@ -6,8 +6,6 @@ import { Link as LinkRS, animateScroll as scroll } from "react-scroll"
 // ★font-awesome
 import 'font-awesome/css/font-awesome.min.css';
 
-
-
 import Menu from "../components/menu";
 import Hamburger from 'hamburger-react'
 
