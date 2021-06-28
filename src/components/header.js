@@ -2,9 +2,7 @@ import React, { useState } from "react"
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0';
 import { Link as LinkRS, animateScroll as scroll } from "react-scroll"
-
-// ★font-awesome
-import 'font-awesome/css/font-awesome.min.css';
+import { useRouter } from 'next/router';
 
 import Menu from "../components/menu";
 import Hamburger from 'hamburger-react'
@@ -15,13 +13,14 @@ const Header = () => {
   //ハンガーメニュー
   const [isOpen, setOpen] = useState(false)
 
+  const router = useRouter();
+
   return (
     <header className="header-common">
       <div className="header-common-in container">
         <div className="row">
           <div className="header-left col-sm-4">
             <img src="/top-logo.png" />
-
           </div>
 
           <div className="header-right col-sm-8">
@@ -68,8 +67,8 @@ const Header = () => {
           </div>{/* header-right */}
         </div>
 
-
-        <ul className="navi-bottom">
+        {router.pathname == "/"
+        && <ul className="navi-bottom">
           {/*
           <li>
             <Link href="#">
@@ -153,6 +152,7 @@ const Header = () => {
           </li>
 
         </ul>
+        }
 
       </div>
       {/* //header-common-in  */}

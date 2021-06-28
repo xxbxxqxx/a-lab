@@ -5,7 +5,8 @@ import '../components/styles/flash_message.scss'
 import React from 'react';
 import { UserProvider } from '@auth0/nextjs-auth0';
 import { TodosProvider } from '../contexts/TodosContext';
-import Head from "next/head";
+import Head from "next/head";// ★font-awesome
+import 'font-awesome/css/font-awesome.min.css';
 
 export default function MyApp({ Component, pageProps }) {
   const { user } = pageProps;

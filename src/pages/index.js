@@ -6,9 +6,6 @@ import { useUser, getSession } from '@auth0/nextjs-auth0';
 import { fetchEntries } from '../lib/contentfulPosts'
 const { decycle, encycle } = require('json-cyclic');
 
-
-
-
 export default function Home({ session_auth0, contextreq, contextres, contentfulposts }) {
   const { user, error, isLoading } = useUser();
 
