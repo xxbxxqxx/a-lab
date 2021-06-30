@@ -122,7 +122,8 @@ export default function showProfile({
       formData.append(key, value);
     });
 
-    console.log('>> ' + url)
+    console.log('>> url' + url)
+    console.log('>> formData' + formData)
 
     const upload = await fetch(url, {
       mode: "no-cors",
@@ -130,7 +131,7 @@ export default function showProfile({
       body: formData,
     });
 
-    console.log('>>> ' + upload)
+    console.log('>>> ' + JSON.stringify(upload))
 
     if (upload.ok) {
       //管理者向けメー送信関連処理
