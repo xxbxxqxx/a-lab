@@ -12,7 +12,8 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
   return (
     <Layout>
       <Head>
-        <title>OpenGate Careers</title>
+        <title>OpenGate Careers l 障害者の求人・就職サポートサイト</title>
+        <meta name="description" content="OpenGate Careers（オープンゲートキャリアズ）は障害者の求人・就職サポートサイトです。あなたの障害の症状を理解することで、あなたの強みやスキル、キャリアに合わせた企業とのマッチングを可能にしていきます。" />
       </Head>
       {isLoading && <p>Loading login info...</p>}
       {error && (

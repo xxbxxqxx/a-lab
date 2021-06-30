@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { TodosContext } from '../contexts/TodosContext';
+import GetEmailComponent from "../components/GetEmailContent";
 import { useUser } from '@auth0/nextjs-auth0';
 import Moment from 'react-moment';
 import { useRouter } from 'next/router';
@@ -47,9 +48,9 @@ export default function showProfile({
       setProfile({ ...profile, [name]: value });
     }
   }
-  
+
   //プロフィール作成処理
-  const handleSubmitCreate = (e) => {
+  const handleSubmitCreate = async (e) => {
     profile.uid = auth0Profile.sub
     e.preventDefault();
     createUserOnAirtable(
@@ -57,21 +58,29 @@ export default function showProfile({
     ).then(
       router.push('/').then(
         console.log("Profile Registr Success!")
-      )  
+      )
     )
+    const emailBodyContent = '<h2>新規ユーザーが登録を行いました。</h2><br /><p>'
+        + "UID: " + profile.uid + "<br />"
+        + "メールアドレス: " + profile.email + "<br />"
+        + "名前: " + profile.LastName + profile.FirstName + "<br />"
+        + "電話番号: " + profile.TelNo + "<br />"
+        + "現在のステータス: " + profile["手帳種類"] + "<br />"
+        + "現在のステータス: " + profile["現在のステータス"]
+        +'</p><br /><p>詳しくは<a href="https://airtable.com/tblZIi0lMTduQcmwh/viw16uoDx9Iuy9vfd">Airtableから確認</a>してください。</p>'
     const jsonBody = {
-      emailBody: "ユーザー登録がありました。",
+      emailSubject: GetEmailComponent(profile).userRegistrationAdmin.subject,
+      emailBody: emailBodyContent
     }
-    //fetch('/api/sendMail', {
-    //  method: 'POST',
-    //  headers: {
-    //  //  'Accept': 'application/json, text/plain, */*',
-    //    'Content-Type': 'application/json'
-    //  },
-    //  body: JSON.stringify(jsonBody)
-    //}).then(
-    //  console.log('Email sent, ya!')
-    //)
+    const resUserRegistration = await fetch('/api/sendMail', {
+      method: 'POST',
+      headers: {
+      //  'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(jsonBody)
+    })
+    console.log(jsonBody)
     setFlashType("welldone")
     setFlashMessage(true)
     //setInitialReister(false)
@@ -122,8 +131,13 @@ export default function showProfile({
       //管理者向けメー送信関連処理
       const res = await fetch(`/api/s3GetUrl?file=${filename}`);
       const data = await res.json();
+      const emailBodyContent = '<h2>履歴書が登録されました。</h2><br />'
+        + "お名前: " + atRecord[0].fields.LastName + " " + atRecord[0].fields.FirstName + "<br />"
+        + "メールアドレス: " + atRecord[0].fields.email
+        + '<br /><p>詳しくは<a href="https://airtable.com/tblZIi0lMTduQcmwh/viw16uoDx9Iuy9vfd">Airtableから確認</a>してください。</p>'
       const jsonBody = {
-        emailBody: "履歴書がアップロードされました。",
+        emailSubject: GetEmailComponent().cvRegistrationAdmin.subject,
+        emailBody: emailBodyContent,
         attachmentFile: data.msg
       }
       fetch('/api/sendMail', {
@@ -138,12 +152,15 @@ export default function showProfile({
       )
 
       //Airtableに格納処理
+      console.log('>' + atRecord[0].id)
+      console.log('>>' + filename)
       const updatedRecord = {
         id: (atRecord[0].id),
         fields: {
           CV: "https://opengate-presigned-cv.s3.ap-northeast-1.amazonaws.com/" + filename
         }
       }
+      console.log('>>>' + updatedRecord)
       updateUserOnAirtable(updatedRecord);
       setFlashType("welldone")
       setFlashMessage(true)
@@ -179,9 +196,13 @@ export default function showProfile({
     if (upload.ok) {
       const res = await fetch(`/api/s3GetUrl?file=${filename}`);
       const data = await res.json();
+      const emailBodyContent = '<h2>職務経歴書が登録されました。</h2><br />'
+        + "お名前: " + atRecord[0].fields.LastName + " " + atRecord[0].fields.FirstName + "<br />"
+        + "メールアドレス: " + atRecord[0].fields.email
+        + '<br /><p>詳しくは<a href="https://airtable.com/tblZIi0lMTduQcmwh/viw16uoDx9Iuy9vfd">Airtableから確認</a>してください。</p>'
       const jsonBody = {
-        emailBody: "職務経歴書書がアップロードされました。",
-        attachmentFile: data.msg
+        emailSubject: GetEmailComponent().resumeRegistrationAdmin.subject,
+        emailBody: emailBodyContent,
       }
       fetch('/api/sendMail', {
         method: 'POST',
@@ -259,6 +280,7 @@ export default function showProfile({
                         onChange={handleChange}
                         placeholder="ex. 田中"
                         className="form-control"
+                        required
                       />
                     </div>
                   </div>
@@ -273,6 +295,7 @@ export default function showProfile({
                         onChange={handleChange}
                         placeholder="ex. 太郎"
                         className="form-control"
+                        required
                       />
                     </div>
                   </div>
@@ -289,6 +312,7 @@ export default function showProfile({
                         onChange={handleChange}
                         placeholder="ex. タナカ"
                         className="form-control"
+                        required
                       />
                     </div>
                   </div>
@@ -303,6 +327,7 @@ export default function showProfile({
                         onChange={handleChange}
                         placeholder="ex. タロウ"
                         className="form-control"
+                        required
                       />
                     </div>
                   </div>
@@ -319,6 +344,7 @@ export default function showProfile({
                       onChange={handleChange}
                       value={profile.Birthday}
                       className="form-control"
+                      required
                     />
                   </div>
                 </div>
@@ -369,9 +395,9 @@ export default function showProfile({
                       value={profile.TelNo}
                       onChange={handleChange}
                       className="form-control"
+                      required
                     />
                   </div>
-                  <p>HearingImpairment: {profile.HearingImpairment}</p>
                   <div className="form-group">
                     <input
                         type="checkbox"
@@ -398,6 +424,7 @@ export default function showProfile({
                       onChange={handleChange}
                       placeholder="ex. test@example.com"
                       className="form-control"
+                      required
                     />
                   </div>
                 </div>
@@ -412,6 +439,7 @@ export default function showProfile({
                       onChange={handleChange}
                       defaultValue={profile["手帳種類"]} 
                       className="form-control"
+                      required
                     >
                       <option value="">選択してください</option>
                       <option value="身体障害">身体障害</option>
@@ -490,8 +518,8 @@ export default function showProfile({
 
               <div className="form-group form-group-oshigotostatus">
                 <p>現在のステータス<span style={{color: "red"}}>*</span></p>
-                <input type="radio" name="現在のステータス" id="JobStatusActive" value="仕事を探しています" onChange={handleChange} className="form-control" checked={profile["現在のステータス"] === "仕事を探しています"} /><label htmlFor="JobStatusActive">仕事を探しています</label>
-                <input type="radio" name="現在のステータス" id="JobStatusInactive" value="今は仕事を探していません" onChange={handleChange} className="form-control" checked={profile["現在のステータス"] === "今は仕事を探していません"} /><label htmlFor="JobStatusInactive">今は仕事を探していません</label>
+                <input type="radio" name="現在のステータス" id="JobStatusActive" required value="仕事を探しています" onChange={handleChange} className="form-control" checked={profile["現在のステータス"] === "仕事を探しています"} /><label htmlFor="JobStatusActive">仕事を探しています</label>
+                <input type="radio" name="現在のステータス" id="JobStatusInactive" required value="今は仕事を探していません" onChange={handleChange} className="form-control" checked={profile["現在のステータス"] === "今は仕事を探していません"} /><label htmlFor="JobStatusInactive">今は仕事を探していません</label>
               </div>
 
               <button type="submit" className="btn btn-primary-register btn-lg">
@@ -519,38 +547,49 @@ export default function showProfile({
         <div className="row">
           <div className="col-sm col-cvs-tem3hda">
             <h4>履歴書</h4>
-            {profile.CV.length === 0
-              ? <p>履歴書が投稿されていません</p>
-              : <p>投稿済みです</p>
+            {profile.uid
+              ? <>
+                {profile.CV.length === 0
+                  ? <p>履歴書が投稿されていません</p>
+                  : <p>投稿済みです</p>
+                }
+                <form 
+                  onSubmit={uploadCV}
+                >
+                <input
+                  type="file"
+                  name="myimage"
+                  accept="image/png, image/jpeg"
+                />
+                <button type="submit" className="btn btn-primary-register btn-md">送信</button>
+                </form>
+                </>
+              : "まずはプロフィール登録を完了してください"
             }
-            <form 
-              onSubmit={uploadCV}
-            >
-            <input
-              type="file"
-              name="myimage"
-              accept="image/png, image/jpeg"
-            />
-            <button type="submit" className="btn btn-primary-register btn-md">送信</button>
-            </form>
           </div>
 
           <div className="col-sm col-cvs-tem3hda">
-            <h4>職務経歴書</h4>
-            {profile.CV.length === 0
-              ? <p>職務経歴書が投稿されていません</p>
-              : <p>投稿済みです</p>
+            
+            {profile.uid
+              && <>
+                <h4>職務経歴書</h4>
+                {profile.Resume.length === 0
+                  ? <p>職務経歴書が投稿されていません</p>
+                  : <p>投稿済みです</p>
+                }
+                <form 
+                  onSubmit={uploadResume}
+                >
+                <input
+                  type="file"
+                  name="myimage"
+                  accept="image/png, image/jpeg"
+                />
+                <button type="submit" className="btn btn-primary-register btn-md">送信</button>
+                </form>
+                </>
             }
-            <form 
-              onSubmit={uploadResume}
-            >
-            <input
-              type="file"
-              name="myimage"
-              accept="image/png, image/jpeg"
-            />
-            <button type="submit" className="btn btn-primary-register btn-md">送信</button>
-            </form>
+
           </div>
         </div>
         </div>

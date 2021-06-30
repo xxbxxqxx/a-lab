@@ -39,6 +39,7 @@ export default function Home({ initialProfile, session_auth0_user }) {
     Description: prf ? prf.fields.Description ? prf.fields.Description : "" : "",
     "現在のステータス": prf ? prf.fields["現在のステータス"] ? prf.fields["現在のステータス"] : "" : "",
     CV: prf ? prf.fields.CV ? prf.fields.CV : "" : "",
+    Resume: prf ? prf.fields.Resume ? prf.fields.Resume : "" : "",
   })
 
   ////Send Email
