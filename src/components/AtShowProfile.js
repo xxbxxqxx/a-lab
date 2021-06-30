@@ -129,7 +129,9 @@ export default function showProfile({
 
     if (upload.ok) {
       //管理者向けメー送信関連処理
+      console.log('> メール送信処理開始')
       const res = await fetch(`/api/s3GetUrl?file=${filename}`);
+      console.log('>>' + res)
       const data = await res.json();
       const emailBodyContent = '<h2>履歴書が登録されました。</h2><br />'
         + "お名前: " + atRecord[0].fields.LastName + " " + atRecord[0].fields.FirstName + "<br />"
