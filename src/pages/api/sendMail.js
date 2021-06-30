@@ -12,7 +12,7 @@ export default async (req, res) => {
 
   const mailData = {
     from: "OpenGate Careers（オープンゲートキャリアズ） <no-reply@opengate.careers>",
-    to: "ryo.estrella@gmail.com",
+    to: "ryo.estrella@gmail.com, contract@activatelab.co.jp",
     //subject: `Message From ${req.body.name}`,
     subject: `${req.body.emailSubject}`,
     //text: req.body.message + " | Sent from: " + req.body.email,
