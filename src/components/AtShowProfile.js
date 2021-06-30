@@ -114,7 +114,6 @@ export default function showProfile({
     const UidString = profile.uid ? profile.uid : auth0Profile ? auth0Profile.sub : "NoId"
     const filename = "cv/" + moment().format("YYYYMMDD-HH:mm:ss") + "-CV-" + LastNameString + FirstNameString + "-" + UidString + "-" + file.name;
 
-    console.log('> upload1')
     const res = await fetch(`/api/s3Upload?file=${filename}`);
     const { url, fields } = await res.json();
     const formData = new FormData();
@@ -123,13 +122,15 @@ export default function showProfile({
       formData.append(key, value);
     });
 
-    console.log('>> upload2')
+    console.log('>> ' + url)
 
     const upload = await fetch(url, {
       mode: "no-cors",
       method: 'POST',
       body: formData,
     });
+
+    console.log('>>> ' + upload)
 
     if (upload.ok) {
       //管理者向けメー送信関連処理
