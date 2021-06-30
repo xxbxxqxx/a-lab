@@ -123,7 +123,7 @@ export default function showProfile({
     });
 
     console.log('>> url' + url)
-    console.log('>> formData' + formData)
+    console.log('>> formData' + JSON.stringify(formData))
 
     const upload = await fetch(url, {
       mode: "no-cors",
