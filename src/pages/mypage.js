@@ -17,6 +17,14 @@ const { decycle, encycle } = require('json-cyclic');
 
 export default function Home({ initialProfile, session_auth0_user }) {
 
+  //Auth0 Login Status
+  const { user, error, isLoading } = useUser();
+  if(! user){
+    router.push('/').then(
+        console.log("Profile Registr Success!")
+      )
+  }
+
   //プロフィール用State作成
   const prf = initialProfile ? initialProfile[0] : "";
   const [profile, setProfile] = useState({
@@ -63,9 +71,6 @@ export default function Home({ initialProfile, session_auth0_user }) {
   //    console.log('done, ya!')
   //  )
   //}
-
-  //Auth0 Login Status
-  const { user, error, isLoading } = useUser();
 
   //useEffect(() => {
   //  setProfile(initialProfile);

@@ -122,7 +122,7 @@ export default function showProfile({
     });
 
     const upload = await fetch(url, {
-      //mode: "no-cors",
+      mode: "no-cors",
       method: 'POST',
       body: formData,
     });

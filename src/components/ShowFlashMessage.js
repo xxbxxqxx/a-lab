@@ -7,7 +7,7 @@ export default function showFlashMessage({ flashMessage, setFlashMessage, flashT
     let flashBoxMessage = ""
     if(flashType == "welldone"){
       flashBoxClassName = "alert-success"
-      flashBoxMessage = "Well done! Successfully changed.";
+      flashBoxMessage = "登録が完了しました。";
     } else if(flashType == "error"){
       flashBoxClassName = "alert-danger"
       flashBoxMessage = "Oh snap! Change a few things up and try submitting again.";
