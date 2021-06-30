@@ -113,6 +113,8 @@ export default function showProfile({
     const FirstNameString = atRecord[0].fields.FirstName ? atRecord[0].fields.FirstName : "NoFirstName"
     const UidString = profile.uid ? profile.uid : auth0Profile ? auth0Profile.sub : "NoId"
     const filename = "cv/" + moment().format("YYYYMMDD-HH:mm:ss") + "-CV-" + LastNameString + FirstNameString + "-" + UidString + "-" + file.name;
+
+    console.log('> upload1')
     const res = await fetch(`/api/s3Upload?file=${filename}`);
     const { url, fields } = await res.json();
     const formData = new FormData();
@@ -120,6 +122,8 @@ export default function showProfile({
     Object.entries({ ...fields, file }).forEach(([key, value]) => {
       formData.append(key, value);
     });
+
+    console.log('>> upload2')
 
     const upload = await fetch(url, {
       mode: "no-cors",
@@ -129,9 +133,7 @@ export default function showProfile({
 
     if (upload.ok) {
       //管理者向けメー送信関連処理
-      console.log('> メール送信処理開始')
       const res = await fetch(`/api/s3GetUrl?file=${filename}`);
-      console.log('>>' + res)
       const data = await res.json();
       const emailBodyContent = '<h2>履歴書が登録されました。</h2><br />'
         + "お名前: " + atRecord[0].fields.LastName + " " + atRecord[0].fields.FirstName + "<br />"
