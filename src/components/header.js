@@ -20,7 +20,7 @@ const Header = () => {
       <div className="header-common-in container">
         <div className="row">
           <div className="header-left col-sm-4">
-            <img src="/top-logo.png" />
+            <a href="./"><img src="/top-logo.png" /></a>
           </div>
 
           <div className="header-right col-sm-8">
