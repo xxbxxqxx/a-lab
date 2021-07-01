@@ -234,8 +234,6 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
           <div className="job-col-in container">
 
             <div className="row">
-
-
               {contentfulposts.map((p) => {
                 return <div className="col-sm-6 job-col-in-cont" key={p.title}>
                   <div className="job-col-in-cont-in">
@@ -248,10 +246,6 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
                       <table>
                         <tbody>
-                          <tr>
-                            <th>Slug</th>
-                            <td>{p.slug}</td>
-                          </tr>
                           <tr>
                             <th>業界</th>
                             <td>{p.industry}</td>
@@ -277,7 +271,13 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                           </tr>
                           <tr>
                             <th>本文</th>
-                            <td>{p.content}</td>
+                            <td>
+                              {p.content.split(/\n/g).map((p) => {
+                              <p>p</p>})}
+                              {p.content.split(/\n/g).map(value => (
+                                <>{value}<br /></>
+                              ))}
+                            </td>
                           </tr>
                         </tbody>
                       </table>
