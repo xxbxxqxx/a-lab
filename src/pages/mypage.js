@@ -24,7 +24,7 @@ export default function Home({ initialProfile, session_auth0_user }) {
   const prf = initialProfile ? initialProfile[0] : "";
   const [profile, setProfile] = useState({
     uid: prf ? prf.fields.uid ? prf.fields.uid : "" : "",
-    email: prf ? prf.fields.email ? prf.fields.email : "" : "",
+    email: prf ? prf.fields.email ? prf.fields.email : session_auth0_user.email :  session_auth0_user.email,
     FirstName: prf ? prf.fields.FirstName ? prf.fields.FirstName : "" : "",
     LastName: prf ? prf.fields.LastName ? prf.fields.LastName : "" : "",
     FirstNameKana: prf ? prf.fields.FirstNameKana ? prf.fields.FirstNameKana : "" : "",
@@ -43,6 +43,7 @@ export default function Home({ initialProfile, session_auth0_user }) {
     "現在のステータス": prf ? prf.fields["現在のステータス"] ? prf.fields["現在のステータス"] : "" : "",
     CV: prf ? prf.fields.CV ? prf.fields.CV : "" : "",
     Resume: prf ? prf.fields.Resume ? prf.fields.Resume : "" : "",
+    "障害種別(その他)" : prf ? prf.fields["障害種別(その他)"] ? prf.fields["障害種別(その他)"] : "" : "",
   })
 
   ////Send Email

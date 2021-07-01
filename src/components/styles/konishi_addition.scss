@@ -12,7 +12,7 @@
 
 .form-group-shogaisabetsu, 
 .form-group-oshigotostatus{
-  input{
+  input[type="checkbox"]{
     display: inline-block;
     width: auto;
   }

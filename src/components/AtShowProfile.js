@@ -342,7 +342,7 @@ export default function showProfile({
               <div className="row">
                 <div className="col-sm">
                   <div className="form-group">
-                    <label htmlFor="birthday">お誕生日<span style={{color: "red"}}>*</span></label>
+                    <label htmlFor="birthday">生年月日<span style={{color: "red"}}>*</span></label>
                     <input
                       type="date"
                       name="Birthday"
@@ -393,30 +393,45 @@ export default function showProfile({
               <div className="row">
                 <div className="col-sm">
                   <div className="form-group">
-                    <label htmlFor="">電話番号<span style={{color: "red"}}>*</span></label>
-                    <input
-                      type="tel"
-                      name="TelNo"
-                      id="TelNo"
-                      value={profile.TelNo}
-                      onChange={handleChange}
-                      className="form-control"
-                      required
-                    />
+                    {profile.HearingImpairment === "Yes"
+                      ? <>
+                        <label htmlFor="">電話番号</label>
+                        <input
+                          type="tel"
+                          name="TelNo"
+                          id="TelNo"
+                          value={profile.TelNo}
+                          onChange={handleChange}
+                          className="form-control"
+                        />
+                        </>
+                      : <>
+                        <label htmlFor="">電話番号<span style={{color: "red"}}>*</span></label>
+                        <input
+                          type="tel"
+                          name="TelNo"
+                          id="TelNo"
+                          value={profile.TelNo}
+                          onChange={handleChange}
+                          className="form-control"
+                          required
+                        />
+                        </>
+                    }
                   </div>
                   <div className="form-group">
                     <input
-                        type="checkbox"
-                        id="HearingImpairment"
-                        name="HearingImpairment"
-                        className="form-control"
-                        //defaultChecked="checked"
-                        value="Yes"
-                        checked={profile.HearingImpairment === "Yes"}
-                        onChange={handleChange}
-                        style={{display: "inline-block", width: "auto"}}
+                      type="checkbox"
+                      id="HearingImpairment"
+                      name="HearingImpairment"
+                      className="form-control"
+                      //defaultChecked="checked"
+                      value="Yes"
+                      checked={profile.HearingImpairment === "Yes"}
+                      onChange={handleChange}
+                      style={{display: "inline-block", width: "auto"}}
                     />
-                    <label htmlFor="HearingImpairment">聴覚障害をお持ちですか</label>
+                    <label htmlFor="HearingImpairment">聴覚障害をお持ちの方はこちらにチェックしてください</label>
                   </div>
                 </div>
                 <div className="col-sm">
@@ -453,6 +468,7 @@ export default function showProfile({
                       <option value="知的（発達）障害">知的（発達）障害</option>
                       <option value="申請中（身体・精神・知的）">申請中（身体・精神・知的）</option>
                       <option value="申請前">申請前</option>
+                      <option value="その他">その他</option>
                     </select>
                   </div>
                 </div>
@@ -496,17 +512,34 @@ export default function showProfile({
               </div>
 
               <div className="form-group form-group-shogaisabetsu">
+                <p>ご自身の症状に合うものをチェックしてください。</p>
+                <p>■身体障害</p>
                 {shogaiListShintai.map(value => (
                   <Checkbox key={value} value={value} type="障害種別(身体障害)"/>
                 ))}
                 <hr />
+                <p>■精神障害</p>
                 {shogaiListSeishin.map(value2 => (
                   <Checkbox key={value2} value={value2} type="障害種別(精神障害)"/>
                 ))}
                 <hr />
+                <p>■発達障害</p>
                 {shogaiListHattasu.map(value3 => (
                   <Checkbox key={value3} value={value3} type="障害種別(発達障害)"/>
                 ))}
+                <hr />
+                <p>■その他</p>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="障害種別(その他)"
+                  id="ShogaiSyubetsuOther"
+                  value={profile["障害種別(その他)"]}
+                  onChange={handleChange}
+                  placeholder=""
+                  className="form-control"
+                />
+              </div>
               </div>
 
               <div className="form-group">
