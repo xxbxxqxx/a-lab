@@ -78,7 +78,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
           <p>あなたにかわって<br />
             障害を翻訳します</p>
           <a href="/api/auth/login" data-testid="login" className="log-btn"><i className="fa fa-lightbulb-o" aria-hidden="true"></i>
-無料登録で使ってみる</a>
+            無料登録で使ってみる</a>
         </div>
 
       </section>
@@ -98,9 +98,9 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
             <div className="col-sm-10 top-main-bottom-r">
               <p>
                 あなたの障害の症状を理解することで、<br />
-              あなたの強みやスキル、キャリアにあわせた企業とのマッチングを可能にしていきます。<br />
-              一人ひとりが、自分らしさを大切に、やりたいことが見つかるように。<br />
-              我々があなたに合う仕事を紹介します。
+                あなたの強みやスキル、キャリアにあわせた企業とのマッチングを可能にしていきます。<br />
+                一人ひとりが、自分らしさを大切に、やりたいことが見つかるように。<br />
+                我々があなたに合う仕事を紹介します。
               </p>
 
             </div>
@@ -194,15 +194,15 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
               <div className="col-sm-4 reasons-cont">
                 <div className="reasons-cont-in">
                   <h3>経験豊富なスタッフが<br />
-                      就職を全力サポート</h3>
+                    就職を全力サポート</h3>
                   <img src="/image/reasons-cont-in-2.jpg" />
                   <p>
                     専門的な観点から、あなたのご要望にあ<br />
-                  ったおすすめの求人をご紹介。自身も障<br />
-                  害を持ち、障害者の就職活動に対する不<br />
-                  安や葛藤を知る代表の増本自らアドバイ<br />
-                  ザーとして、可能な限り求職者の皆さん<br />
-                  の就職活動をサポートします。
+                    ったおすすめの求人をご紹介。自身も障<br />
+                    害を持ち、障害者の就職活動に対する不<br />
+                    安や葛藤を知る代表の増本自らアドバイ<br />
+                    ザーとして、可能な限り求職者の皆さん<br />
+                    の就職活動をサポートします。
                   </p>
                 </div>
               </div>
@@ -210,16 +210,16 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
               <div className="col-sm-4 reasons-cont">
                 <div className="reasons-cont-in">
                   <h3>就職から定着まで<br />
-                      アフターフォローも<br />
-                      充実</h3>
+                    アフターフォローも<br />
+                    充実</h3>
                   <img src="/image/reasons-cont-in-3.png" />
                   <p>
                     ヒアリングのみならず、履歴書添削など<br />
-                  あなたの就職を全面的にサポートします。<br />
-                  企業側との交渉も我々にお任せください。<br />
-                  就職後の職場での働き方やコミュニケー<br />
-                  ションの方法、自ら伝えづらい部分は一<br />
-                  緒に解決方法を考えていきましょう。
+                    あなたの就職を全面的にサポートします。<br />
+                    企業側との交渉も我々にお任せください。<br />
+                    就職後の職場での働き方やコミュニケー<br />
+                    ションの方法、自ら伝えづらい部分は一<br />
+                    緒に解決方法を考えていきましょう。
                   </p>
                 </div>
               </div>
@@ -308,11 +308,11 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                         <h3>私に代わって障害を企業に丁寧に説明してくれました。</h3>
                         <p>
                           以前は、不動産会社の事務をしていましたがADHDと強迫性障害を患いながら仕事をすることはとても大変で、自分の障害<br />
-                        がどんなものかを周りの人に理解されないことが一番辛かったです。思い切って転職活動を始め利用したのがこのオープン<br />
-                        ゲートキャリアズ。“障害翻訳”って何？という感じでしたが、はじめての面談のときからしっかりヒアリングしてくれて、<br />
-                        自分が相手にどうしてほしいのか、必要な配慮はどこまでか深く理解したうえで、担当の方が私に代わって企業に説明して<br />
-                        くれたので、私自身は思い切って面接に挑むことができました。最初にきちんとヒアリングをしてくれるので、私は安心し<br />
-                        てお任せすることができました。
+                          がどんなものかを周りの人に理解されないことが一番辛かったです。思い切って転職活動を始め利用したのがこのオープン<br />
+                          ゲートキャリアズ。“障害翻訳”って何？という感じでしたが、はじめての面談のときからしっかりヒアリングしてくれて、<br />
+                          自分が相手にどうしてほしいのか、必要な配慮はどこまでか深く理解したうえで、担当の方が私に代わって企業に説明して<br />
+                          くれたので、私自身は思い切って面接に挑むことができました。最初にきちんとヒアリングをしてくれるので、私は安心し<br />
+                          てお任せすることができました。
                         </p>
                       </li>
                     </ul>
@@ -330,11 +330,11 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                         <h3>不安な私にも親身に寄り添ってくれました。</h3>
                         <p>
                           正直、はじめは障害者採用にあまりいいイメージがなく。というのも私自身、障害を周りにはクローズにしており障害者雇<br />
-                        用の枠で就職することを悩んでいました。まずは面談だけ、と思ってサイトに登録してみましたが、担当の方が親身に私の<br />
-                        話を聞いてくれて。私は指の欠損なので、実際に周りから気づかれないことも多くあります。ただ、障害があるからといっ<br />
-                        て、負い目に感じる必要はなく、難しい部分を周りにサポートしてもらい私自身のスキルをどんどん発揮していけばよいと<br />
-                        背中を押していただいて、今はとてもやりがいのある仕事に就くことができました。自分の可能性を広げて挑戦して本当に<br />
-                        良かったと思っています。
+                          用の枠で就職することを悩んでいました。まずは面談だけ、と思って登録してみましたが、担当の方が親身に私の<br />
+                          話を聞いてくれて。私は指の欠損なので、実際に周りから気づかれないことも多くあります。ただ、障害があるからといっ<br />
+                          て、負い目に感じる必要はなく、難しい部分を周りにサポートしてもらい私自身のスキルをどんどん発揮していけばよいと<br />
+                          背中を押していただいて、今はとてもやりがいのある仕事に就くことができました。自分の可能性を広げて挑戦して本当に<br />
+                          良かったと思っています。
                         </p>
                       </li>
                     </ul>
@@ -410,17 +410,17 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                         <h4>Applying</h4>
                         <p>
                           応募・書類選考
-                          </p>
+                        </p>
                       </dd>
                     </dl>
                   </div>{/* //flow-col-in-cont-head */}
                   <div className="flow-col-in-cont-cont">
                     <p>
                       選考に必要な書類のアドバイス<br />
-                    ・模擬面談などあなたにあわせ<br />
-                    たフォローで最適な情報をバッ<br />
-                    クアップ。企業情報もきちんと<br />
-                    お伝えします。
+                      ・模擬面談などあなたにあわせ<br />
+                      たフォローで最適な情報をバッ<br />
+                      クアップ。企業情報もきちんと<br />
+                      お伝えします。
                     </p>
                     <img src="/image/flow-3.png" />
                   </div>{/* //flow-col-in-cont-cont */}
@@ -442,9 +442,9 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                   <div className="flow-col-in-cont-cont">
                     <p>
                       入社後、お困りのこともお気軽<br />
-                    にご相談ください。継続的にあ<br />
-                    なたの就職活動をサポートしま<br />
-                    す。
+                      にご相談ください。継続的にあ<br />
+                      なたの就職活動をサポートしま<br />
+                      す。
                     </p>
                     <img src="/image/flow-4.png" />
                   </div>{/* //flow-col-in-cont-cont */}
@@ -464,7 +464,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
               <dd>首都圏のみならず、他県の求人も多数ございます。まずはあなたのご希望を面談でお聞かせください。</dd>
               <dt>どのような方が対象ですか？</dt>
               <dd>身体障害手帳・療育手帳・愛の手帳・精神の手帳・障害者保険福祉手帳をお持ちの方が対象となります。<br />
-              （申請中の方も対象となりますのでお気軽にご相談ください）
+                （申請中の方も対象となりますのでお気軽にご相談ください）
               </dd>
               <dt>OpenGateとは何ですか？</dt>
               <dd>
@@ -503,11 +503,11 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                 <div className="open-gate-col-in-txt">
                   <p>
                     我々が運営する障害者・家族・企業・医療従事者をつな<br />
-                げるアプリ「OpenGate」です。<br />
-                このアプリは、障害部位ごとにつながり、語りあえる
-                SNSです。<br />
-                障害部位を登録することで、近い境遇の人やほしい情<br />
-                報・商品・サービスに出会いやすくなります。<br />
+                    げるアプリ「OpenGate」です。<br />
+                    このアプリは、障害部位ごとにつながり、語りあえる
+                    SNSです。<br />
+                    障害部位を登録することで、近い境遇の人やほしい情<br />
+                    報・商品・サービスに出会いやすくなります。<br />
                   </p>
 
 
@@ -530,9 +530,9 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                 <div className="open-gate-col-in-txt">
                   <p>
                     障害に関する様々な情報をその症状ごとに”検索”ができ<br />
-                  る業界初の”おまとめサイト”（キュレーション）です。<br />
-                  あなたの気になる『症状』をクリックするだけで、その<br />
-                  症状に関するニュースや動画が見れます。
+                    る業界初の”おまとめサイト”（キュレーション）です。<br />
+                    あなたの気になる『症状』をクリックするだけで、その<br />
+                    症状に関するニュースや動画が見れます。
                   </p>
 
                   <dl>
@@ -582,9 +582,9 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                     </ul>
 
                     <ul className="sns">
-                      <li><a href="https://www.facebook.com/opengate.japan"><img src="/facebook.png" /></a></li>
-                      <li><a href="https://www.instagram.com/opengate_official/?hl=ja"><img src="/insta.png" /></a></li>
-                      <li><a href="https://twitter.com/OpenGate_AL"><img src="/twitter.png" /></a></li>
+                      <li><a href="https://www.facebook.com/opengate.japan" target="_blank"><img src="/facebook.png" /></a></li>
+                      <li><a href="https://www.instagram.com/opengate_official/?hl=ja" target="_blank"><img src="/insta.png" /></a></li>
+                      <li><a href="https://twitter.com/OpenGate_AL" target="_blank"><img src="/twitter.png" /></a></li>
                     </ul>
 
                   </div>
@@ -593,8 +593,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
                     <ul>
                       <li>
-                        <a href="service">＞企業・法人の皆さまへ<br />
-                      法人・組織向けのご案内</a>
+                        <a href="service">＞企業・法人の皆さまへ</a>
                       </li>
                       <li><a href="https://activatelab.co.jp/">＞運営会社について</a></li>
 
@@ -612,128 +611,8 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
         </section>
         {/* //about-company-col */}
 
-        {/*         
-        <section className="about-company-col">
-
-          <h2 className="title">会社概要 / アクセス</h2>
-
-          <div className="about-company-col-in container">
-
-            <div className="about-company-col-in">
-
-              <div className="about-company-access">
-                <div className="row">
-
-                  <div className="col-sm-6 about-company-access-L">
-                    <img src="/office-test.jpg" />
-                  </div>
-
-                  <div className="col-sm-6 about-company-access-R">
-                    <h3><img src="/favicon.png" />株式会社アクティベートラボ</h3>
-                    <ul>
-                      <li>【新宿本社】</li>
-                      <li>〒160-0023</li>
-                      <li>東京都新宿区西新宿3-2-9</li>
-                      <li>新宿ワシントンホテルビル本館2F</li>
-                      <li> THE HUB新宿ワシントン37</li>
-                    </ul>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </section>
-
-         */}
-        {/* //about-company-col */}
 
 
-
-        {/* 
-
-        <section className="comany-profile-col">
-          <div className="comany-profile-col-in container">
-            <ul>
-              <li><a href="#">個人情報保護方針</a></li>
-              <li><a href="#">運営会社について</a></li>
-            </ul>
-            <p>厚生労働大臣許可：14-ユ-301310</p>
-            <img src="/top-test.png" />
-          </div>
-        </section>
-
-        */}
-
-        {/* <section className="service-top-col">
-          <h2>サービス紹介文</h2>
-
-          <div className="service-top-col-in">
-            testtesttesttesttesttesttesttesttesttesttesttesttest
-            testtesttesttesttesttesttesttesttesttesttesttesttesttest
-            </div>
-        </section>
-
-
-        <section className="main-photo-col">
-          <h2>メイン画像</h2>
-
-          <div className="main-photo-col-in">
-            testtesttesttesttesttesttesttesttesttesttesttesttest
-            testtesttesttesttesttesttesttesttesttesttesttesttesttest
-            </div>
-        </section>
-
-
-        <section className="service-cat-top-col">
-          <h2>サービス概要（カテゴリー）</h2>
-
-          <div className="mservice-cat-top-col-in">
-            testtesttesttesttesttesttesttesttesttesttesttesttest
-            testtesttesttesttesttesttesttesttesttesttesttesttesttest
-            </div>
-        </section>
-
-
-        <section className="free-contact-top-col">
-          <h2>無料登録フォーム</h2>
-
-          <div className="free-contact-top-col-in">
-            testtesttesttesttesttesttesttesttesttesttesttesttest
-            testtesttesttesttesttesttesttesttesttesttesttesttesttest
-            </div>
-        </section>
-
-
-        <section className="mypage-top-col">
-          <h2>マイページ</h2>
-
-          <div className="mypage-top-col-in">
-            testtesttesttesttesttesttesttesttesttesttesttesttest
-            testtesttesttesttesttesttesttesttesttesttesttesttesttest
-            </div>
-        </section>
-
-        <section className="Recr-comp-top-col">
-          <h2>募集参加企業（ロゴのみ）</h2>
-
-          <div className="Recr-comp-top-col-in">
-            testtesttesttesttesttesttesttesttesttesttesttesttest
-            testtesttesttesttesttesttesttesttesttesttesttesttesttest
-            </div>
-        </section>
-
-
-        <section className="search-box-top-col">
-          <h2>検査ボックス</h2>
-
-          <div className="search-box-top--col-in">
-            testtesttesttesttesttesttesttesttesttesttesttesttest
-            testtesttesttesttesttesttesttesttesttesttesttesttesttest
-            </div>
-        </section> */}
 
       </main>
 

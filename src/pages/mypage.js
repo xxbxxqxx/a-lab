@@ -114,7 +114,7 @@ export default function Home({ initialProfile, session_auth0_user }) {
               Welcome {session_auth0_user.nickname} （ {session_auth0_user.sub} ）!
             </div>
         )*/}
-        <div>
+        <div style={{marginTop: "100px"}}>
         <ShowProfile
           atRecord={initialProfile}
           flashMessage={flashMessage}

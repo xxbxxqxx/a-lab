@@ -16,11 +16,11 @@ const Header = () => {
   const router = useRouter();
 
   return (
-    <header className="header-common">
+    <header className="header-common header-fix">
       <div className="header-common-in container">
         <div className="row">
           <div className="header-left col-sm-4">
-            <a href="/"><img src="/top-logo.png" /></a>
+            <a href="./"><img src="/top-logo.png" /></a>
           </div>
 
           <div className="header-right col-sm-8">
@@ -142,9 +142,16 @@ const Header = () => {
             </li>
 
             <li>
-              <Link href="https://open-gate.jp/">
-                <a>OpenGate</a>
-              </Link>
+              <LinkRS
+                activeClass="active"
+                to="open-gate"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+              >
+                OpenGateとは
+              </LinkRS>
             </li>
 
           </ul>
