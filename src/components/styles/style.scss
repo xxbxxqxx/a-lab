@@ -20,7 +20,8 @@ body{
   margin: 0;
   color: #333;
  // font-family: -apple-system, 'Segoe UI';
- font-family: 'Noto Sans JP', sans-serif;
+//  font-family: 'Noto Sans JP', sans-serif;
+ font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック",sans-serif;
 }
 header {
   padding: 0.2rem;
@@ -47,7 +48,17 @@ button {
   background: none;
 }
 
+.header-fix{
+    position: fixed;
+    height: 175px;
+    z-index: 10;
+    width: 100%;
+    background: #fff;
 
+    @include breakpoint(tablet){
+      position: static;
+      }
+}
 
 header.header-common{
 
@@ -156,6 +167,7 @@ header.header-common{
 
   ul.navi-bottom{
     display: flex;
+    padding: 0;
 
     @include breakpoint(tablet){
       display: none;
@@ -178,7 +190,7 @@ header.header-common{
         transform: skewX(-150deg);
         display:block;
         padding:0 10px;
-        
+        font-size: 1.3rem;
       }
 
       a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {
@@ -305,23 +317,25 @@ h2.title-servoce span {
   position: relative;
   background-size: cover;
   background-image: url("/image/AdobeStock_290492187.jpg");
+  top: 175px;
 
   @include breakpoint(tablet){
-    height: 400px;
+    height: 100%;
+    top: 0;
     }
 }
 
 .top-image-btn{
   
   position: absolute;
-  bottom: 80px;
-  left: 10%;
+  bottom: 170px;
+  left: 12%;
   
 
   @include breakpoint(tablet){
     position: static;
     text-align: center;
-    padding-top: 80px;
+    padding-top: 0px;
  }
 
  p{
@@ -352,13 +366,25 @@ h2.title-servoce span {
     height: 80px;
     line-height: 80px;
     font-size: 1.6rem;
-    border-radius: 6px;
     border-radius: 10px;
+
+    @include breakpoint(tablet){
+      margin-bottom: 10px;
+      width: 250px;
+      font-size: 1.2rem;
+  }
+
+
   }
 }
 
 .top-main-bottom{
   background: #f8e6d7;
+  margin-top: 170px;
+
+  @include breakpoint(tablet){
+    margin-top: 0px;;
+    }
 
   .top-main-bottom-l{
 
@@ -532,6 +558,7 @@ h2.title-servoce span {
           -webkit-box-sizing: border-box;
           box-sizing: border-box;
           margin: 0 auto;
+          
 
           @include breakpoint(tablet){
             width:100%;
@@ -546,6 +573,7 @@ h2.title-servoce span {
             font-weight: bold;
             font-size: 3.5rem;
             font-family:"Arial Black";
+            font-weight: bold;
           }
 
           p{
@@ -840,7 +868,7 @@ h2.title-servoce span {
   .open-gate-col-in{
 
     .open-gate-col-in-cont-top-img{
-      height: 330px;
+      height: 290px;
 
       @include breakpoint(tablet){
         height: auto ;
@@ -901,7 +929,7 @@ h2.title-servoce span {
       }
 
       img{
-        width: 60%;
+        width: 53%;
         margin: 0 auto;
         display: inherit;
       }
@@ -1098,9 +1126,10 @@ h2.title-servoce span {
               text-align: center;
 
               h4{
-                font-size: 1.5rem;
+                font-size: 1.4rem;
                 color: #b61313;
                 margin: 0;
+                font-weight: bold;
               }
 
               p{
@@ -1119,6 +1148,10 @@ h2.title-servoce span {
           box-sizing: border-box;
           background: #f6f3dc;  
           height: 430px;
+
+          p{
+            margin: 10px 0px;
+          }
 
           @include breakpoint(tablet){
             height: auto;
@@ -1238,6 +1271,10 @@ h2.title-servoce span {
         height: 150px;
         padding: 10px 0px;
         overflow: hidden;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
       }
 
@@ -1330,6 +1367,7 @@ h2.title-servoce span {
   .summary_txt{
     margin: 20px 0;
     padding: 20px;
+    word-break: break-all;
   }
 
   .privacy-col-txt-top{
@@ -1353,6 +1391,7 @@ h2.title-servoce span {
       list-style: none;
       @include breakpoint(tablet){
         padding: 0;
+       
       }
     }
   }
@@ -1373,8 +1412,14 @@ h2.title-servoce span {
     padding: 20px;
     background: #fff;
 
+    @include breakpoint(tablet){
+      padding: 0 !important;
+     
+    }
+
     ul{
       list-style: none;
+      padding: 0;
     }
   }
 
@@ -1404,6 +1449,7 @@ h2.title-servoce span {
       h2{
         text-align: center;
         margin-bottom: 40px;
+        font-weight: bold;
       }
 
       .about-company-col-in{
