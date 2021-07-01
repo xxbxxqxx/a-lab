@@ -487,21 +487,32 @@ export default function showProfile({
                             profile["手帳種類"] === "身体障害"
                             ? (
                                 <>
-                                <option value="7級">7級</option>
-                                <option value="6級">6級</option>
-                                <option value="5級">5級</option>
-                                <option value="4級">4級</option>
-                                <option value="3級">3級</option>
-                                <option value="2級">2級</option>
-                                <option value="1級">1級</option>
+                                  <option value="7級">7級</option>
+                                  <option value="6級">6級</option>
+                                  <option value="5級">5級</option>
+                                  <option value="4級">4級</option>
+                                  <option value="3級">3級</option>
+                                  <option value="2級">2級</option>
+                                  <option value="1級">1級</option>
                                 </>
                               )
                             : (
-                                <>
-                                <option value="3級">3級</option>
-                                <option value="2級">2級</option>
-                                <option value="1級">1級</option>
-                                </>
+                                profile["手帳種類"] === "精神（発達）障害"
+                                ? (
+                                  <>
+                                    <option value="3級">3級</option>
+                                    <option value="2級">2級</option>
+                                    <option value="1級">1級</option>
+                                  </>
+                                  )
+                                : (
+                                  <>
+                                    <option value="最重度">最重度</option>
+                                    <option value="重度">重度</option>
+                                    <option value="中度">中度</option>
+                                    <option value="軽度">軽度</option>
+                                  </>
+                                 )
                               )
                            )
                         : <option value="-">-</option>

@@ -6,6 +6,19 @@ This will create the following urls: /api/auth/login, /api/auth/callback, /api/a
 Details here;
 https://github.com/auth0/nextjs-auth0/blob/main/EXAMPLES.md
 */
-import { handleAuth } from '@auth0/nextjs-auth0';
+import { handleAuth, handleLogin } from '@auth0/nextjs-auth0';
 
-export default handleAuth();
+const getLoginState = (req, loginOptions) => {
+  return { screen_hint: 'signup' };
+};
+
+//export default handleAuth();
+export default handleAuth({
+  async login(req, res) {
+    try {
+      await handleLogin(req, res, { getLoginState });
+    } catch (error) {
+      res.status(error.status || 500).end(error.message);
+    }
+  }
+});

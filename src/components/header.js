@@ -51,7 +51,7 @@ const Header = () => {
                   <>
                     <li>
 
-                      <a href="/api/auth/login" data-testid="login" className="log-btn">
+                      <a href="/api/auth/login?login_hint=signup" data-testid="login" className="log-btn">
 
                         <i className="fa fa-external-link" aria-hidden="true"></i>ログイン
                       </a>
