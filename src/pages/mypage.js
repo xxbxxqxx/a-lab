@@ -32,10 +32,10 @@ export default function Home({ initialProfile, session_auth0_user }) {
     TelNo: prf ? prf.fields.TelNo ? prf.fields.TelNo : "" : "",
     HearingImpairment: prf ? prf.fields.HearingImpairment ? prf.fields.HearingImpairment : "No" : "No",
     "手帳種類": prf ? prf.fields["手帳種類"] ? prf.fields["手帳種類"] : "" : "",
-    "障害等級" : prf ? prf.fields["障害等級"] ? prf.fields["障害等級"] : "" : "",
-    "障害種別(身体障害)" : prf ? prf.fields["障害種別(身体障害)"] ? prf.fields["障害種別(身体障害)"] : [] : [],
-    "障害種別(精神障害)" : prf ? prf.fields["障害種別(精神障害)"] ? prf.fields["障害種別(精神障害)"] : [] : [],
-    "障害種別(発達障害)" : prf ? prf.fields["障害種別(発達障害)"] ? prf.fields["障害種別(発達障害)"] : [] : [],
+    "障害等級": prf ? prf.fields["障害等級"] ? prf.fields["障害等級"] : "" : "",
+    "障害種別(身体障害)": prf ? prf.fields["障害種別(身体障害)"] ? prf.fields["障害種別(身体障害)"] : [] : [],
+    "障害種別(精神障害)": prf ? prf.fields["障害種別(精神障害)"] ? prf.fields["障害種別(精神障害)"] : [] : [],
+    "障害種別(発達障害)": prf ? prf.fields["障害種別(発達障害)"] ? prf.fields["障害種別(発達障害)"] : [] : [],
     Description: prf ? prf.fields.Description ? prf.fields.Description : "" : "",
     "現在のステータス": prf ? prf.fields["現在のステータス"] ? prf.fields["現在のステータス"] : "" : "",
     CV: prf ? prf.fields.CV ? prf.fields.CV : "" : "",
@@ -77,11 +77,11 @@ export default function Home({ initialProfile, session_auth0_user }) {
   const [flashType, setFlashType] = useState("info")
 
   //初期登録か、それ以降かを判定
-  const registerFlag = (initialProfile.length === 0) ? "false" : "true" 
-  const [ initialReister, setInitialReister ] = useState()
+  const registerFlag = (initialProfile.length === 0) ? "false" : "true"
+  const [initialReister, setInitialReister] = useState()
 
   useEffect(() => {
-    if(initialProfile.length === 0 && initialReister !== false){
+    if (initialProfile.length === 0 && initialReister !== false) {
       setFlashType("NotYetRegistered")
       setFlashMessage(true)
     }
@@ -89,41 +89,41 @@ export default function Home({ initialProfile, session_auth0_user }) {
 
   return (
     <Layout>
-    {isLoading && <p>Loading login info...</p>}
-    {error && (
-      <div>
-        <h4>Error</h4>
-        <pre>{error.message}</pre>
-      </div>
-    )}
-    <div className="container">
-      <Head>
-        <title>Mypage</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      {isLoading && <p>Loading login info...</p>}
+      {error && (
+        <div>
+          <h4>Error</h4>
+          <pre>{error.message}</pre>
+        </div>
+      )}
+      <div className="container">
+        <Head>
+          <title>Mypage</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <main>
-        {/* フラッシュメッセージ ここから */}
-        <ShowFlashMessage flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} />
-        {/* フラッシュメッセージ ここまで */}
-        <h1>Mypage</h1>
-        {/*user &&(
+        <main className="my-page-ctr">
+          {/* フラッシュメッセージ ここから */}
+          <ShowFlashMessage flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} />
+          {/* フラッシュメッセージ ここまで */}
+          <h1>Mypage</h1>
+          {/*user &&(
             <div>
               Welcome {session_auth0_user.nickname} （ {session_auth0_user.sub} ）!
             </div>
         )*/}
-        <div>
-        <ShowProfile
-          atRecord={initialProfile}
-          flashMessage={flashMessage}
-          setFlashMessage={setFlashMessage}
-          flashType={flashType}
-          setFlashType={setFlashType}
-          profile={profile}
-          setProfile={setProfile}
-          auth0Profile={session_auth0_user}
-        />
-          {/*
+          <div>
+            <ShowProfile
+              atRecord={initialProfile}
+              flashMessage={flashMessage}
+              setFlashMessage={setFlashMessage}
+              flashType={flashType}
+              setFlashType={setFlashType}
+              profile={profile}
+              setProfile={setProfile}
+              auth0Profile={session_auth0_user}
+            />
+            {/*
             initialProfile.length === 0 && initialReister !== false
             ? <CreateProfile
                 profile={initialProfile}
@@ -147,22 +147,22 @@ export default function Home({ initialProfile, session_auth0_user }) {
               />
           */}
 
-          {/* 開発用情報 消さないで （ここから） */}
-          <div className="myp-block-wrapper block-indevelopment">
-            <span className="label">開発用</span>
-            <h3>Record from Airtable</h3>
-            <pre data-testid="profile"><code>{JSON.stringify(profile)}</code></pre>
+            {/* 開発用情報 消さないで （ここから） */}
+            <div className="myp-block-wrapper block-indevelopment">
+              <span className="label">開発用</span>
+              <h3>Record from Airtable</h3>
+              <pre data-testid="profile"><code>{JSON.stringify(profile)}</code></pre>
+            </div>
+
+            <div className="myp-block-wrapper block-indevelopment">
+              <span className="label">開発用</span>
+              <h3>Auth0 Profile</h3>
+              <pre data-testid="profile"><code>{JSON.stringify(user, null, 1)}</code></pre>
+            </div>
+            {/* 開発用情報 消さないで （ここまで） */}
           </div>
 
-          <div className="myp-block-wrapper block-indevelopment">
-            <span className="label">開発用</span>
-            <h3>Auth0 Profile</h3>
-            <pre data-testid="profile"><code>{JSON.stringify(user, null, 1)}</code></pre>
-          </div>
-          {/* 開発用情報 消さないで （ここまで） */}
-        </div>
-
-        {/*<div className="myp-block-wrapper">
+          {/*<div className="myp-block-wrapper">
           <div className="myp-block-wrapper block-indevelopment">
             <span className="label">開発用</span>
             <h3>Eメール送信</h3>
@@ -171,23 +171,23 @@ export default function Home({ initialProfile, session_auth0_user }) {
           </div>
         </div>*/}
 
-      </main>
-    </div>
+        </main>
+      </div>
     </Layout>
   )
 }
 
 export async function getServerSideProps(context) {
-    const { user } = await getSession(context.req, context.res);
-    //let todos = await table.find('rec1PDbe0ww22feo3');
-    //const user_only_id = user.sub.split("|")[1];
-    let at_record = await table.select({maxRecords: 1, filterByFormula: `{uid} = '${user.sub}'`}).firstPage();
-    return {
-        props: {
-            initialProfile: minifyRecords(at_record),
-            //session_auth0: JSON.stringify(session),
-            session_auth0_user: user,
-            //uhsaid: user_only_id,
-        },
-    };
+  const { user } = await getSession(context.req, context.res);
+  //let todos = await table.find('rec1PDbe0ww22feo3');
+  //const user_only_id = user.sub.split("|")[1];
+  let at_record = await table.select({ maxRecords: 1, filterByFormula: `{uid} = '${user.sub}'` }).firstPage();
+  return {
+    props: {
+      initialProfile: minifyRecords(at_record),
+      //session_auth0: JSON.stringify(session),
+      session_auth0_user: user,
+      //uhsaid: user_only_id,
+    },
+  };
 }

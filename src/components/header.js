@@ -23,11 +23,11 @@ const Header = () => {
             <a href="./"><img src="/top-logo.png" /></a>
           </div>
 
-          <div className="header-right col-sm-8">
+          <div className="header-right col-sm-8 col-xs-12">
             <nav>
               <Hamburger toggled={isOpen} toggle={setOpen} color="#000" />
               <Menu open={isOpen} setOpen={setOpen} />
-              <ul>
+              <ul className="login-out">
                 {/* <li>
                   <Link href="#">
                     <img src="/image/opengateCareer-1.png" />

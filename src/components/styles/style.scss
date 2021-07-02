@@ -113,7 +113,7 @@ header.header-common{
         padding-left: 0;
 
         @include breakpoint(tablet){
-          display: none;
+          //display: none;
         }
       }
       li {
@@ -140,6 +140,30 @@ header.header-common{
 
         img{
           width: 160px;
+        }
+      }
+
+      .login-out{
+        @include breakpoint(tablet){
+          position: absolute;
+          width: 244px;
+          right: 0;
+          bottom: -31px;
+          justify-content: end;
+          justify-content: flex-end; 
+        }
+
+        li{
+            @include breakpoint(tablet){
+              margin-left: 10px;
+              margin-right: 0;
+            }
+        }
+
+        .log-btn {
+          @include breakpoint(tablet){
+            padding: 20px 10px;
+          }
         }
       }
       
@@ -212,8 +236,14 @@ header.header-common{
 //   margin: 1.5rem auto;
 // }
 
+
+
 button{
   color: red;
+}
+
+.my-page-ctr{
+  padding-top: 100px;
 }
 
 .myp-block-wrapper{
@@ -221,6 +251,8 @@ button{
   padding: 20px; 
   width: 100%;
   margin: 20px 0;
+  overflow: hidden;
+  word-break: break-all;
 }
 
 .block-indevelopment{
@@ -804,6 +836,11 @@ h2.title-servoce span {
           height: 87px;
           background: #0d9b3f;
 
+          @include breakpoint(tablet){
+            height: 87px;
+
+          }
+
           p{
             height: 100%;
             display: flex;
@@ -814,11 +851,17 @@ h2.title-servoce span {
             word-break: break-all;
             line-height: 1.6;
             padding-left: 10px; 
+
+            @include breakpoint(tablet){
+              font-size: 1.2rem;
+              
+            }
           }
         }
       
       .job-info{
-        // padding: 20px;
+        background: #0d9b3f;
+        padding-top: 10px;
 
         table{
           width: 100%;
