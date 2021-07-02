@@ -75,7 +75,7 @@ export default function Home({ session_auth0, contextreq, contextres }) {
             <h2 className="title-servoce"><span>POINT</span></h2>
             <p>
               OpenGate Careersが<br />
-            企業様に選ばれる３つのポイント
+              企業様に選ばれる３つのポイント
             </p>
           </div>
 
@@ -87,9 +87,9 @@ export default function Home({ session_auth0, contextreq, contextres }) {
                   <h3>1</h3>
                   <p>
                     障害者専門のプロが<br />
-                  雇用の定着から<br />
-                  普段の配慮方法までを<br />
-                  柔軟にサポート<br />
+                    雇用の定着から<br />
+                    普段の配慮方法までを<br />
+                    柔軟にサポート<br />
                   </p>
                 </div>
               </div>
@@ -99,8 +99,8 @@ export default function Home({ session_auth0, contextreq, contextres }) {
                   <h3>2</h3>
                   <p>
                     企業の抱える課題を<br />
-                  経験と実績から<br />
-                  最適なものをご提案<br />
+                    経験と実績から<br />
+                    最適なものをご提案<br />
                   </p>
                 </div>
               </div>
@@ -110,9 +110,9 @@ export default function Home({ session_auth0, contextreq, contextres }) {
                   <h3>3</h3>
                   <p>
                     ITを通じて<br />
-                  障害者と企業の<br />
-                  良好な関係を築く<br />
-                  事例を多数ご紹介
+                    障害者と企業の<br />
+                    良好な関係を築く<br />
+                    事例を多数ご紹介
                   </p>
 
 
@@ -143,12 +143,7 @@ export default function Home({ session_auth0, contextreq, contextres }) {
 
                 <div className="service-col-in-txt">
                   <p>
-                    障害者の法定雇用率が2.2％ から2.3％
-                    への引き上げが決定しており、障害者雇
-                    用を取り巻く環境は転換期を迎えます。
-                    障害者雇用に取り組む中で課題がある企
-                    業様、これから障害者雇用に取り組む企
-                    業様などあらゆるフェーズに対応します。
+                    障害者の法定雇用率が2.2％から2.3％ への引き上げが決定しており、障害者雇用を取り巻く環境は転換期を迎えます。障害者雇用に取り組む中で課題がある企業様、これから障害者雇用に取り組む企業様などあらゆるフェーズに対応します。
                   </p>
                 </div>
 
@@ -158,7 +153,7 @@ export default function Home({ session_auth0, contextreq, contextres }) {
                 <h3>障害者雇用定着支援</h3>
                 <div className="service-col-in-top">
                   採用した障害者の「受け入れ～定着・戦力化」
-                  </div>
+                </div>
 
                 <div className="service-col-in-img">
                   <img src="/icon_service02.png" />
@@ -166,14 +161,8 @@ export default function Home({ session_auth0, contextreq, contextres }) {
 
                 <div className="service-col-in-txt">
                   <p>
-                    就労する障害者の方々は、障害の部位や
-                    原因、 程度によって配慮が異なります。
-                    採用活動支援から～選考～入社～定着ま
-                    での各プロセスに応じ、定着支援のサポ
-                    ート、受入部門へのアドバイスまで、早
-                    期退職者を減 らし、雇用の安定化のため
-                    の取り組みを各種実施いたします。
-                    </p>
+                    就労する障害者の方々は、障害の部位や原因、程度によって配慮が異なります。採用活動支援から～選考～入社～定着までの各プロセスに応じ、定着支援のサポート、受入部門へのアドバイスまで、早期退職者を減らし、雇用の安定化のための取り組みを各種実施いたします。
+                  </p>
                 </div>
               </li>
 
@@ -181,7 +170,7 @@ export default function Home({ session_auth0, contextreq, contextres }) {
                 <h3>バリアフリーレポート</h3>
                 <div className="service-col-in-top">
                   企業様の障害者受け入れ可否をチェック
-                    </div>
+                </div>
 
                 <div className="service-col-in-img">
                   <img src="/icon_service03.png" />
@@ -189,26 +178,16 @@ export default function Home({ session_auth0, contextreq, contextres }) {
 
                 <div className="service-col-in-txt">
                   <p>
-                    障害者雇用では、応募者の障害の程度は
-                    一人ひとり異なるため、それぞれに合わ
-                    せた配慮が必要です。
-                    当社では、企業様の現状の障害者受け入
-                    れ可否をあらゆる角度からチェックしま
-                    す。
-                    また、障害者が能力を発揮できる環境や
-                    社内制 度を提案します。
-                      </p>
+                    障害者雇用では、応募者の障害の程度は一人ひとり異なるため、それぞれに合わ せた配慮が必要です。当社では、企業様の現状の障害者受け入れ可否をあらゆる角度からチェックします。また、障害者が能力を発揮できる環境や社内制度を提案します。
+                  </p>
                 </div>
               </li>
 
               <li>
                 <h3>サテライトオフィステレワーク</h3>
                 <div className="service-col-in-top">
-                  障害者の能力を企業様内で最大限発揮
-                  させるべく、自宅就業支援を含む、オ
-                  フィス以外で 働く環境・働き方・制度
-                  等の提案
-                    </div>
+                  障害者の能力を企業様内で最大限発揮させるべく、自宅就業支援を含む、オフィス以外で働く環境・働き方・制度等の提案
+                </div>
 
                 <div className="service-col-in-img">
                   <img src="/icon_service04.png" />
@@ -216,22 +195,16 @@ export default function Home({ session_auth0, contextreq, contextres }) {
 
                 <div className="service-col-in-txt">
                   <p>
-                    障害者の法定雇用率が2.2％ から2.3％
-                    への引き上げが決定しており、障害者雇
-                    用を取り巻く環境は転換期を迎えます。
-                    障害者雇用に取り組む中で課題がある企
-                    業様、これから障害者雇用に取り組む企
-                    業様などあらゆるフェーズに対応します。
-                      </p>
+                    障害者の法定雇用率が2.2％から2.3％への引き上げが決定しており、障害者雇 用を取り巻く環境は転換期を迎えます。障害者雇用に取り組む中で課題がある企業様、これから障害者雇用に取り組む企 業様などあらゆるフェーズに対応します。
+                  </p>
                 </div>
               </li>
 
               <li>
                 <h3>障害者採用サイト構築支援</h3>
                 <div className="service-col-in-top">
-                  自社サイトに障害者採用サイトを導入
-                  するための支援
-                      </div>
+                  自社サイトに障害者採用サイトを導入するための支援
+                </div>
 
                 <div className="service-col-in-img">
                   <img src="/icon_service05.png" />
@@ -239,25 +212,16 @@ export default function Home({ session_auth0, contextreq, contextres }) {
 
                 <div className="service-col-in-txt">
                   <p>
-                    就労する障害者の方々は、障害の部位や
-                    原因、 程度によって配慮が異なります。
-                    採用活動支援から～選考～入社～定着ま
-                    での各プロセスに応じ、定着支援のサポ
-                    ート、受入部門へのアドバイスまで、早
-                    期退職者を減 らし、雇用の安定化のため
-                    の取り組みを各種実施いたします。
-                        </p>
+                    就労する障害者の方々は、障害の部位や 原因、程度によって配慮が異なります。採用活動支援から～選考～入社～定着までの各プロセスに応じ、定着支援のサポート、受入部門へのアドバイスまで、早期退職者を減らし、雇用の安定化のための取り組みを各種実施いたします。
+                  </p>
                 </div>
               </li>
 
               <li>
                 <h3>OpenGate SNS</h3>
                 <div className="service-col-in-top">
-                  同境遇の方とつながることが出来る
-                  身体障害者に特化したSNS「OpenGa
-                  te」を活用して障害者に対してのマー
-                  ケティング支援
-                      </div>
+                  同境遇の方とつながることが出来る身体障害者に特化したSNS「OpenGate」を活用して障害者に対してのマーケティング支援
+                </div>
 
                 <div className="service-col-in-img">
                   <img src="/icon_service06.png" />
@@ -265,15 +229,8 @@ export default function Home({ session_auth0, contextreq, contextres }) {
 
                 <div className="service-col-in-txt">
                   <p>
-                    障害者雇用では、応募者の障害の程度は
-                    一人ひとり異なるため、それぞれに合わ
-                    せた配慮が必要です。
-                    当社では、企業様の現状の障害者受け入
-                    れ可否をあらゆる角度からチェックしま
-                    す。
-                    また、障害者が能力を発揮できる環境や
-                    社内制 度を提案します。
-                        </p>
+                    障害者雇用では、応募者の障害の程度は一人ひとり異なるため、それぞれに合わ せた配慮が必要です。当社では、企業様の現状の障害者受け入れ可否をあらゆる角度からチェックします。また、障害者が能力を発揮できる環境や社内制度を提案します。
+                  </p>
                 </div>
               </li>
             </ul>

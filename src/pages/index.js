@@ -307,12 +307,14 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                       <li>
                         <h3>私に代わって障害を企業に丁寧に説明してくれました。</h3>
                         <p>
-                          以前は、不動産会社の事務をしていましたがADHDと強迫性障害を患いながら仕事をすることはとても大変で、自分の障害<br />
+                          以前は、不動産会社の事務をしていましたがADHDと強迫性障害を患いながら仕事をすることはとても大変で、自分の障害がどんなものかを周りの人に理解されないことが一番辛かったです。思い切って転職活動を始め利用したのがこのオープンゲートキャリアズ。“障害翻訳”って何？という感じでしたが、はじめての面談のときからしっかりヒアリングしてくれて、自分が相手にどうしてほしいのか、必要な配慮はどこまでか深く理解したうえで、担当の方が私に代わって企業に説明してくれたので、私自身は思い切って面接に挑むことができました。最初にきちんとヒアリングをしてくれるので、私は安心してお任せすることができました。
+
+                          {/* 以前は、不動産会社の事務をしていましたがADHDと強迫性障害を患いながら仕事をすることはとても大変で、自分の障害<br />
                           がどんなものかを周りの人に理解されないことが一番辛かったです。思い切って転職活動を始め利用したのがこのオープン<br />
                           ゲートキャリアズ。“障害翻訳”って何？という感じでしたが、はじめての面談のときからしっかりヒアリングしてくれて、<br />
                           自分が相手にどうしてほしいのか、必要な配慮はどこまでか深く理解したうえで、担当の方が私に代わって企業に説明して<br />
                           くれたので、私自身は思い切って面接に挑むことができました。最初にきちんとヒアリングをしてくれるので、私は安心し<br />
-                          てお任せすることができました。
+                          てお任せすることができました。 */}
                         </p>
                       </li>
                     </ul>
@@ -329,12 +331,14 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                       <li>
                         <h3>不安な私にも親身に寄り添ってくれました。</h3>
                         <p>
-                          正直、はじめは障害者採用にあまりいいイメージがなく。というのも私自身、障害を周りにはクローズにしており障害者雇<br />
+                          正直、はじめは障害者採用にあまりいいイメージがなく。というのも私自身、障害を周りにはクローズにしており障害者雇用の枠で就職することを悩んでいました。まずは面談だけ、と思って登録してみましたが、担当の方が親身に私の話を聞いてくれて。私は指の欠損なので、実際に周りから気づかれないことも多くあります。ただ、障害があるからといって、負い目に感じる必要はなく、難しい部分を周りにサポートしてもらい私自身のスキルをどんどん発揮していけばよいと背中を押していただいて、今はとてもやりがいのある仕事に就くことができました。自分の可能性を広げて挑戦して本当に良かったと思っています。
+
+                          {/* 正直、はじめは障害者採用にあまりいいイメージがなく。というのも私自身、障害を周りにはクローズにしており障害者雇<br />
                           用の枠で就職することを悩んでいました。まずは面談だけ、と思って登録してみましたが、担当の方が親身に私の<br />
                           話を聞いてくれて。私は指の欠損なので、実際に周りから気づかれないことも多くあります。ただ、障害があるからといっ<br />
                           て、負い目に感じる必要はなく、難しい部分を周りにサポートしてもらい私自身のスキルをどんどん発揮していけばよいと<br />
                           背中を押していただいて、今はとてもやりがいのある仕事に就くことができました。自分の可能性を広げて挑戦して本当に<br />
-                          良かったと思っています。
+                          良かったと思っています。 */}
                         </p>
                       </li>
                     </ul>
@@ -468,14 +472,11 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
               </dd>
               <dt>OpenGateとは何ですか？</dt>
               <dd>
-                「OpenGate」は日本初の障害者・企業・医療従事者をつなぐコミュニケーションSNSです。現在は、身体障害
-                のみですが、今後、精神障害や発達障害の方々も気軽にコミュニケーションをとれるような仕組みにしていく予定で
-                す。
+                「OpenGate」は日本初の障害者・企業・医療従事者をつなぐコミュニケーションSNSです。現在は、身体障害のみですが、今後、精神障害や発達障害の方々も気軽にコミュニケーションをとれるような仕組みにしていく予定です。
               </dd>
               <dt>障害者翻訳システムとは何ですか？</dt>
               <dd>
-                当社が特許を取得した「障害」を翻訳できるシステムです。言語と同じようにあなたの症状をだれにでもわかりや
-                すくすることで配慮の方法やコミュニケーションを簡単にすることができます。
+                当社が特許を取得した「障害」を翻訳できるシステムです。言語と同じようにあなたの症状をだれにでもわかりやすくすることで配慮の方法やコミュニケーションを簡単にすることができます。
               </dd>
               <dt>登録にお金はかかりますか？</dt>
               <dd>
@@ -502,17 +503,14 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
                 <div className="open-gate-col-in-txt">
                   <p>
-                    我々が運営する障害者・家族・企業・医療従事者をつな<br />
-                    げるアプリ「OpenGate」です。<br />
-                    このアプリは、障害部位ごとにつながり、語りあえる
-                    SNSです。<br />
-                    障害部位を登録することで、近い境遇の人やほしい情<br />
-                    報・商品・サービスに出会いやすくなります。<br />
+                    我々が運営する障害者・家族・企業・医療従事者をつなげるアプリ「OpenGate」です。<br />
+                    このアプリは、障害部位ごとにつながり、語りあえるSNSです。<br />
+                    障害部位を登録することで、近い境遇の人やほしい情報・商品・サービスに出会いやすくなります。<br />
                   </p>
 
 
                   <span>▼こちらのリンクよりぜひご覧ください！</span>
-                  <Link href="https://open-gate.jp/">OpenGate</Link>
+                  <Link href="https://open-gate.jp/" target="_blank">OpenGate</Link>
                 </div>
 
               </div>
@@ -537,13 +535,13 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
                   <dl>
                     <dt>▼【身体障害者】専用の検索サイト</dt>
-                    <dd><Link href="https://physical.opengate.site/">https://physical.opengate.site/</Link></dd>
+                    <dd><Link href="https://physical.opengate.site/" target="_blank">https://physical.opengate.site/</Link></dd>
 
                     <dt>▼【精神症状専用】検索サイトオープン！</dt>
-                    <dd><Link href="https://mental.opengate.site">https://mental.opengate.site</Link></dd>
+                    <dd><Link href="https://mental.opengate.site" target="_blank">https://mental.opengate.site</Link></dd>
 
                     <dt>▼【発達症状、知的症状専用】検索サイトオープン！</dt>
-                    <dd><Link href="https://intellectual.opengate.site">https://intellectual.opengate.site</Link></dd>
+                    <dd><Link href="https://intellectual.opengate.site" target="_blank">https://intellectual.opengate.site</Link></dd>
                   </dl>
 
                 </div>
@@ -582,9 +580,9 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                     </ul>
 
                     <ul className="sns">
-                      <li><a href="https://www.facebook.com/opengate.japan" target="_blank"><img src="/facebook.png" /></a></li>
-                      <li><a href="https://www.instagram.com/opengate_official/?hl=ja" target="_blank"><img src="/insta.png" /></a></li>
-                      <li><a href="https://twitter.com/OpenGate_AL" target="_blank"><img src="/twitter.png" /></a></li>
+                      <li><Link href="https://www.facebook.com/opengate.japan" target="_blank"><img src="/facebook.png" /></Link></li>
+                      <li><Link href="https://www.instagram.com/opengate_official/?hl=ja" target="_blank"><img src="/insta.png" /></Link></li>
+                      <li><Link href="https://twitter.com/OpenGate_AL" target="_blank"><img src="/twitter.png" /></Link></li>
                     </ul>
 
                   </div>
@@ -593,9 +591,9 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
                     <ul>
                       <li>
-                        <a href="service">＞企業・法人の皆さまへ</a>
+                        <a href="service" target="_blank">＞企業・法人の皆さまへ</a>
                       </li>
-                      <li><a href="https://activatelab.co.jp/">＞運営会社について</a></li>
+                      <li><Link href="https://activatelab.co.jp/" target="_blank">＞運営会社について</Link></li>
 
                     </ul>
 
