@@ -9,13 +9,16 @@ import { TodosContext } from '../contexts/TodosContext';
 import TodoForm from '../components/TodoForm';
 
 import ShowProfile from '../components/AtShowProfile';
+import ShowJobAtMypage from '../components/ShowJobAtMypage';
 import CreateProfile from '../components/AtCreateProfile';
 import ShowFlashMessage from '../components/ShowFlashMessage';
 //import TestComponent from '../components/TestComponent';
 
+import { fetchEntriesMypage } from '../lib/contentfulPosts'
+
 const { decycle, encycle } = require('json-cyclic');
 
-export default function Home({ initialProfile, session_auth0_user }) {
+export default function Home({ initialProfile, session_auth0_user, contentfulposts }) {
 
   //Auth0 Login Status
   const { user, error, isLoading } = useUser();
@@ -114,6 +117,12 @@ export default function Home({ initialProfile, session_auth0_user }) {
             </div>
         )*/}
         <div style={{marginTop: "100px"}}>
+
+        <ShowJobAtMypage
+          auth0Profile={session_auth0_user}
+          contentfulposts={contentfulposts}
+          initialProfile={initialProfile}
+        />
         <ShowProfile
           atRecord={initialProfile}
           flashMessage={flashMessage}
@@ -148,6 +157,9 @@ export default function Home({ initialProfile, session_auth0_user }) {
               />
           */}
 
+            <div className="myp-block-wrapper">
+            a
+            </div>
             {/* 開発用情報 消さないで （ここから） */}
             <div className="myp-block-wrapper block-indevelopment">
               <span className="label">開発用</span>
@@ -183,12 +195,19 @@ export async function getServerSideProps(context) {
   //let todos = await table.find('rec1PDbe0ww22feo3');
   //const user_only_id = user.sub.split("|")[1];
   let at_record = await table.select({ maxRecords: 1, filterByFormula: `{uid} = '${user.sub}'` }).firstPage();
+
+  const res = await fetchEntriesMypage()
+  const posts = await res.map((p) => {
+    return p.fields
+  })
+
   return {
     props: {
       initialProfile: minifyRecords(at_record),
       //session_auth0: JSON.stringify(session),
       session_auth0_user: user,
       //uhsaid: user_only_id,
+      contentfulposts: posts,
     },
   };
 }
