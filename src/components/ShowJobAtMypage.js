@@ -27,6 +27,41 @@ export default function ShowJobAtMypage({ auth0Profile, contentfulposts, initial
     jobStatus = true
   }
 
+  const handleSubmitApply = async (e) => {
+    e.preventDefault()
+    const emailBodyContent = "お名前: " + initialProfile[0].fields.LastName + " " + initialProfile[0].fields.FirstName + "<br />"
+      + "メールアドレス: " + initialProfile[0].fields.email + "<br />"
+      + "求人タイトル: " + e.target.jobTitle.value + "<br />"
+    const jsonBody = {
+      emailSubject: "求人情報へのお申し込みがありました",
+      emailBody: emailBodyContent
+    }
+    fetch('/api/sendMail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(jsonBody)
+    }).then(
+      console.log('Email sent, ya!')
+    )
+
+    ////Airtableに格納処理
+    //console.log('>' + atRecord[0].id)
+    //console.log('>>' + filename)
+    //const updatedRecord = {
+    //  id: (atRecord[0].id),
+    //  fields: {
+    //    CV: "https://opengate-presigned-cv.s3.ap-northeast-1.amazonaws.com/" + filename
+    //  }
+    //}
+    //console.log('>>>' + updatedRecord)
+    //updateUserOnAirtable(updatedRecord);
+    //setFlashType("welldone")
+    //setFlashMessage(true)
+    //console.log('Uploaded successfully!');
+  };
+
   return (
     <>
     {ctflFlug && jobStatus 
@@ -50,6 +85,13 @@ export default function ShowJobAtMypage({ auth0Profile, contentfulposts, initial
                           <>{value}<br /></>
                         ))}
                         </div>
+
+                        <form className="form myp-form" onSubmit={e => handleSubmitApply(e)} >
+                          <input type="hidden" value={p.title} name="jobTitle" />
+                          <button type="submit" className="btn btn-primary-register btn-lg">
+                            話を聞きたい
+                          </button>
+                        </form>
                       </div>
                     </div>
                   )
