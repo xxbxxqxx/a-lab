@@ -75,12 +75,12 @@ export default function Home({ session_auth0, contextreq, contextres }) {
               {/* <h3>プライバシーポリシー</h3> */}
               <p>
                 株式会社アクティベートラボ（以下「当社」といいます。）は、当社の提供するサービス（以下「本サービス」といいます。）における、ユーザーについての個人情報を含む利用者情報の取扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」といいます。）を定めます。
-            </p>
+              </p>
               <div className="privacy-col-txt-top">
                 <span>1.収集する利用者情報及び収集方法</span>
-            本ポリシーにおいて、「利用者情報」とは、ユーザーの識別に係る情報、通信サービス上の行動履歴、その他ユーザーまたはユーザーの端末に関連して生成または蓄積された情報であって、本ポリシーに基づき当社が収集するものを意味するものとします。<br />
-            本サービスにおいて当社が収集する利用者情報は、その収集方法に応じて、以下のようなものとなります。
-            </div>
+                本ポリシーにおいて、「利用者情報」とは、ユーザーの識別に係る情報、通信サービス上の行動履歴、その他ユーザーまたはユーザーの端末に関連して生成または蓄積された情報であって、本ポリシーに基づき当社が収集するものを意味するものとします。<br />
+                本サービスにおいて当社が収集する利用者情報は、その収集方法に応じて、以下のようなものとなります。
+              </div>
 
               <div className="privacy-col-txt">
 
@@ -141,8 +141,8 @@ export default function Home({ session_auth0, contextreq, contextres }) {
                 <h4>4-1本サービスでは、以下の提携先が、ユーザーの端末にCookieを保存し、これを利用して利用者情報を蓄積及び利用している場合があります。</h4>
                 <ul>
                   <li>(1)提携先 Google, Inc</li>
-                  <li>(2)上記提携先のプライバシーポリシーのURL <Link href="https://policies.google.com/privacy?hl=ja">https://policies.google.com/privacy?hl=ja</Link></li>
-                  <li>(3)上記提携先のオプトアウト（無効化）URL <Link href="https://policies.google.com/privacy?hl=ja">https://policies.google.com/privacy?hl=ja</Link></li>
+                  <li>(2)上記提携先のプライバシーポリシーのURL <a href="https://policies.google.com/privacy?hl=ja" target="_blank">https://policies.google.com/privacy?hl=ja</a></li>
+                  <li>(3)上記提携先のオプトアウト（無効化）URL <a href="https://policies.google.com/privacy?hl=ja" target="_blank">https://policies.google.com/privacy?hl=ja</a></li>
                 </ul>
 
                 <h4>4-2本サービスには以下の情報収集モジュールが組み込まれています。これに伴い、以下のとおり情報収集モジュール提供者（日本国外にある者を含みます。）への利用者情報の提供を行います。</h4>
@@ -150,14 +150,14 @@ export default function Home({ session_auth0, contextreq, contextres }) {
                   <li>(1)情報収集モジュールの名称 Google Analytics</li>
                   <li>(2)情報収集モジュールの提供者 Google, Inc</li>
                   <li>(3)上記提供者における利用目的 本サービスのサービス向上・マーケティング調査の目的でアクセス解析を行うため</li>
-                  <li>(4)上記提供者のプライバシーポリシーのURL <Link href="https://policies.google.com/privacy?hl=ja">https://policies.google.com/privacy?hl=ja</Link></li>
+                  <li>(4)上記提供者のプライバシーポリシーのURL <a href="https://policies.google.com/privacy?hl=ja" target="_blank">https://policies.google.com/privacy?hl=ja</a></li>
                 </ul>
 
                 <h3>5.第三者提供</h3>
                 <p>
                   当社は、利用者情報のうち、個人情報については、あらかじめユーザーの同意を得ないで、第三者（日本国外にある者を含みます。）に提供しません。但し、次に掲げる必要があり第三者（日本国外にある者を含みます。）に提供する場合はこの限りではありません。
                   個人情報の保護に関する法律（以下「個人情報保護法」といいます。）上の要配慮個人情報については、あらかじめユーザーの同意を得た場合のほか、個人情報保護法その他の法令で認められる場合以外に第三者に提供しません。
-              </p>
+                </p>
                 <ul>
                   <li>(1)当社が利用目的の達成に必要な範囲内において個人情報の取扱いの全部または一部を委託する場合</li>
                   <li>(2)合併その他の事由による事業の承継に伴って個人情報が提供される場合</li>
@@ -169,18 +169,18 @@ export default function Home({ session_auth0, contextreq, contextres }) {
                 <h3>6.外部APIの利用</h3>
                 <ul>
                   <li>・当社が、提供している動画のサービスでは、YouTubeのAPIを利用しています。</li>
-                  <li>・YouTubeのAPIを利用して、取得したデータは、「YouTubeの利用規約（<Link href="https://www.youtube.com/t/terms">https://www.youtube.com/t/terms</Link>）」の対象となります。</li>
+                  <li>・YouTubeのAPIを利用して、取得したデータは、「YouTubeの利用規約（<a href="https://www.youtube.com/t/terms" target="_blank">https://www.youtube.com/t/terms</a>）」の対象となります。</li>
                   <li>・「Googleのプライバシーポリシー（https://www.google.com/policies/privacy）」の対象となります。</li>
                   <li>・当社プラットフォームを通じて、取得した動画のサムネイルを、プラットフォーム上の表示目的で保存しますが、動画ファイルは保存いたしません。</li>
                   <li>・そのため動画再生についても、取得したYouTube動画のIDから、公式のYouTube埋め込みプレーヤーにて再生されます。</li>
-                  <li>・Googleセキュリティ設定ページ(<Link href="https://security.google.com/settings/security/permissions">https://security.google.com/settings/security/permissions</Link>)から、YouTubeアカウントへのアクセスをいつでも取り消すことができます。</li>
+                  <li>・Googleセキュリティ設定ページ(<a href="https://security.google.com/settings/security/permissions" target="_blank">https://security.google.com/settings/security/permissions</a>)から、YouTubeアカウントへのアクセスをいつでも取り消すことができます。</li>
                   <li>・YouTubeが提供するデータは外部の第三者に共有されることはございません。</li>
                 </ul>
 
                 <h3>7.個人情報の開示</h3>
                 <p>
                   当社は、ユーザーから、個人情報保護法の定めに基づき個人情報の開示を求められたときは、ユーザーご本人からのご請求であることを確認の上で、ユーザーに対し、遅滞なく開示を行います（当該個人情報が存在しないときにはその旨を通知いたします。）。但し、個人情報保護法その他の法令により、当社が開示の義務を負わない場合は、この限りではありません。なお、個人情報の開示につきましては、手数料（1件あたり1,000円）を頂戴しておりますので、あらかじめ御了承ください。
-              </p>
+                </p>
 
                 <h3>8.個人情報の訂正及び利用停止等</h3>
                 <h4>8-1当社は、ユーザーから、(1)個人情報が真実でないという理由によって個人情報保護法の定めに基づきその内容の訂正を求められた場合、及び(2)あらかじめ公表された利用目的の範囲を超えて取扱われているという理由または偽りその他不正の手段により収集されたものであるという理由により、個人情報保護法の定めに基づきその利用の停止を求められた場合には、ユーザーご本人からのご請求であることを確認の上で遅滞なく必要な調査を行い、その結果に基づき、個人情報の内容の訂正または利用停止を行い、その旨をユーザーに通知します。なお、訂正または利用停止を行わない旨の決定をしたときは、ユーザーに対しその旨を通知いたします。</h4>

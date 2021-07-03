@@ -273,7 +273,8 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                             <th>本文</th>
                             <td>
                               {p.content.split(/\n/g).map((p) => {
-                              <p>p</p>})}
+                                <p>p</p>
+                              })}
                               {p.content.split(/\n/g).map(value => (
                                 <>{value}<br /></>
                               ))}
@@ -510,7 +511,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
 
                   <span>▼こちらのリンクよりぜひご覧ください！</span>
-                  <Link href="https://open-gate.jp/" target="_blank">OpenGate</Link>
+                  <a href="https://open-gate.jp/" target="_blank">OpenGate</a>
                 </div>
 
               </div>
@@ -535,13 +536,13 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
                   <dl>
                     <dt>▼【身体障害者】専用の検索サイト</dt>
-                    <dd><Link href="https://physical.opengate.site/" target="_blank">https://physical.opengate.site/</Link></dd>
+                    <dd><a href="https://physical.opengate.site/" target="_blank">https://physical.opengate.site/</a></dd>
 
                     <dt>▼【精神症状専用】検索サイトオープン！</dt>
-                    <dd><Link href="https://mental.opengate.site" target="_blank">https://mental.opengate.site</Link></dd>
+                    <dd><a href="https://mental.opengate.site" target="_blank">https://mental.opengate.site</a></dd>
 
                     <dt>▼【発達症状、知的症状専用】検索サイトオープン！</dt>
-                    <dd><Link href="https://intellectual.opengate.site" target="_blank">https://intellectual.opengate.site</Link></dd>
+                    <dd><a href="https://intellectual.opengate.site" target="_blank">https://intellectual.opengate.site</a></dd>
                   </dl>
 
                 </div>
@@ -580,9 +581,9 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                     </ul>
 
                     <ul className="sns">
-                      <li><Link href="https://www.facebook.com/opengate.japan" target="_blank"><img src="/facebook.png" /></Link></li>
-                      <li><Link href="https://www.instagram.com/opengate_official/?hl=ja" target="_blank"><img src="/insta.png" /></Link></li>
-                      <li><Link href="https://twitter.com/OpenGate_AL" target="_blank"><img src="/twitter.png" /></Link></li>
+                      <li><a href="https://www.facebook.com/opengate.japan" target="_blank"><img src="/facebook.png" /></a></li>
+                      <li><a href="https://www.instagram.com/opengate_official/?hl=ja" target="_blank"><img src="/insta.png" /></a></li>
+                      <li><a href="https://twitter.com/OpenGate_AL" target="_blank"><img src="/twitter.png" /></a></li>
                     </ul>
 
                   </div>
@@ -593,7 +594,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                       <li>
                         <a href="service" target="_blank">＞企業・法人の皆さまへ</a>
                       </li>
-                      <li><Link href="https://activatelab.co.jp/" target="_blank">＞運営会社について</Link></li>
+                      <li><a href="https://activatelab.co.jp/" target="_blank">＞運営会社について</a></li>
 
                     </ul>
 
