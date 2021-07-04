@@ -15,7 +15,7 @@ export default function Home({ session_auth0, contextreq, contextres }) {
         <div className="header-common-in container">
           <div className="row">
             <div className="header-left col-sm-12">
-              <a href="/"><img src="/top-logo.png" /></a>
+              <a href="./"><img src="image/top-logo2.png" /></a>
             </div>
 
             {/* 

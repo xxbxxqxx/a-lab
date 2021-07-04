@@ -162,11 +162,20 @@ header.header-common{
 
         .log-btn {
           @include breakpoint(tablet){
-            padding: 20px 10px;
+            padding: 10px 10px;
           }
         }
       }
       
+    }
+
+    .log-btn-bottom{
+      position: absolute;
+      right: 40px;
+
+      @include breakpoint(tablet){
+        display: none;
+      }
     }
 
     .menuSlide{
@@ -205,21 +214,27 @@ header.header-common{
       transform: skewX(150deg);
       border-right: 1px solid #000;
       display: block;
-      width: calc(100%/6);
+      width: calc(100%/7);
       text-align: center;
 
       a{
-        color: #333;
+        color: #505050;
         cursor: pointer;
         transform: skewX(-150deg);
         display:block;
         padding:0 10px;
         font-size: 1.3rem;
+        font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+        letter-spacing: -1px;
       }
 
       a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {
         color: #000;
       }
+    }
+
+    li:last-child {
+      border-right: none;
     }
 
     li::marker {
@@ -1567,7 +1582,7 @@ h2.title-servoce span {
               li{
                margin-right: 10px;
                 img{
-                  width: 80px;
+                  width: 60px;
                 }
               }
             }

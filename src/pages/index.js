@@ -77,7 +77,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
         <div className="top-image-btn">
           <p>あなたにかわって<br />
             障害を翻訳します</p>
-          <a href="/api/auth/login" data-testid="login" className="log-btn"><i className="fa fa-lightbulb-o" aria-hidden="true"></i>
+          <a href="/api/auth/login" data-testid="login" className="log-btn" target="_blank"><i className="fa fa-lightbulb-o" aria-hidden="true"></i>
             無料登録で使ってみる</a>
         </div>
 
@@ -372,9 +372,8 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                   <div className="flow-col-in-cont-cont">
                     <p>
                       ご登録は1分程度で完了。<br />
-                      アドバイザーより24時間以内に<br />
-                      ご連絡いたします。マイページ<br />
-                      より登録内容を確認できます。<br />
+                      アドバイザーよりご連絡いたします。
+                      マイページより登録内容を確認できます。<br />
                     </p>
                     <img src="/image/flow-1.png" />
 
@@ -598,7 +597,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
 
                     </ul>
 
-                    <img src="/image/AL1.png" />
+                    {/* <img src="/image/AL1.png" /> */}
 
                   </div>
 

@@ -20,7 +20,7 @@ const Header = () => {
       <div className="header-common-in container">
         <div className="row">
           <div className="header-left col-sm-4">
-            <a href="./"><img src="/top-logo.png" /></a>
+            <a href="./"><img src="image/top-logo2.png" /></a>
           </div>
 
           <div className="header-right col-sm-8 col-xs-12">
@@ -37,9 +37,9 @@ const Header = () => {
                   <>
 
                     <li>
-                      <Link href="/mypage">
+                      <a href="/mypage">
                         <a>Mypage</a>
-                      </Link>
+                      </a>
                     </li>
                     <li>
                       <a href="/api/auth/logout" data-testid="logout" className="log-btn">
@@ -51,7 +51,7 @@ const Header = () => {
                   <>
                     <li>
 
-                      <a href="/api/auth/login?login_hint=signup" data-testid="login" className="log-btn">
+                      <a href="/api/auth/login?login_hint=signup" data-testid="login" className="log-btn" target="_blank">
 
                         <i className="fa fa-external-link" aria-hidden="true"></i>ログイン
                       </a>
@@ -60,6 +60,8 @@ const Header = () => {
                 )}
               </ul>
             </nav>
+
+            <a href="/api/auth/login?login_hint=signup" data-testid="login" className="log-btn log-btn-bottom" target="_blank"> <i class="fa fa-user-circle" aria-hidden="true"></i>新規登録する＞ </a>
           </div>{/* header-right */}
         </div>
 
@@ -151,6 +153,19 @@ const Header = () => {
                 duration={500}
               >
                 OpenGateとは
+              </LinkRS>
+            </li>
+
+            <li>
+              <LinkRS
+                activeClass="active"
+                to="about"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+              >
+                会社概要
               </LinkRS>
             </li>
 

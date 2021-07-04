@@ -100,7 +100,26 @@ const Menu = ({ open, setOpen }) => {
               offset={-70}
               duration={500}
             >
-              OpenGateとは
+              <button onClick={handleChange2}>
+                OpenGateとは
+              </button>
+
+            </LinkRS>
+          </li>
+
+          <li>
+            <LinkRS
+              activeClass="active"
+              to="about"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+            >
+              <button onClick={handleChange2}>
+                会社概要
+              </button>
+
             </LinkRS>
           </li>
         </ul>
