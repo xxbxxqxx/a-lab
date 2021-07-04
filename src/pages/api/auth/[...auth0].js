@@ -9,7 +9,7 @@ https://github.com/auth0/nextjs-auth0/blob/main/EXAMPLES.md
 import { handleAuth, handleLogin } from '@auth0/nextjs-auth0';
 
 const getLoginState = (req, loginOptions) => {
-  return { screen_hint: 'signup' };
+  return { screen_hint: 'signup', initialScreen: 'signup', action: 'signup' };
 };
 
 //export default handleAuth();

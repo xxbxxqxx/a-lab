@@ -12,4 +12,10 @@ export async function fetchEntries() {
   console.log(`Error getting Entries for ${contentType.name}.`)
 }
 
+export async function fetchEntriesMypage() {
+  const entries = await client.getEntries({ content_type: "jobAtMypage" })
+  if (entries.items) return entries.items
+  console.log(`Error getting Entries for ${contentType.name}.`)
+}
+
 export default { fetchEntries }
