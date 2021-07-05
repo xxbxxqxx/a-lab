@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-//import { TodosContext } from '../contexts/TodosContext';
+import { TodosContext } from '../contexts/TodosContext';
 //import GetEmailComponent from "../components/GetEmailContent";
 //import { useUser } from '@auth0/nextjs-auth0';
 //import Moment from 'react-moment';
@@ -7,7 +7,17 @@ import React, { useState, useContext } from 'react';
 
 import { fetchEntriesMypage } from '../lib/contentfulPosts'
 
-export default function ShowJobAtMypage({ auth0Profile, contentfulposts, initialProfile}) {
+export default function ShowJobAtMypage({ auth0Profile, contentfulposts, initialProfile, 
+  flashMessage,
+  setFlashMessage,
+  flashType,
+  setFlashType}) {
+
+  const { updateUserOnAirtable } = useContext(TodosContext);
+
+  const [interestedPosts, setInterestedPosts] = useState(
+    initialProfile[0].fields["興味のある求人"] ? initialProfile[0].fields["興味のある求人"] : []
+  )
 
   let userEmail = ""
   if(initialProfile[0] && initialProfile[0].fields.email){
@@ -31,6 +41,7 @@ export default function ShowJobAtMypage({ auth0Profile, contentfulposts, initial
     e.preventDefault()
     const emailBodyContent = "お名前: " + initialProfile[0].fields.LastName + " " + initialProfile[0].fields.FirstName + "<br />"
       + "メールアドレス: " + initialProfile[0].fields.email + "<br />"
+      + "求人ID: " + e.target.jobId.value + "<br />"
       + "求人タイトル: " + e.target.jobTitle.value + "<br />"
     const jsonBody = {
       emailSubject: "求人情報へのお申し込みがありました",
@@ -46,20 +57,20 @@ export default function ShowJobAtMypage({ auth0Profile, contentfulposts, initial
       console.log('Email sent, ya!')
     )
 
-    ////Airtableに格納処理
-    //console.log('>' + atRecord[0].id)
-    //console.log('>>' + filename)
-    //const updatedRecord = {
-    //  id: (atRecord[0].id),
-    //  fields: {
-    //    CV: "https://opengate-presigned-cv.s3.ap-northeast-1.amazonaws.com/" + filename
-    //  }
-    //}
-    //console.log('>>>' + updatedRecord)
-    //updateUserOnAirtable(updatedRecord);
-    //setFlashType("welldone")
-    //setFlashMessage(true)
-    //console.log('Uploaded successfully!');
+    const new_value = e.target.jobId.value
+    setInterestedPosts([...interestedPosts, new_value])
+    interestedPosts.push(new_value)
+
+    //Airtableに格納処理
+    let updatedRecord = {
+      id: (initialProfile[0].id),
+      fields: {
+        "興味のある求人": interestedPosts
+      }
+    }
+    updateUserOnAirtable(updatedRecord);
+    setFlashType("welldone")
+    setFlashMessage(true)
   };
 
   return (
@@ -69,6 +80,7 @@ export default function ShowJobAtMypage({ auth0Profile, contentfulposts, initial
       <div className="col-sm-12">
         <div className="myp-block-wrapper myp">
           <h3>おすすめ求人</h3>
+          {interestedPosts}
           <div className="row job-col">
             {contentfulposts.map((p) => {
               let ctflnode = ""
@@ -78,18 +90,20 @@ export default function ShowJobAtMypage({ auth0Profile, contentfulposts, initial
                       <div className="job-col-in-cont-in">
                         <h3><img src="/image/job-col-icon2.png" /></h3>
                         <div className="ttl-cap">
-                          <p>{p.title}</p>
+                          <p>{p.jobId} | {p.title}</p>
                         </div>
                         <div className="job-info">
                         {p.description.split(/\n/g).map(value => (
                           <>{value}<br /></>
                         ))}
+                        {JSON.stringify(p)} 
                         </div>
 
                         <form className="form myp-form" onSubmit={e => handleSubmitApply(e)} >
+                          <input type="hidden" value={p.jobId} name="jobId" />
                           <input type="hidden" value={p.title} name="jobTitle" />
                           <button type="submit" className="btn btn-primary-register btn-lg">
-                            話を聞きたい
+                            {interestedPosts.includes(p.jobId.toString(10)) ? "応募済み" : "話を聞きたい"}
                           </button>
                         </form>
                       </div>

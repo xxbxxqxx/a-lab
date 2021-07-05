@@ -5,7 +5,7 @@ export default async (req, res) => {
     const record = req.body;
     try {
         //const updatedRecords = await table.update([{ id, fields }]);
-        const updatedRecords = await table.update(record.id, record.fields);
+        const updatedRecords = await table.update(record.id, record.fields, {typecast: true});
         res.statusCode = 200;
         res.json(getMinifiedRecord(updatedRecords));
     } catch (err) {

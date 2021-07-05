@@ -47,6 +47,8 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
     CV: prf ? prf.fields.CV ? prf.fields.CV : "" : "",
     Resume: prf ? prf.fields.Resume ? prf.fields.Resume : "" : "",
     "障害種別(その他)" : prf ? prf.fields["障害種別(その他)"] ? prf.fields["障害種別(その他)"] : "" : "",
+    "添削希望": prf ? prf.fields["添削希望"] ? prf.fields["添削希望"] : "No" : "No",
+    "面談希望": prf ? prf.fields["面談希望"] ? prf.fields["面談希望"] : "No" : "No"
   })
 
   ////Send Email
@@ -111,6 +113,7 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
         <ShowFlashMessage flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} />
         {/* フラッシュメッセージ ここまで */}
         <h1>マイページ</h1>
+
         {/*user &&(
             <div>
               Welcome {session_auth0_user.nickname} （ {session_auth0_user.sub} ）!
@@ -122,6 +125,10 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
           auth0Profile={session_auth0_user}
           contentfulposts={contentfulposts}
           initialProfile={initialProfile}
+          flashMessage={flashMessage}
+          setFlashMessage={setFlashMessage}
+          flashType={flashType}
+          setFlashType={setFlashType}
         />
         <ShowProfile
           atRecord={initialProfile}
@@ -197,7 +204,7 @@ export async function getServerSideProps(context) {
   let at_record = await table.select({ maxRecords: 1, filterByFormula: `{uid} = '${user.sub}'` }).firstPage();
 
   const res = await fetchEntriesMypage()
-  const posts = await res.map((p) => {
+  const posts = await res.items.map((p) => {
     return p.fields
   })
 

@@ -237,6 +237,31 @@ export default function showProfile({
     }
   };
 
+  const handleChangeCvOption = (e) => {
+    const value = e.target.value;
+    const name = e.target.name
+    //console.log(e.target.name);
+    //console.log(value);
+    if(value === "Yes" && name === "添削希望" && profile["添削希望"] === "Yes"){
+      setProfile({ ...profile, "添削希望" : "No" });
+    }else if(value === "Yes" && name === "面談希望" && profile["面談希望"] === "Yes"){
+      setProfile({ ...profile, "面談希望" : "No" });
+    }else{
+      setProfile({ ...profile, [name]: value });
+    }
+  }
+  const handleSubmitUpdateCvOption = (e) => {
+    const updatedRecord2 = {
+      id: (atRecord[0].id),
+      fields: profile,
+    }
+    //console.log(updatedRecord);
+    e.preventDefault();
+    updateUserOnAirtable(updatedRecord2)
+    setFlashType("welldone")
+    setFlashMessage(true)
+  }
+
   const prefectureList = ["北海道","青森","岩手","宮城","秋田","山形","福島","茨城","栃木","群馬","埼玉","千葉","東京","神奈川","新潟","富山","石川","福井","山梨","長野","岐阜","静岡","愛知","三重","滋賀","京都","大阪","兵庫","奈良","和歌山","鳥取","島根","岡山","広島","山口","徳島","香川","愛媛","高知","福岡","佐賀","長崎","熊本","大分","宮崎","鹿児島","沖縄"]
   const shogaiListShintai = ["目","耳","口","右上肢","左上肢","腕下","ひじ下","手首下","手指","腰/お尻","右下肢","左下肢","太もも下","ひざ下","足首下","足指","上半身","下半身","右半身","左半身","全身","内部疾患"]
   const shogaiListSeishin = ["うつ病","双極性障害(そううつ病）","統合失調症","アルコール依存症","解離性障害","強迫性障害","睡眠障害","摂食障害","適応障害","パーソナリティ障害","不安障害","薬物依存症","PTSD(心的外傷後ストレス障害)","てんかん","高次脳機能障害","気分障害"]
@@ -641,6 +666,44 @@ export default function showProfile({
             }
 
           </div>
+          {profile.uid
+        && <div className="col-sm col-cvs-tem3hda">
+            <form className="form my-6 myp-form"
+              onSubmit={e => handleSubmitUpdateCvOption(e)}
+            >
+              <h4>オプション</h4>
+              <div className="form-group">
+                <input
+                  type="checkbox"
+                  id="tensaku"
+                  name="添削希望"
+                  className="form-control"
+                  value="Yes"
+                  checked={profile["添削希望"] === "Yes"}
+                  onChange={handleChangeCvOption}
+                  style={{display: "inline-block", width: "auto"}}
+                />
+                <label htmlFor="tensaku">添削希望</label>
+              </div>
+              <div className="form-group">
+                <input
+                  type="checkbox"
+                  id="mensetsu"
+                  name="面談希望"
+                  className="form-control"
+                  value="Yes"
+                  checked={profile["面談希望"] === "Yes"}
+                  onChange={handleChangeCvOption}
+                  style={{display: "inline-block", width: "auto"}}
+                />
+                <label htmlFor="mensetsu">面談希望</label>
+              </div>
+              <button type="submit" className="btn btn-primary-register btn-lg">
+                更新
+              </button>
+            </form>
+          </div>
+          }
         </div>
         </div>
       </div>
