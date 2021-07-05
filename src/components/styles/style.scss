@@ -704,6 +704,11 @@ h2.title-servoce span {
             text-align: center;
             font-weight: bold;
             margin: 10px 0px;
+            height: 120px;
+
+            @include breakpoint(tablet){
+              height: auto;
+            }
 
           }
 
@@ -787,6 +792,8 @@ h2.title-servoce span {
         h3{
           background: linear-gradient(transparent 70%, #fbd375 70%);
           font-size: 1.1rem;
+          font-weight: bold;
+          padding-bottom: 10px;
 
           @include breakpoint(tablet){
             background: linear-gradient(transparent 100%, #fbd375 100%);
