@@ -61,7 +61,9 @@ const Header = () => {
               </ul>
             </nav>
 
-            <a href="/api/auth/login?screen_type=signup" data-testid="login" className="log-btn log-btn-bottom" target="_blank"> <i className="fa fa-user-circle" aria-hidden="true"></i>新規登録する＞ </a>
+           {user ? "" 
+           : (<a href="/api/auth/login?screen_type=signup" data-testid="login" className="log-btn log-btn-bottom" target="_blank"> <i className="fa fa-user-circle" aria-hidden="true"></i>新規登録する＞</a>)
+           }
           </div>{/* header-right */}
         </div>
 

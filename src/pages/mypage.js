@@ -164,9 +164,6 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
               />
           */}
 
-            <div className="myp-block-wrapper">
-            a
-            </div>
             {/* 開発用情報 消さないで （ここから） */}
             <div className="myp-block-wrapper block-indevelopment">
               <span className="label">開発用</span>

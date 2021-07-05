@@ -80,7 +80,6 @@ export default function ShowJobAtMypage({ auth0Profile, contentfulposts, initial
       <div className="col-sm-12">
         <div className="myp-block-wrapper myp">
           <h3>おすすめ求人</h3>
-          {interestedPosts}
           <div className="row job-col">
             {contentfulposts.map((p) => {
               let ctflnode = ""
@@ -96,7 +95,6 @@ export default function ShowJobAtMypage({ auth0Profile, contentfulposts, initial
                         {p.description.split(/\n/g).map(value => (
                           <>{value}<br /></>
                         ))}
-                        {JSON.stringify(p)} 
                         </div>
 
                         <form className="form myp-form" onSubmit={e => handleSubmitApply(e)} >
