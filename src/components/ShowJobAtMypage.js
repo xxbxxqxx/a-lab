@@ -10,7 +10,7 @@ import { fetchEntriesMypage } from '../lib/contentfulPosts'
 export default function ShowJobAtMypage({ auth0Profile, contentfulposts, initialProfile}) {
 
   let userEmail = ""
-  if(initialProfile[0].fields.email){
+  if(initialProfile[0] && initialProfile[0].fields.email){
     userEmail = initialProfile[0].fields.email
   }else{
     userEmail = auth0Profile.email
@@ -22,10 +22,10 @@ export default function ShowJobAtMypage({ auth0Profile, contentfulposts, initial
       ctflFlug = true
     }
   })
-  let jobStatus = false
-  if(initialProfile[0].fields["現在のステータス"] && initialProfile[0].fields["現在のステータス"] === "仕事を探しています"){
-    jobStatus = true
-  }
+  //let jobStatus = false
+  //if(initialProfile[0].fields["現在のステータス"] && initialProfile[0].fields["現在のステータス"] === "仕事を探しています"){
+  //  jobStatus = true
+  //}
 
   const handleSubmitApply = async (e) => {
     e.preventDefault()
@@ -64,7 +64,7 @@ export default function ShowJobAtMypage({ auth0Profile, contentfulposts, initial
 
   return (
     <>
-    {ctflFlug && jobStatus 
+    {ctflFlug 
     ? <div className="row">
       <div className="col-sm-12">
         <div className="myp-block-wrapper myp">

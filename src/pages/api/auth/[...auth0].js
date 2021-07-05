@@ -8,15 +8,21 @@ https://github.com/auth0/nextjs-auth0/blob/main/EXAMPLES.md
 */
 import { handleAuth, handleLogin } from '@auth0/nextjs-auth0';
 
-const getLoginState = (req, loginOptions) => {
-  return { screen_hint: 'signup', initialScreen: 'signup', action: 'signup' };
-};
-
 //export default handleAuth();
 export default handleAuth({
   async login(req, res) {
+    let screenType = ""
+    if(req.query.screen_type === "signup"){
+      screenType = 'signup'
+    }
+    //let screenType = 'signup'
     try {
-      await handleLogin(req, res, { getLoginState });
+      await handleLogin(
+        req,
+        res,
+        //{ authorizationParams: { screen_hint: 'signup', screen_hint: 'signup', action: 'signup' } }
+        { authorizationParams: { action: screenType } }
+      );
     } catch (error) {
       res.status(error.status || 500).end(error.message);
     }

@@ -209,6 +209,7 @@ export default function showProfile({
       const jsonBody = {
         emailSubject: GetEmailComponent().resumeRegistrationAdmin.subject,
         emailBody: emailBodyContent,
+        attachmentFile: data.msg
       }
       fetch('/api/sendMail', {
         method: 'POST',
@@ -466,9 +467,8 @@ export default function showProfile({
                       <option value="身体障害">身体障害</option>
                       <option value="精神（発達）障害">精神（発達）障害</option>
                       <option value="知的（発達）障害">知的（発達）障害</option>
-                      <option value="申請中（身体・精神・知的）">申請中（身体・精神・知的）</option>
+                      <option value="申請中（身体・精神・知的）">申請中</option>
                       <option value="申請前">申請前</option>
-                      <option value="その他">その他</option>
                     </select>
                   </div>
                 </div>
@@ -609,7 +609,7 @@ export default function showProfile({
                 <input
                   type="file"
                   name="myimage"
-                  accept="image/png, image/jpeg"
+                  accept="*"
                 />
                 <button type="submit" className="btn btn-primary-register btn-md">送信</button>
                 </form>
@@ -633,7 +633,7 @@ export default function showProfile({
                 <input
                   type="file"
                   name="myimage"
-                  accept="image/png, image/jpeg"
+                  accept="*"
                 />
                 <button type="submit" className="btn btn-primary-register btn-md">送信</button>
                 </form>
