@@ -80,6 +80,12 @@ const Header = () => {
         </div>
       </section>
 
+      <div class="site-info">
+        <div class="container">
+          © Activatelab co.,ltd. All Rights Reserved.
+        </div>
+      </div>
+
     </footer>
   );
 };

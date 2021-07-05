@@ -14,6 +14,46 @@
   margin: 3px 0;
 }
 
+.form-group-shogaisabetsu input[type="checkbox"],
+.form-group-oshigotostatus input[type="checkbox"] {
+  display: inline-block;
+  width: auto;
+}
+
+.form-group-shogaisabetsu label,
+.form-group-oshigotostatus label {
+  margin-right: 10px;
+}
+
+.menuSlide .menuTitle ul.categories li:focus-visible {
+  outline: none;
+}
+
+.menuSlide .menuTitle ul.categories li button {
+  color: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  border: inherit;
+  background: inherit;
+  padding: inherit;
+  font: inherit;
+}
+
+.menuSlide .menuTitle ul.categories li button:focus-visible {
+  outline: none;
+}
+
+.btn.btn-primary-register {
+  background: #ffe060;
+  color: #000;
+  margin-top: 10px;
+}
+
+.col-sm.col-cvs-tem3hda {
+  margin: 10px 0;
+  width: 100%;
+}
+
 .hamburger-react {
   z-index: 99;
 }
