@@ -53,10 +53,15 @@ $c-lightgray4: #f3f3f3;
   background: #ffe060;
   color: #000;
   margin-top: 10px;
+  width: 100%;
 }
 .col-sm.col-cvs-tem3hda{
   margin: 10px 0;
   width: 100%;
+
+  h4{
+    font-weight: bold;
+  }
 }
 
 .hamburger-react{

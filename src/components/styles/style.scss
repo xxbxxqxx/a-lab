@@ -251,10 +251,36 @@ header.header-common{
 //   margin: 1.5rem auto;
 // }
 
-
+//////////////MY PAGE CONTENTS
+////////////////////////////////////////////////////
 
 button{
   color: red;
+}
+
+.mypage-main{
+  padding-top: 200px;
+
+  @include breakpoint(tablet){
+    padding-top: 30px;
+    }
+
+    h1{
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .myp-block-wrapper{
+      h3{
+        font-weight: bold;
+        color: #c68957;
+      }
+
+      .mypage-cap{
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+    }
 }
 
 .my-page-ctr{

@@ -242,11 +242,11 @@ export default function showProfile({
     const name = e.target.name
     //console.log(e.target.name);
     //console.log(value);
-    if(value === "Yes" && name === "添削希望" && profile["添削希望"] === "Yes"){
-      setProfile({ ...profile, "添削希望" : "No" });
-    }else if(value === "Yes" && name === "面談希望" && profile["面談希望"] === "Yes"){
-      setProfile({ ...profile, "面談希望" : "No" });
-    }else{
+    if (value === "Yes" && name === "添削希望" && profile["添削希望"] === "Yes") {
+      setProfile({ ...profile, "添削希望": "No" });
+    } else if (value === "Yes" && name === "面談希望" && profile["面談希望"] === "Yes") {
+      setProfile({ ...profile, "面談希望": "No" });
+    } else {
       setProfile({ ...profile, [name]: value });
     }
   }
@@ -262,12 +262,12 @@ export default function showProfile({
     setFlashMessage(true)
   }
 
-  const prefectureList = ["北海道","青森","岩手","宮城","秋田","山形","福島","茨城","栃木","群馬","埼玉","千葉","東京","神奈川","新潟","富山","石川","福井","山梨","長野","岐阜","静岡","愛知","三重","滋賀","京都","大阪","兵庫","奈良","和歌山","鳥取","島根","岡山","広島","山口","徳島","香川","愛媛","高知","福岡","佐賀","長崎","熊本","大分","宮崎","鹿児島","沖縄"]
-  const shogaiListShintai = ["目","耳","口","右上肢","左上肢","腕下","ひじ下","手首下","手指","腰/お尻","右下肢","左下肢","太もも下","ひざ下","足首下","足指","上半身","下半身","右半身","左半身","全身","内部疾患"]
-  const shogaiListSeishin = ["うつ病","双極性障害(そううつ病）","統合失調症","アルコール依存症","解離性障害","強迫性障害","睡眠障害","摂食障害","適応障害","パーソナリティ障害","不安障害","薬物依存症","PTSD(心的外傷後ストレス障害)","てんかん","高次脳機能障害","気分障害"]
-  const shogaiListHattasu = ["AD(注意欠陥)","HD(多動性障害)","アスペルガー症候群","LD(学習障害)","高機能自閉症","自閉症"]
-  
-  const Checkbox = ({value, type}) => {
+  const prefectureList = ["北海道", "青森", "岩手", "宮城", "秋田", "山形", "福島", "茨城", "栃木", "群馬", "埼玉", "千葉", "東京", "神奈川", "新潟", "富山", "石川", "福井", "山梨", "長野", "岐阜", "静岡", "愛知", "三重", "滋賀", "京都", "大阪", "兵庫", "奈良", "和歌山", "鳥取", "島根", "岡山", "広島", "山口", "徳島", "香川", "愛媛", "高知", "福岡", "佐賀", "長崎", "熊本", "大分", "宮崎", "鹿児島", "沖縄"]
+  const shogaiListShintai = ["目", "耳", "口", "右上肢", "左上肢", "腕下", "ひじ下", "手首下", "手指", "腰/お尻", "右下肢", "左下肢", "太もも下", "ひざ下", "足首下", "足指", "上半身", "下半身", "右半身", "左半身", "全身", "内部疾患"]
+  const shogaiListSeishin = ["うつ病", "双極性障害(そううつ病）", "統合失調症", "アルコール依存症", "解離性障害", "強迫性障害", "睡眠障害", "摂食障害", "適応障害", "パーソナリティ障害", "不安障害", "薬物依存症", "PTSD(心的外傷後ストレス障害)", "てんかん", "高次脳機能障害", "気分障害"]
+  const shogaiListHattasu = ["AD(注意欠陥)", "HD(多動性障害)", "アスペルガー症候群", "LD(学習障害)", "高機能自閉症", "自閉症"]
+
+  const Checkbox = ({ value, type }) => {
     //const [checked, setChecked] = useState(false);
     return (
       <>
@@ -280,14 +280,14 @@ export default function showProfile({
     <div className="row">
       <div className="col-sm-9">
         <div className="myp-block-wrapper">
-          <h3>{profile.uid ? "プロフィール更新" : "プロフィール登録"}</h3>
+          <h3><i class="fa fa-user-circle-o" aria-hidden="true"></i>{profile.uid ? "プロフィール更新" : "プロフィール登録"}</h3>
           <form className="form my-6 myp-form"
             onSubmit={profile.uid ? (e => handleSubmitUpdate(e)) : (e => handleSubmitCreate(e))}
           >
             <div>
               {
                 <div className="form-group">
-                  <label htmlFor="uid">Auth0 User ID</label>
+                  <label className="mypage-cap" htmlFor="uid">Auth0 User ID</label>
                   <input
                     type="text"
                     className="form-control"
@@ -299,7 +299,7 @@ export default function showProfile({
                 </div>
               }
               <div>
-                お名前
+                <p className="mypage-cap">お名前</p>
                 <div className="row">
                   <div className="col-sm">
                     <div className="form-group">
@@ -368,7 +368,7 @@ export default function showProfile({
               <div className="row">
                 <div className="col-sm">
                   <div className="form-group">
-                    <label htmlFor="birthday">生年月日<span style={{ color: "red" }}>*</span></label>
+                    <label className="mypage-cap" htmlFor="birthday">生年月日<span style={{ color: "red" }}>*</span></label>
                     <input
                       type="date"
                       name="Birthday"
@@ -382,7 +382,7 @@ export default function showProfile({
                 </div>
               </div>
               <div>
-                住所
+                <p className="mypage-cap">住所</p>
                 <div className="row">
                   <div className="col-3">
                     <div className="form-group">
@@ -421,7 +421,7 @@ export default function showProfile({
                   <div className="form-group">
                     {profile.HearingImpairment === "Yes"
                       ? <>
-                        <label htmlFor="">電話番号</label>
+                        <label className="mypage-cap" htmlFor="">電話番号</label>
                         <input
                           type="tel"
                           name="TelNo"
@@ -432,7 +432,7 @@ export default function showProfile({
                         />
                       </>
                       : <>
-                        <label htmlFor="">電話番号<span style={{ color: "red" }}>*</span></label>
+                        <label className="mypage-cap" htmlFor="">電話番号<span style={{ color: "red" }}>*</span></label>
                         <input
                           type="tel"
                           name="TelNo"
@@ -457,7 +457,7 @@ export default function showProfile({
                       onChange={handleChange}
                       style={{ display: "inline-block", width: "auto" }}
                     />
-                    <label htmlFor="HearingImpairment">聴覚障害をお持ちの方はこちらにチェックしてください</label>
+                    <label className="mypage-cap" htmlFor="HearingImpairment">聴覚障害をお持ちの方はこちらにチェックしてください</label>
                   </div>
                 </div>
                 <div className="col-sm">
@@ -479,7 +479,7 @@ export default function showProfile({
               <div className="row">
                 <div className="col-sm">
                   <div className="form-group">
-                    <label htmlFor="">手帳種類<span style={{ color: "red" }}>*</span></label>
+                    <label className="mypage-cap" htmlFor="">手帳種類<span style={{ color: "red" }}>*</span></label>
                     <select
                       name="手帳種類"
                       id="TechoCategory"
@@ -499,7 +499,7 @@ export default function showProfile({
                 </div>
                 <div className="col-sm">
                   <div className="form-group">
-                    <label htmlFor="">障害等級</label>
+                    <label className="mypage-cap" htmlFor="">障害等級</label>
                     <select
                       name="障害等級"
                       id="ShogaiTokyu"
@@ -549,22 +549,22 @@ export default function showProfile({
 
               <div className="form-group form-group-shogaisabetsu">
                 <p>ご自身の症状に合うものをチェックしてください。</p>
-                <p>■身体障害</p>
+                <p className="mypage-cap">■身体障害</p>
                 {shogaiListShintai.map(value => (
                   <Checkbox key={value} value={value} type="障害種別(身体障害)" />
                 ))}
                 <hr />
-                <p>■精神障害</p>
+                <p className="mypage-cap">■精神障害</p>
                 {shogaiListSeishin.map(value2 => (
                   <Checkbox key={value2} value={value2} type="障害種別(精神障害)" />
                 ))}
                 <hr />
-                <p>■発達障害</p>
+                <p className="mypage-cap">■発達障害</p>
                 {shogaiListHattasu.map(value3 => (
                   <Checkbox key={value3} value={value3} type="障害種別(発達障害)" />
                 ))}
                 <hr />
-                <p>■その他</p>
+                <p className="mypage-cap">■その他</p>
                 <div className="form-group">
                   <input
                     type="text"
@@ -579,7 +579,7 @@ export default function showProfile({
               </div>
 
               <div className="form-group">
-                <label htmlFor="Description">あなたが必要とする配慮について記載ください。</label>
+                <label className="mypage-cap" htmlFor="Description">あなたが必要とする配慮について記載ください。</label>
                 <input
                   type="text"
                   name="Description"
@@ -592,7 +592,7 @@ export default function showProfile({
               </div>
 
               <div className="form-group form-group-oshigotostatus">
-                <p>現在のステータス<span style={{ color: "red" }}>*</span></p>
+                <p className="mypage-cap">現在のステータス<span style={{ color: "red" }}>*</span></p>
                 <input type="radio" name="現在のステータス" id="JobStatusActive" required value="仕事を探しています" onChange={handleChange} className="form-control" checked={profile["現在のステータス"] === "仕事を探しています"} /><label htmlFor="JobStatusActive">仕事を探しています</label>
                 <input type="radio" name="現在のステータス" id="JobStatusInactive" required value="今は仕事を探していません" onChange={handleChange} className="form-control" checked={profile["現在のステータス"] === "今は仕事を探していません"} /><label htmlFor="JobStatusInactive">今は仕事を探していません</label>
               </div>
@@ -619,90 +619,90 @@ export default function showProfile({
 
       <div className="col-sm-3">
         <div className="myp-block-wrapper">
-        <div className="row">
-          <div className="col-sm col-cvs-tem3hda">
-            <h4>履歴書</h4>
-            {profile.uid
-              ? <>
-                {profile.CV.length === 0
-                  ? <p>履歴書が投稿されていません</p>
-                  : <p>投稿済みです</p>
-                }
-                <form 
-                  onSubmit={uploadCV}
-                >
-                <input
-                  type="file"
-                  name="myimage"
-                  accept="*"
-                />
-                <button type="submit" className="btn btn-primary-register btn-md">送信</button>
-                </form>
+          <div className="row">
+            <div className="col-sm col-cvs-tem3hda">
+              <h4>履歴書</h4>
+              {profile.uid
+                ? <>
+                  {profile.CV.length === 0
+                    ? <p>履歴書が投稿されていません</p>
+                    : <p>投稿済みです</p>
+                  }
+                  <form
+                    onSubmit={uploadCV}
+                  >
+                    <input
+                      type="file"
+                      name="myimage"
+                      accept="*"
+                    />
+                    <button type="submit" className="btn btn-primary-register btn-md">送信</button>
+                  </form>
                 </>
                 : "まずはプロフィール登録を完了してください"
               }
             </div>
-          <div className="col-sm col-cvs-tem3hda">
-            
-            {profile.uid
-              && <>
-                <h4>職務経歴書</h4>
-                {profile.Resume.length === 0
-                  ? <p>職務経歴書が投稿されていません</p>
-                  : <p>投稿済みです</p>
-                }
-                <form 
-                  onSubmit={uploadResume}
-                >
-                <input
-                  type="file"
-                  name="myimage"
-                  accept="*"
-                />
-                <button type="submit" className="btn btn-primary-register btn-md">送信</button>
-                </form>
+            <div className="col-sm col-cvs-tem3hda">
+
+              {profile.uid
+                && <>
+                  <h4>職務経歴書</h4>
+                  {profile.Resume.length === 0
+                    ? <p>職務経歴書が投稿されていません</p>
+                    : <p>投稿済みです</p>
+                  }
+                  <form
+                    onSubmit={uploadResume}
+                  >
+                    <input
+                      type="file"
+                      name="myimage"
+                      accept="*"
+                    />
+                    <button type="submit" className="btn btn-primary-register btn-md">送信</button>
+                  </form>
                 </>
               }
 
             </div>
           </div>
           {profile.uid
-        && <div className="col-sm col-cvs-tem3hda">
-            <form className="form my-6 myp-form"
-              onSubmit={e => handleSubmitUpdateCvOption(e)}
-            >
-              <h4>オプション</h4>
-              <div className="form-group">
-                <input
-                  type="checkbox"
-                  id="tensaku"
-                  name="添削希望"
-                  className="form-control"
-                  value="Yes"
-                  checked={profile["添削希望"] === "Yes"}
-                  onChange={handleChangeCvOption}
-                  style={{display: "inline-block", width: "auto"}}
-                />
-                <label htmlFor="tensaku">添削希望</label>
-              </div>
-              <div className="form-group">
-                <input
-                  type="checkbox"
-                  id="mensetsu"
-                  name="面談希望"
-                  className="form-control"
-                  value="Yes"
-                  checked={profile["面談希望"] === "Yes"}
-                  onChange={handleChangeCvOption}
-                  style={{display: "inline-block", width: "auto"}}
-                />
-                <label htmlFor="mensetsu">面談希望</label>
-              </div>
-              <button type="submit" className="btn btn-primary-register btn-lg">
-                更新
-              </button>
-            </form>
-          </div>
+            && <div className="col-sm col-cvs-tem3hda">
+              <form className="form my-6 myp-form"
+                onSubmit={e => handleSubmitUpdateCvOption(e)}
+              >
+                <h4>オプション</h4>
+                <div className="form-group">
+                  <input
+                    type="checkbox"
+                    id="tensaku"
+                    name="添削希望"
+                    className="form-control"
+                    value="Yes"
+                    checked={profile["添削希望"] === "Yes"}
+                    onChange={handleChangeCvOption}
+                    style={{ display: "inline-block", width: "auto" }}
+                  />
+                  <label htmlFor="tensaku">添削希望</label>
+                </div>
+                <div className="form-group">
+                  <input
+                    type="checkbox"
+                    id="mensetsu"
+                    name="面談希望"
+                    className="form-control"
+                    value="Yes"
+                    checked={profile["面談希望"] === "Yes"}
+                    onChange={handleChangeCvOption}
+                    style={{ display: "inline-block", width: "auto" }}
+                  />
+                  <label htmlFor="mensetsu">面談希望</label>
+                </div>
+                <button type="submit" className="btn btn-primary-register btn-lg">
+                  更新
+                </button>
+              </form>
+            </div>
           }
         </div>
       </div>

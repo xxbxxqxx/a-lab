@@ -47,11 +47,16 @@
   background: #ffe060;
   color: #000;
   margin-top: 10px;
+  width: 100%;
 }
 
 .col-sm.col-cvs-tem3hda {
   margin: 10px 0;
   width: 100%;
+}
+
+.col-sm.col-cvs-tem3hda h4 {
+  font-weight: bold;
 }
 
 .hamburger-react {
@@ -133,5 +138,20 @@
 .menuSlide .menuTitle .categories li {
   font-size: 1.0rem;
   margin-bottom: 5px;
+}
+
+.myp .job-col .job-info {
+  background: #fff !important;
+  padding: 10px;
+}
+
+.myp .job-col-in-cont-in {
+  margin-top: 30px;
+  background: #0d9b3f;
+}
+
+.myp .job-col-in-cont-in form {
+  padding: 10px;
+  padding-left: 0px;
 }
 /*# sourceMappingURL=konishi_addition.css.map */

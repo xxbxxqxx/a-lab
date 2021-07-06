@@ -82,12 +82,12 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
       )}
       <div className="container">
 
-        <main>
+        <main className="mypage-main">
 
           <ShowFlashMessage flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} />
-  
-          <h1>マイページ</h1>
-          <div style={{ marginTop: "100px" }}>
+
+          <h1><i class="fa fa-info-circle" aria-hidden="true"></i>マイページ</h1>
+          <div style={{ marginTop: "0px" }}>
             <ShowProfile
               atRecord={initialProfile}
               flashMessage={flashMessage}
