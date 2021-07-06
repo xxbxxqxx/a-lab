@@ -161,15 +161,15 @@ export default function Home({ session_auth0, contextreq, contextres }) {
 
                 <div className="service-col-in-txt">
                   <p>
-                    就労する障害者の方々は、障害の部位や原因、程度によって配慮が異なります。 採用活動支援から～選考～入社～定着までの各プロセスに応じ、定着支援のサポート、受入部門へのアドバイスまで、早期退職者を減らし、雇用の安定化のための取り組みを各種実施いたします。
+                    就労する障害者の方々は、障害の部位や原因、程度によって配慮が異なります。採用活動支援から～選考～入社～定着までの各プロセスに応じ、定着支援のサポート、受入部門へのアドバイスまで、早期退職者を減らし、雇用の安定化のための取り組みを各種実施いたします。
                   </p>
                 </div>
               </li>
 
               <li>
                 <h3>バリアフリーレポート</h3>
-                               <div className="service-col-in-top">
-                企業様の障害者受け入れ可否をチェック
+                <div className="service-col-in-top">
+                  企業様の障害者受け入れ可否をチェック
                 </div>
 
                 <div className="service-col-in-img">
@@ -177,114 +177,114 @@ export default function Home({ session_auth0, contextreq, contextres }) {
                 </div>
 
                 <div className="service-col-in-txt">
-                <p>
-                障害者雇用では、応募者の障害の程度は一人ひとり異なるため、それぞれに合わせた配慮が必要です。当社では、企業様の現状の障害者受け入れ可否をあらゆる角度からチェックします。また、障害者が能力を発揮できる環境や社内制度を提案します。
+                  <p>
+                    障害者雇用では、応募者の障害の程度は一人ひとり異なるため、それぞれに合わせた配慮が必要です。当社では、企業様の現状の障害者受け入れ可否をあらゆる角度からチェックします。また、障害者が能力を発揮できる環境や社内制度を提案します。
                   </p>
                 </div>
               </li>
 
-            <li>
-              <h3>サテライトオフィステレワーク</h3>
-              <div className="service-col-in-top">
-                障害者の能力を企業様内で最大限発揮させるべく、自宅就業支援を含む、オフィス以外で 働く環境・働き方・制度等の提案
-              </div>
+              <li>
+                <h3>サテライトオフィステレワーク</h3>
+                <div className="service-col-in-top">
+                  障害者の能力を企業様内で最大限発揮させるべく、自宅就業支援を含む、オフィス以外で 働く環境・働き方・制度等の提案
+                </div>
 
-              <div className="service-col-in-img">
-                <img src="/icon_service04.png" />
-              </div>
+                <div className="service-col-in-img">
+                  <img src="/icon_service04.png" />
+                </div>
 
-              <div className="service-col-in-txt">
-                <p>
-                障害者にとって通勤（公共交通機関）は大きな課題です。障害者の自宅就業を含めたテレワークや、車通勤も可能な郊外にサテライトオフィス設置など、オフィス以外で働く環境・働き方を提案します。専門スタッフが常駐、障害特性や企業様の業務に併せた勤怠管理や業務サポートもお任せください。
-                </p>
-              </div>
-            </li>
+                <div className="service-col-in-txt">
+                  <p>
+                    障害者にとって通勤（公共交通機関）は大きな課題です。障害者の自宅就業を含めたテレワークや、車通勤も可能な郊外にサテライトオフィス設置など、オフィス以外で働く環境・働き方を提案します。専門スタッフが常駐、障害特性や企業様の業務に併せた勤怠管理や業務サポートもお任せください。
+                  </p>
+                </div>
+              </li>
 
-            <li>
-              <h3>障害者採用サイト構築支援</h3>
-              <div className="service-col-in-top">
-                自社サイトに障害者採用サイトを導入するための支援
-              </div>
+              <li>
+                <h3>障害者採用サイト構築支援</h3>
+                <div className="service-col-in-top">
+                  自社サイトに障害者採用サイトを導入するための支援
+                </div>
 
-              <div className="service-col-in-img">
-                <img src="/icon_service05.png" />
-              </div>
+                <div className="service-col-in-img">
+                  <img src="/icon_service05.png" />
+                </div>
 
-              <div className="service-col-in-txt">
-                <p>
-                  自社の採用ページは、企業イメージの向上や 応募人数向上、内定承諾率の向上につながります。当製品のテンプレートを用いれば、障害者が注目する内容、知りたい内容を網羅していますので、自社の情報を入力するだけで採用ノウハウの詰まった独自の障害者採用サイトを作成できます。
-                </p>
-              </div>
-            </li>
+                <div className="service-col-in-txt">
+                  <p>
+                    自社の採用ページは、企業イメージの向上や 応募人数向上、内定承諾率の向上につながります。当製品のテンプレートを用いれば、障害者が注目する内容、知りたい内容を網羅していますので、自社の情報を入力するだけで採用ノウハウの詰まった独自の障害者採用サイトを作成できます。
+                  </p>
+                </div>
+              </li>
 
-            <li>
-              <h3>OpenGate SNS</h3>
-              <div className="service-col-in-top">
-                同境遇の方とつながることが出来る身体障害者に特化したSNS「OpenGate」を活用して障害者に対してのマーケティング支援
-              </div>
+              <li>
+                <h3>OpenGate SNS</h3>
+                <div className="service-col-in-top">
+                  同境遇の方とつながることが出来る身体障害者に特化したSNS「OpenGate」を活用して障害者に対してのマーケティング支援
+                </div>
 
-              <div className="service-col-in-img">
-                <img src="/icon_service06.png" />
-              </div>
+                <div className="service-col-in-img">
+                  <img src="/icon_service06.png" />
+                </div>
 
-              <div className="service-col-in-txt">
-                <p>
-                  OpenGateには障害者・障害に関連した多彩な情報が掲載され、日々多くの障害者の方にご訪問いただいています。障害者プラットフォームOpenGateを企業様の採用情報や商品・サービス 情報のマーケティングや告知に活用いただけます。
-                </p>
-              </div>
-            </li>
+                <div className="service-col-in-txt">
+                  <p>
+                    OpenGateには障害者・障害に関連した多彩な情報が掲載され、日々多くの障害者の方にご訪問いただいています。障害者プラットフォームOpenGateを企業様の採用情報や商品・サービス 情報のマーケティングや告知に活用いただけます。
+                  </p>
+                </div>
+              </li>
             </ul>
 
-          <div className="service-col-in-contact">
-            <h3>＼詳細はこちら／</h3>
-            <a href="https://activatelab.co.jp/"><img src="/AL-logo.jpg" /></a>
-            <p>株式会社アクティベートラボ</p>
-          </div>
+            <div className="service-col-in-contact">
+              <h3>＼詳細はこちら／</h3>
+              <a href="https://activatelab.co.jp/"><img src="/AL-logo.jpg" /></a>
+              <p>株式会社アクティベートラボ</p>
+            </div>
 
           </div>
-        {/* //service-col-in */}
+          {/* //service-col-in */}
 
         </section>
 
-      <section className="message">
+        <section className="message">
 
-        <div className="message-col-head">
-          <h2 className="title-servoce"><span>MESSAGE</span></h2>
-        </div>
+          <div className="message-col-head">
+            <h2 className="title-servoce"><span>MESSAGE</span></h2>
+          </div>
 
-        <div className="message-col-in container">
+          <div className="message-col-in container">
 
-          <div class="row">
-            <div className="col-lg-6 col-md-12 col-sm-12 message-col-in-cont-L">
-              <img src="/masumoto.png" />
+            <div class="row">
+              <div className="col-lg-6 col-md-12 col-sm-12 message-col-in-cont-L">
+                <img src="/masumoto.png" />
 
-              <div className="message-col-in-cont-L-txt">
-                <h3>増本 裕司</h3>
-                <span>代表</span>
-                <img src="/name-bottom.png" />
+                <div className="message-col-in-cont-L-txt">
+                  <h3>増本 裕司</h3>
+                  <span>代表</span>
+                  <img src="/name-bottom.png" />
+                </div>
+
+              </div>
+
+              <div className="col-lg-6 col-md-12 col-sm-12 message-col-in-cont-R">
+                <h3>当社独自のノウハウを使って障害者雇用に対するミスマッチを防ぎます</h3>
+                <p>
+                  {/* 私自身身体障害2級であり、障害者になってからの就職活動は大変苦労しました。「そもそも障害者ってなに！？」「精神障害者って  なんでしょ！？」などの偏見も多く経験◯◯し、こんな思いをする人をひとりでも減らしたいと今も活動を続けています。また、自分が起業してから、企業側からも実際にどのような配慮をしたらよいかわからない、そんな声を多く聞きます。私たちは、「情報・IT」をベースに、業界初の障害者翻訳システム、ジョブマップ、キュレーションサイトなど新たなサービスを次々と生み出し、当事者そして企業様の間にミスマッチを起こさせないそんな取り組みをしています。今、抱えているそのお悩み、私たちが解決できるかもしれません。ぜひ一度ご相談ください。 */}
+
+                  私自身身体障害2級であり、障害者になってからの就職活動は大変苦労しました。「そもそも障害者ってなに！？」「精神障害者って◯◯なんでしょ！？」などの偏見も多く経験し、こんな思いをする人をひとりでも減らしたいと今も活動を続けています。また、自分が起業してから、企業側からも実際にどのような配慮をしたらよいかわからない、そんな声を多く聞きます。私たちは、「情報・IT」をベースに、業界初の障害者翻訳システム、ジョブマップ、キュレーションサイトなど新たなサービスを次々と生み出し、当事者そして企業様の間にミスマッチを起こさせないそんな取り組みをしています。今、抱えているそのお悩み、私たちが解決できるかもしれません。ぜひ一度ご相談ください。
+                </p>
               </div>
 
             </div>
 
-            <div className="col-lg-6 col-md-12 col-sm-12 message-col-in-cont-R">
-              <h3>当社独自のノウハウを使って障害者雇用に対するミスマッチを防ぎます</h3>
-              <p>
-                {/* 私自身身体障害2級であり、障害者になってからの就職活動は大変苦労しました。「そもそも障害者ってなに！？」「精神障害者って  なんでしょ！？」などの偏見も多く経験◯◯し、こんな思いをする人をひとりでも減らしたいと今も活動を続けています。また、自分が起業してから、企業側からも実際にどのような配慮をしたらよいかわからない、そんな声を多く聞きます。私たちは、「情報・IT」をベースに、業界初の障害者翻訳システム、ジョブマップ、キュレーションサイトなど新たなサービスを次々と生み出し、当事者そして企業様の間にミスマッチを起こさせないそんな取り組みをしています。今、抱えているそのお悩み、私たちが解決できるかもしれません。ぜひ一度ご相談ください。 */}
-
-                私自身身体障害2級であり、障害者になってからの就職活動は大変苦労しました。「そもそも障害者ってなに！？」「精神障害者って◯◯なんでしょ！？」などの偏見も多く経験し、こんな思いをする人をひとりでも減らしたいと今も活動を続けています。また、自分が起業してから、企業側からも実際にどのような配慮をしたらよいかわからない、そんな声を多く聞きます。私たちは、「情報・IT」をベースに、業界初の障害者翻訳システム、ジョブマップ、キュレーションサイトなど新たなサービスを次々と生み出し、当事者そして企業様の間にミスマッチを起こさせないそんな取り組みをしています。今、抱えているそのお悩み、私たちが解決できるかもしれません。ぜひ一度ご相談ください。
-              </p>
-            </div>
-
           </div>
-
-        </div>
-      </section> {/* message */}
+        </section> {/* message */}
 
 
 
 
       </div>
-      {/* //service */ }
+      {/* //service */}
 
 
 

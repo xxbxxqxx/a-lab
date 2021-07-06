@@ -24,7 +24,7 @@ export default function Home({ initialProfile, session_auth0_user }) {
   const prf = initialProfile ? initialProfile[0] : "";
   const [profile, setProfile] = useState({
     uid: prf ? prf.fields.uid ? prf.fields.uid : "" : "",
-    email: prf ? prf.fields.email ? prf.fields.email : session_auth0_user.email :  session_auth0_user.email,
+    email: prf ? prf.fields.email ? prf.fields.email : session_auth0_user.email : session_auth0_user.email,
     FirstName: prf ? prf.fields.FirstName ? prf.fields.FirstName : "" : "",
     LastName: prf ? prf.fields.LastName ? prf.fields.LastName : "" : "",
     FirstNameKana: prf ? prf.fields.FirstNameKana ? prf.fields.FirstNameKana : "" : "",
@@ -43,7 +43,7 @@ export default function Home({ initialProfile, session_auth0_user }) {
     "現在のステータス": prf ? prf.fields["現在のステータス"] ? prf.fields["現在のステータス"] : "" : "",
     CV: prf ? prf.fields.CV ? prf.fields.CV : "" : "",
     Resume: prf ? prf.fields.Resume ? prf.fields.Resume : "" : "",
-    "障害種別(その他)" : prf ? prf.fields["障害種別(その他)"] ? prf.fields["障害種別(その他)"] : "" : "",
+    "障害種別(その他)": prf ? prf.fields["障害種別(その他)"] ? prf.fields["障害種別(その他)"] : "" : "",
   })
 
   ////Send Email
@@ -94,37 +94,37 @@ export default function Home({ initialProfile, session_auth0_user }) {
       <Head>
         <title>マイページ | OpenGate Careers</title>
       </Head>
-    {isLoading && <p>Loading login info...</p>}
-    {error && (
-      <div>
-        <h4>Error</h4>
-        <pre>{error.message}</pre>
-      </div>
-    )}
-    <div className="container">
+      {isLoading && <p>Loading login info...</p>}
+      {error && (
+        <div>
+          <h4>Error</h4>
+          <pre>{error.message}</pre>
+        </div>
+      )}
+      <div className="container">
 
-      <main>
-        {/* フラッシュメッセージ ここから */}
-        <ShowFlashMessage flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} />
-        {/* フラッシュメッセージ ここまで */}
-        <h1>マイページ</h1>
-        {/*user &&(
+        <main>
+          {/* フラッシュメッセージ ここから */}
+          <ShowFlashMessage flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} />
+          {/* フラッシュメッセージ ここまで */}
+          <h1>マイページ</h1>
+          {/*user &&(
             <div>
               Welcome {session_auth0_user.nickname} （ {session_auth0_user.sub} ）!
             </div>
         )*/}
-        <div style={{marginTop: "100px"}}>
-        <ShowProfile
-          atRecord={initialProfile}
-          flashMessage={flashMessage}
-          setFlashMessage={setFlashMessage}
-          flashType={flashType}
-          setFlashType={setFlashType}
-          profile={profile}
-          setProfile={setProfile}
-          auth0Profile={session_auth0_user}
-        />
-          {/*
+          <div style={{ marginTop: "100px" }}>
+            <ShowProfile
+              atRecord={initialProfile}
+              flashMessage={flashMessage}
+              setFlashMessage={setFlashMessage}
+              flashType={flashType}
+              setFlashType={setFlashType}
+              profile={profile}
+              setProfile={setProfile}
+              auth0Profile={session_auth0_user}
+            />
+            {/*
             initialProfile.length === 0 && initialReister !== false
             ? <CreateProfile
                 profile={initialProfile}
