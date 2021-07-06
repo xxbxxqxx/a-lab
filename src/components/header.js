@@ -51,7 +51,7 @@ const Header = () => {
                   <>
                     <li>
 
-                      <a href="/api/auth/login?login_hint=signup" data-testid="login" className="log-btn" target="_blank">
+                      <a href="/api/auth/login" data-testid="login" className="log-btn" target="_blank">
 
                         <i className="fa fa-external-link" aria-hidden="true"></i>ログイン
                       </a>
@@ -61,7 +61,9 @@ const Header = () => {
               </ul>
             </nav>
 
-            <a href="/api/auth/login?login_hint=signup" data-testid="login" className="log-btn log-btn-bottom" target="_blank"> <i class="fa fa-user-circle" aria-hidden="true"></i>新規登録する＞ </a>
+           {user ? "" 
+           : (<a href="/api/auth/login?screen_type=signup" data-testid="login" className="log-btn log-btn-bottom" target="_blank"> <i className="fa fa-user-circle" aria-hidden="true"></i>新規登録する＞</a>)
+           }
           </div>{/* header-right */}
         </div>
 

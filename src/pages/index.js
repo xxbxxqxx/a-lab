@@ -14,6 +14,7 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
       <Head>
         <title>OpenGate Careers l 障害者の求人・就職サポートサイト</title>
         <meta name="description" content="OpenGate Careers（オープンゲートキャリアズ）は障害者の求人・就職サポートサイトです。あなたの障害の症状を理解することで、あなたの強みやスキル、キャリアに合わせた企業とのマッチングを可能にしていきます。" />
+        <meta name="keywords" content="障害者翻訳, ブイくん, 障害者, 障がい者, 求人, 雇用, 採用, 転職, 仕事, 就労, 就職, 就労支援, 事務, 身体障害者, 精神障害者, エージェント, テレワーク" />
       </Head>
       {isLoading && <p>Loading login info...</p>}
       {error && (
@@ -77,8 +78,13 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
         <div className="top-image-btn">
           <p>あなたにかわって<br />
             障害を翻訳します</p>
-          <a href="/api/auth/login" data-testid="login" className="log-btn" target="_blank"><i className="fa fa-lightbulb-o" aria-hidden="true"></i>
-            無料登録で使ってみる</a>
+          {user
+             ? ( <></> )
+             : (
+               <a href="/api/auth/login?screen_type=signup" data-testid="login" className="log-btn" target="_blank"><i className="fa fa-lightbulb-o" aria-hidden="true"></i>無料登録で使ってみる</a>
+             )
+           }
+          
         </div>
 
       </section>
