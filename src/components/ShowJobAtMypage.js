@@ -16,7 +16,7 @@ export default function ShowJobAtMypage({ auth0Profile, contentfulposts, initial
   const { updateUserOnAirtable } = useContext(TodosContext);
 
   const [interestedPosts, setInterestedPosts] = useState(
-    initialProfile[0].fields["興味のある求人"] ? initialProfile[0].fields["興味のある求人"] : []
+    initialProfile[0] && initialProfile[0].fields["興味のある求人"] ? initialProfile[0].fields["興味のある求人"] : []
   )
 
   let userEmail = ""
