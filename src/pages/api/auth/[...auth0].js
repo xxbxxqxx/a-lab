@@ -6,7 +6,7 @@ This will create the following urls: /api/auth/login, /api/auth/callback, /api/a
 Details here;
 https://github.com/auth0/nextjs-auth0/blob/main/EXAMPLES.md
 */
-import { handleAuth, handleLogin, handleCallback } from '@auth0/nextjs-auth0';
+import { handleAuth, handleLogin } from '@auth0/nextjs-auth0';
 
 //export default handleAuth();
 export default handleAuth({
@@ -25,12 +25,12 @@ export default handleAuth({
     } catch (error) {
       res.status(error.status || 500).end(error.message);
     }
-  },
-  async callback(req, res) {
-    try {
-      await handleCallback(req, res);
-    } catch (error) {
-      res.status(error.status || 500).end(error.message);
-    }
   }
+  //async callback(req, res) {
+  //  try {
+  //    await handleCallback(req, res);
+  //  } catch (error) {
+  //    res.status(error.status || 500).end(error.message);
+  //  }
+  //}
 });
