@@ -40,7 +40,7 @@ const Menu = ({ open, setOpen }) => {
               duration={500}
             >
               <button onClick={handleChange2}>
-                求人情報!
+                求人情報
               </button>
             </LinkRS>
           </li>
