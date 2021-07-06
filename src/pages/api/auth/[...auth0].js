@@ -20,7 +20,7 @@ export default handleAuth({
         req,
         res,
         //{ authorizationParams: { screen_hint: 'signup', screen_hint: 'signup', action: 'signup' } }
-        { authorizationParams: { action: screenType } }
+        { authorizationParams: { action: screenType }, returnTo: "/mypage" }
       );
     } catch (error) {
       res.status(error.status || 500).end(error.message);
