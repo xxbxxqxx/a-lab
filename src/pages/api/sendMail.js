@@ -10,9 +10,11 @@ export default async (req, res) => {
     secure: true,
   })
 
+  const emailToAddress = req.body.emailTo ? req.body.emailTo : "ryo.estrella@gmail.com, contract@activatelab.co.jp"
+
   const mailData = {
     from: "OpenGate Careers（オープンゲートキャリアズ） <no-reply@opengate.careers>",
-    to: "ryo.estrella@gmail.com, contract@activatelab.co.jp",
+    to: emailToAddress,
     //subject: `Message From ${req.body.name}`,
     subject: `${req.body.emailSubject}`,
     //text: req.body.message + " | Sent from: " + req.body.email,

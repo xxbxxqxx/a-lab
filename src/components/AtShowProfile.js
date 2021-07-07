@@ -60,12 +60,56 @@ export default function showProfile({
         console.log("Profile Registr Success!")
       )
     )
+    //To ユーザー
+    const emailBodyContentUsers = 'OpenGate Careers（オープンゲートキャリアズ）事務局<br />'
+      + '<br />'
+      + '=============================<br />'
+      + '以下の内容でご登録承りました。<br />'
+      + '=============================<br />'
+      + '■ お名前　' + profile.LastName + profile.FirstName + '<br />'
+      + '■ 電話番号　' + profile.TelNo +'<br />'
+      + '■ メールアドレス　' + profile.email + '<br />'
+      + '■ 手帳種類　' + profile["手帳種類"] + '<br />'
+      + '<br />'
+      + '=============================<br />'
+      + 'マイページを活用して、あなたの就職活動をサポートします！　　<br />'
+      + '=============================<br />'
+      + '◆ご自身の情報（氏名・居住エリア等）や履歴書・職務経歴書の登録ができます。<br />'
+      + '◆担当者との面談後、あなたへの「おススメ求人」を見ることができます。<br />'
+      + '◆履歴書添削や模擬面談の希望をマイページよりご依頼いただけます。<br />'
+      + '<br />'
+      + '【マイページURL】<br />'
+      + '<a href="https://opengate.careers/mypage/">https://opengate.careers/mypage/</a><br />'
+      + '<br />'
+      + '-- <br />'
+      + 'このメールは OpenGate Careers（オープンゲートキャリアズ）からの自動返信メールです<br />'
+      + 'このメールには返信はできませんのでご注意ください<br />'
+      + '――――――――――――――――――――――――――――――――――――<br />'
+      + 'OpenGate Careers（オープンゲートキャリアズ）：<a href="https://www.opengate.careers/">https://www.opengate.careers/</a><br />'
+      + '問い合わせ先：OpenGate Careers事務局：contact@opengate.careers<br />'
+      + '<br />'
+      + 'OpenGate Careers（オープンゲートキャリアズ）<br />'
+
+    const jsonBodyUsers = {
+      emailSubject: "【本登録完了】　OpenGate Careers（オープンゲートキャリアズ）へのご登録ありがとうございます。",
+      emailBody: emailBodyContentUsers,
+      emailTo: profile.email
+    }
+    fetch('/api/sendMail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(jsonBodyUsers)
+    })
+
+    //To 管理者
     const emailBodyContent = '<h2>新規ユーザーが登録を行いました。</h2><br /><p>'
       + "UID: " + profile.uid + "<br />"
       + "メールアドレス: " + profile.email + "<br />"
       + "名前: " + profile.LastName + profile.FirstName + "<br />"
       + "電話番号: " + profile.TelNo + "<br />"
-      + "現在のステータス: " + profile["手帳種類"] + "<br />"
+      + "手帳種類: " + profile["手帳種類"] + "<br />"
       + "現在のステータス: " + profile["現在のステータス"]
       + '</p><br /><p>詳しくは<a href="https://airtable.com/tblZIi0lMTduQcmwh/viw16uoDx9Iuy9vfd">Airtableから確認</a>してください。</p>'
     const jsonBody = {
@@ -80,7 +124,7 @@ export default function showProfile({
       },
       body: JSON.stringify(jsonBody)
     })
-    console.log(jsonBody)
+    //console.log(jsonBody)
     setFlashType("welldone")
     setFlashMessage(true)
     //setInitialReister(false)
@@ -258,6 +302,28 @@ export default function showProfile({
     //console.log(updatedRecord);
     e.preventDefault();
     updateUserOnAirtable(updatedRecord2)
+
+    const emailBodyContent = '<h2>履歴書オプションが更新されました。</h2><br />'
+      + "お名前: " + atRecord[0].fields.LastName + " " + atRecord[0].fields.FirstName + "<br />"
+      + "メールアドレス: " + atRecord[0].fields.email + "<br />"
+      + "添削希望: " + (profile && profile["添削希望"]) + "<br />"
+      + "面談希望: " + (profile && profile["面談希望"]) + "<br />"
+      + '<br /><p>詳しくは<a href="https://airtable.com/tblZIi0lMTduQcmwh/viw16uoDx9Iuy9vfd">Airtableから確認</a>してください。</p>'
+    const jsonBody = {
+      emailSubject: "履歴書オプションが更新されました。",
+      emailBody: emailBodyContent
+    }
+    fetch('/api/sendMail', {
+      method: 'POST',
+      headers: {
+        //  'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(jsonBody)
+    }).then(
+      console.log('Email sent, ya!')
+    )
+
     setFlashType("welldone")
     setFlashMessage(true)
   }

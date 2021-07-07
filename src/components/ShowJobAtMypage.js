@@ -114,7 +114,7 @@ export default function ShowJobAtMypage({ auth0Profile, contentfulposts, initial
         </div>
       </div>
     </div>
-    : ""
+    : <>{ctflFlug}</>
     }
     </>
   );

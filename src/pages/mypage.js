@@ -87,6 +87,17 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
           <ShowFlashMessage flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} />
 
           <h1><i class="fa fa-info-circle" aria-hidden="true"></i>マイページ</h1>
+
+          <ShowJobAtMypage
+            flashMessage={flashMessage}
+            setFlashMessage={setFlashMessage}
+            flashType={flashType}
+            setFlashType={setFlashType}
+            initialProfile={initialProfile}
+            contentfulposts={contentfulposts}
+            auth0Profile={session_auth0_user}
+          />
+
           <div style={{ marginTop: "0px" }}>
             <ShowProfile
               atRecord={initialProfile}
@@ -99,12 +110,13 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
               auth0Profile={session_auth0_user}
             />
 
-            {/* 開発用情報 消さないで （ここから） */}
+          {/*
             <div className="myp-block-wrapper block-indevelopment">
               <span className="label">開発用</span>
               <h3>Record from Airtable</h3>
               <pre data-testid="profile"><code>{JSON.stringify(profile)}</code></pre>
             </div>
+          */}
 
             <div className="myp-block-wrapper block-indevelopment">
               <span className="label">開発用</span>
