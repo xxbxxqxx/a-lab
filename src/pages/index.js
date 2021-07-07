@@ -79,12 +79,12 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
           <p>あなたにかわって<br />
             障害を翻訳します</p>
           {user
-             ? ( <></> )
-             : (
-               <a href="/api/auth/login?screen_type=signup" data-testid="login" className="log-btn" target="_blank"><i className="fa fa-lightbulb-o" aria-hidden="true"></i>無料登録で使ってみる</a>
-             )
-           }
-          
+            ? (<></>)
+            : (
+              <a href="/api/auth/login?screen_type=signup" data-testid="login" className="log-btn" target="_blank"><i className="fa fa-lightbulb-o" aria-hidden="true"></i>無料登録で使ってみる</a>
+            )
+          }
+
         </div>
 
       </section>
@@ -543,10 +543,10 @@ export default function Home({ session_auth0, contextreq, contextres, contentful
                     <dt>▼【身体障害者】専用の検索サイト</dt>
                     <dd><a href="https://physical.opengate.site/" target="_blank">https://physical.opengate.site/</a></dd>
 
-                    <dt>▼【精神症状専用】検索サイトオープン！</dt>
+                    <dt>▼【精神症状】専用の検索サイト</dt>
                     <dd><a href="https://mental.opengate.site" target="_blank">https://mental.opengate.site</a></dd>
 
-                    <dt>▼【発達症状、知的症状専用】検索サイトオープン！</dt>
+                    <dt>▼【発達症状、知的症状】専用の検索サイト</dt>
                     <dd><a href="https://intellectual.opengate.site" target="_blank">https://intellectual.opengate.site</a></dd>
                   </dl>
 
