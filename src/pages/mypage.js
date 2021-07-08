@@ -87,7 +87,8 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
           <ShowFlashMessage flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} />
 
           <h1><i class="fa fa-info-circle" aria-hidden="true"></i>マイページ</h1>
-
+          {user && user.email_verified === true
+          ? (<>
           <ShowJobAtMypage
             flashMessage={flashMessage}
             setFlashMessage={setFlashMessage}
@@ -109,21 +110,35 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
               setProfile={setProfile}
               auth0Profile={session_auth0_user}
             />
+          </div>
+          </>
+          )
+          : (<div>
+              <h1>仮新規登録受付</h1>
+              <div style={{maxWidth: "700px", margin: "20px auto 40px", textAlign: "center"}}>
+              <p>ご登録ありがとうございます。<br />仮登録メールをお送りしました。</p>
+              <p>
+                本人確認のため、ご登録いただいたメールアドレスに仮登録メールをお送りしました。<br />
+                本文に記載されているURLから、本登録を完了してください。
+              </p>
+              <p>48時間以内に仮登録メールが届かない場合は、OpenGate事務局までお問い合わせください。</p>
+              </div>
+            </div>)
+          }
 
+          <div style={{ marginTop: "0px" }}>
           {/*
             <div className="myp-block-wrapper block-indevelopment">
               <span className="label">開発用</span>
               <h3>Record from Airtable</h3>
               <pre data-testid="profile"><code>{JSON.stringify(profile)}</code></pre>
             </div>
-          */}
-
             <div className="myp-block-wrapper block-indevelopment">
               <span className="label">開発用</span>
               <h3>Auth0 Profile</h3>
               <pre data-testid="profile"><code>{JSON.stringify(user, null, 1)}</code></pre>
             </div>
-            {/* 開発用情報 消さないで （ここまで） */}
+          */}
           </div>
 
         </main>

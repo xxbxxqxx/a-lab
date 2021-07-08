@@ -28,31 +28,26 @@ const Header = () => {
               <Hamburger toggled={isOpen} toggle={setOpen} color="#000" />
               <Menu open={isOpen} setOpen={setOpen} />
               <ul className="login-out">
-                {/* <li>
-                  <Link href="#">
-                    <img src="/image/opengateCareer-1.png" />
-                  </Link>
-                </li> */}
-                {user ? (
+                {user && user.email_verified === true
+                  ? (router.pathname !== "/mypage" ?
                   <>
-
                     <li>
-                      <a href="/mypage">
-                        <a>Mypage</a>
+                      <a href="/mypage" className="log-btn">
+                        {/*<a>Mypage</a>*/}
+                        Mypage
                       </a>
                     </li>
-                    <li>
+                  </>
+                  : (<li>
                       <a href="/api/auth/logout" data-testid="logout" className="log-btn">
                         ログアウト
                       </a>
                     </li>
-                  </>
+                    )
                 ) : (
                   <>
                     <li>
-
                       <a href="/api/auth/login" data-testid="login" className="log-btn" target="_blank">
-
                         <i className="fa fa-external-link" aria-hidden="true"></i>ログイン
                       </a>
                     </li>

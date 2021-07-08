@@ -182,39 +182,35 @@ export default function showProfile({
     console.log('>>> ' + JSON.stringify(upload))
 
     if (upload.ok) {
-      //管理者向けメー送信関連処理
-      const res = await fetch(`/api/s3GetUrl?file=${filename}`);
-      const data = await res.json();
-      const emailBodyContent = '<h2>履歴書が登録されました。</h2><br />'
-        + "お名前: " + atRecord[0].fields.LastName + " " + atRecord[0].fields.FirstName + "<br />"
-        + "メールアドレス: " + atRecord[0].fields.email
-        + '<br /><p>詳しくは<a href="https://airtable.com/tblZIi0lMTduQcmwh/viw16uoDx9Iuy9vfd">Airtableから確認</a>してください。</p>'
-      const jsonBody = {
-        emailSubject: GetEmailComponent().cvRegistrationAdmin.subject,
-        emailBody: emailBodyContent,
-        attachmentFile: data.msg
-      }
-      fetch('/api/sendMail', {
-        method: 'POST',
-        headers: {
-          //  'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(jsonBody)
-      }).then(
-        console.log('Email sent, ya!')
-      )
+      //const res = await fetch(`/api/s3GetUrl?file=${filename}`);
+      //const data = await res.json();
+      //const emailBodyContent = '<h2>履歴書が登録されました。</h2><br />'
+      //  + "お名前: " + atRecord[0].fields.LastName + " " + atRecord[0].fields.FirstName + "<br />"
+      //  + "メールアドレス: " + atRecord[0].fields.email
+      //  + '<br /><p>詳しくは<a href="https://airtable.com/tblZIi0lMTduQcmwh/viw16uoDx9Iuy9vfd">Airtableから確認</a>してください。</p>'
+      //const jsonBody = {
+      //  emailSubject: GetEmailComponent().cvRegistrationAdmin.subject,
+      //  emailBody: emailBodyContent,
+      //  attachmentFile: data.msg
+      //}
+      //fetch('/api/sendMail', {
+      //  method: 'POST',
+      //  headers: {
+      //    //  'Accept': 'application/json, text/plain, */*',
+      //    'Content-Type': 'application/json'
+      //  },
+      //  body: JSON.stringify(jsonBody)
+      //}).then(
+      //  console.log('Email sent, ya!')
+      //)
 
       //Airtableに格納処理
-      console.log('>' + atRecord[0].id)
-      console.log('>>' + filename)
       const updatedRecord = {
         id: (atRecord[0].id),
         fields: {
           CV: "https://opengate-presigned-cv.s3.ap-northeast-1.amazonaws.com/" + filename
         }
       }
-      console.log('>>>' + updatedRecord)
       updateUserOnAirtable(updatedRecord);
       setFlashType("welldone")
       setFlashMessage(true)
@@ -248,28 +244,6 @@ export default function showProfile({
     });
 
     if (upload.ok) {
-      const res = await fetch(`/api/s3GetUrl?file=${filename}`);
-      const data = await res.json();
-      const emailBodyContent = '<h2>職務経歴書が登録されました。</h2><br />'
-        + "お名前: " + atRecord[0].fields.LastName + " " + atRecord[0].fields.FirstName + "<br />"
-        + "メールアドレス: " + atRecord[0].fields.email
-        + '<br /><p>詳しくは<a href="https://airtable.com/tblZIi0lMTduQcmwh/viw16uoDx9Iuy9vfd">Airtableから確認</a>してください。</p>'
-      const jsonBody = {
-        emailSubject: GetEmailComponent().resumeRegistrationAdmin.subject,
-        emailBody: emailBodyContent,
-        attachmentFile: data.msg
-      }
-      fetch('/api/sendMail', {
-        method: 'POST',
-        headers: {
-          //  'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(jsonBody)
-      }).then(
-        console.log('Email sent, ya!')
-      )
-
       const updatedRecord = {
         id: (atRecord[0].id),
         fields: {
@@ -288,8 +262,6 @@ export default function showProfile({
   const handleChangeCvOption = (e) => {
     const value = e.target.value;
     const name = e.target.name
-    //console.log(e.target.name);
-    //console.log(value);
     if (value === "Yes" && name === "添削希望" && profile["添削希望"] === "Yes") {
       setProfile({ ...profile, "添削希望": "No" });
     } else if (value === "Yes" && name === "面談希望" && profile["面談希望"] === "Yes") {
@@ -303,9 +275,10 @@ export default function showProfile({
       id: (atRecord[0].id),
       fields: profile,
     }
-    //console.log(updatedRecord);
     e.preventDefault();
     updateUserOnAirtable(updatedRecord2)
+    setFlashType("welldone")
+    setFlashMessage(true)
 
     const emailBodyContent = '<h2>履歴書オプションが更新されました。</h2><br />'
       + "お名前: " + atRecord[0].fields.LastName + " " + atRecord[0].fields.FirstName + "<br />"
@@ -320,16 +293,12 @@ export default function showProfile({
     fetch('/api/sendMail', {
       method: 'POST',
       headers: {
-        //  'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(jsonBody)
     }).then(
       console.log('Email sent, ya!')
     )
-
-    setFlashType("welldone")
-    setFlashMessage(true)
   }
 
   const prefectureList = ["北海道", "青森", "岩手", "宮城", "秋田", "山形", "福島", "茨城", "栃木", "群馬", "埼玉", "千葉", "東京", "神奈川", "新潟", "富山", "石川", "福井", "山梨", "長野", "岐阜", "静岡", "愛知", "三重", "滋賀", "京都", "大阪", "兵庫", "奈良", "和歌山", "鳥取", "島根", "岡山", "広島", "山口", "徳島", "香川", "愛媛", "高知", "福岡", "佐賀", "長崎", "熊本", "大分", "宮崎", "鹿児島", "沖縄"]
@@ -670,7 +639,7 @@ export default function showProfile({
               <button type="submit" className="btn btn-primary-register btn-lg">
                 {profile.uid ? "更新" : "登録"}
               </button>
-
+              {/*
               <hr />
               <div className="myp-block-wrapper block-indevelopment">
                 <span className="label">開発用</span>
@@ -682,6 +651,7 @@ export default function showProfile({
                 <h3>useState の profile （ここの値が更新される）: </h3>
                 {JSON.stringify(profile)}
               </div>
+              */}
             </div>
           </form>
         </div>
@@ -706,7 +676,7 @@ export default function showProfile({
                       name="myimage"
                       accept="*"
                     />
-                    <button type="submit" className="btn btn-primary-register btn-md">送信</button>
+                    <button type="submit" className="btn btn-primary-register btn-md">登録</button>
                   </form>
                 </>
                 : "まずはプロフィール登録を完了してください"
@@ -729,7 +699,7 @@ export default function showProfile({
                       name="myimage"
                       accept="*"
                     />
-                    <button type="submit" className="btn btn-primary-register btn-md">送信</button>
+                    <button type="submit" className="btn btn-primary-register btn-md">登録</button>
                   </form>
                 </>
               }
