@@ -75,7 +75,7 @@ export default function ShowJobAtMypage({ auth0Profile, contentfulposts, initial
 
   return (
     <>
-    {ctflFlug 
+    {ctflFlug && initialProfile[0]
     ? <div className="row">
       <div className="col-sm-12">
         <div className="myp-block-wrapper myp">

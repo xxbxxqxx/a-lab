@@ -61,7 +61,10 @@ export default function showProfile({
       )
     )
     //To ユーザー
-    const emailBodyContentUsers = 'OpenGate Careers（オープンゲートキャリアズ）事務局<br />'
+    const emailBodyContentUsers = profile.LastName + profile.FirstName + '様<br /><br />'
+      + 'この度はご登録いただき、誠にありがとうございます。<br />ご登録情報が確認でき次第、担当よりご連絡差し上げます。<br />しばらく、お待ち下さいますようお願い申し上げます。<br />'
+      + '<br />'
+      + 'OpenGate Careers（オープンゲートキャリアズ）事務局<br />'
       + '<br />'
       + '=============================<br />'
       + '以下の内容でご登録承りました。<br />'
@@ -82,8 +85,9 @@ export default function showProfile({
       + '<a href="https://opengate.careers/mypage/">https://opengate.careers/mypage/</a><br />'
       + '<br />'
       + '-- <br />'
-      + 'このメールは OpenGate Careers（オープンゲートキャリアズ）からの自動返信メールです<br />'
-      + 'このメールには返信はできませんのでご注意ください<br />'
+      + '※このメールは OpenGate Careers（オープンゲートキャリアズ）からの自動返信メールです<br />'
+      + '※このメールには返信はできませんのでご注意ください<br />'
+      + '※配信停止（退会）をご希望の方は、<a href="https://opengate.careers/withdraw">こちらのページ</a>から手続きを行ってください<br />'
       + '――――――――――――――――――――――――――――――――――――<br />'
       + 'OpenGate Careers（オープンゲートキャリアズ）：<a href="https://www.opengate.careers/">https://www.opengate.careers/</a><br />'
       + '問い合わせ先：OpenGate Careers事務局：contact@opengate.careers<br />'
