@@ -19,6 +19,8 @@ export default function showProfile({
   const { user, error, isLoading } = useUser();
   const { createUserOnAirtable, updateUserOnAirtable } = useContext(TodosContext);
 
+  const moment = require("moment");
+
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name
@@ -52,6 +54,7 @@ export default function showProfile({
   //プロフィール作成処理
   const handleSubmitCreate = async (e) => {
     profile.uid = auth0Profile.sub
+    profile["登録日"] = moment().format("YYYY/MM/DD HH:mm")
     e.preventDefault();
     createUserOnAirtable(
       profile
@@ -149,7 +152,6 @@ export default function showProfile({
 
   //S3用現在時刻取得
   const dateNow = Date.now();
-  const moment = require("moment");
 
   //S3 履歴書 アップロード
   const uploadCV = async (e) => {

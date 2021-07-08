@@ -48,7 +48,7 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
     Resume: prf ? prf.fields.Resume ? prf.fields.Resume : "" : "",
     "障害種別(その他)": prf ? prf.fields["障害種別(その他)"] ? prf.fields["障害種別(その他)"] : "" : "",
     "添削希望": prf ? prf.fields["添削希望"] ? prf.fields["添削希望"] : "No" : "No",
-    "面談希望": prf ? prf.fields["面談希望"] ? prf.fields["面談希望"] : "No" : "No"
+    "面談希望": prf ? prf.fields["面談希望"] ? prf.fields["面談希望"] : "No" : "No",
   })
 
   const { updateUserOnAirtable } = useContext(TodosContext);
@@ -87,7 +87,8 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
           <ShowFlashMessage flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} />
 
           <h1><i class="fa fa-info-circle" aria-hidden="true"></i>マイページ</h1>
-          {user && user.email_verified === true
+          {user ? 
+            user.email_verified === true
           ? (<>
           <ShowJobAtMypage
             flashMessage={flashMessage}
@@ -124,10 +125,12 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
               <p>48時間以内に仮登録メールが届かない場合は、OpenGate事務局までお問い合わせください。</p>
               </div>
             </div>)
+          : (<div>
+              <h1>登録をしてください。</h1>
+            </div>)
           }
-
+          {/*}
           <div style={{ marginTop: "0px" }}>
-          {/*
             <div className="myp-block-wrapper block-indevelopment">
               <span className="label">開発用</span>
               <h3>Record from Airtable</h3>
@@ -138,8 +141,8 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
               <h3>Auth0 Profile</h3>
               <pre data-testid="profile"><code>{JSON.stringify(user, null, 1)}</code></pre>
             </div>
-          */}
           </div>
+        */}
 
         </main>
       </div>
