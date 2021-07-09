@@ -45,7 +45,9 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
     Description: prf ? prf.fields.Description ? prf.fields.Description : "" : "",
     "現在のステータス": prf ? prf.fields["現在のステータス"] ? prf.fields["現在のステータス"] : "" : "",
     CV: prf ? prf.fields.CV ? prf.fields.CV : "" : "",
+    "CVファイル名": prf ? prf.fields["CVファイル名"] ? prf.fields["CVファイル名"] : "" : "",
     Resume: prf ? prf.fields.Resume ? prf.fields.Resume : "" : "",
+    "Resumeファイル名": prf ? prf.fields["Resumeファイル名"] ? prf.fields["Resumeファイル名"] : "" : "",
     "障害種別(その他)": prf ? prf.fields["障害種別(その他)"] ? prf.fields["障害種別(その他)"] : "" : "",
     "添削希望": prf ? prf.fields["添削希望"] ? prf.fields["添削希望"] : "No" : "No",
     "面談希望": prf ? prf.fields["面談希望"] ? prf.fields["面談希望"] : "No" : "No",
@@ -122,7 +124,7 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
                 本人確認のため、ご登録いただいたメールアドレスに仮登録メールをお送りしました。<br />
                 本文に記載されているURLから、本登録を完了してください。
               </p>
-              <p>48時間以内に仮登録メールが届かない場合は、OpenGate事務局までお問い合わせください。</p>
+              <p>48時間以内に仮登録メールが届かない場合は、OpenGate Careers事務局（contact@opengate.careers）までお問い合わせください。</p>
               </div>
             </div>)
           : (<div>

@@ -162,6 +162,7 @@ export default function showProfile({
     const LastNameString = atRecord[0].fields.LastName ? atRecord[0].fields.LastName : "NoLastName"
     const FirstNameString = atRecord[0].fields.FirstName ? atRecord[0].fields.FirstName : "NoFirstName"
     const UidString = profile.uid ? profile.uid : auth0Profile ? auth0Profile.sub : "NoId"
+    const originFilename = file.name
     const filename = "cv/" + moment().format("YYYYMMDD-HH:mm:ss") + "-CV-" + LastNameString + FirstNameString + "-" + UidString + "-" + file.name;
 
     const res = await fetch(`/api/s3Upload?file=${filename}`);
@@ -171,10 +172,6 @@ export default function showProfile({
     Object.entries({ ...fields, file }).forEach(([key, value]) => {
       formData.append(key, value);
     });
-
-    console.log('>> url' + url)
-    console.log('>> formData' + JSON.stringify(formData))
-
     const upload = await fetch(url, {
       //mode: "no-cors",
       method: 'POST',
@@ -210,10 +207,12 @@ export default function showProfile({
       const updatedRecord = {
         id: (atRecord[0].id),
         fields: {
-          CV: "https://opengate-presigned-cv.s3.ap-northeast-1.amazonaws.com/" + filename
+          CV: "https://opengate-presigned-cv.s3.ap-northeast-1.amazonaws.com/" + filename, 
+          "CVファイル名": originFilename
         }
       }
       updateUserOnAirtable(updatedRecord);
+      setProfile({ ...profile, "CVファイル名": originFilename})
       setFlashType("welldone")
       setFlashMessage(true)
       console.log('Uploaded successfully!');
@@ -231,6 +230,7 @@ export default function showProfile({
     const LastNameString = atRecord[0].fields.LastName ? atRecord[0].fields.LastName : "NoLastName"
     const FirstNameString = atRecord[0].fields.FirstName ? atRecord[0].fields.FirstName : "NoFirstName"
     const UidString = profile.uid ? profile.uid : auth0Profile ? auth0Profile.sub : "NoId"
+    const originFilename = file.name
     const filename = "resume/" + moment().format("YYYYMMDD-HH:mm:ss") + "-CV-" + LastNameString + FirstNameString + "-" + UidString + "-" + file.name;
     const res = await fetch(`/api/s3Upload?file=${filename}`);
     const { url, fields } = await res.json();
@@ -249,10 +249,12 @@ export default function showProfile({
       const updatedRecord = {
         id: (atRecord[0].id),
         fields: {
-          Resume: "https://opengate-presigned-cv.s3.ap-northeast-1.amazonaws.com/" + filename
+          Resume: "https://opengate-presigned-cv.s3.ap-northeast-1.amazonaws.com/" + filename,
+          "Resumeファイル名": originFilename
         }
       }
       updateUserOnAirtable(updatedRecord);
+      setProfile({ ...profile, "Resumeファイル名": originFilename})
       setFlashType("welldone")
       setFlashMessage(true)
       console.log('Uploaded successfully!');
@@ -666,9 +668,9 @@ export default function showProfile({
               <h4>履歴書</h4>
               {profile.uid
                 ? <>
-                  {profile.CV.length === 0
-                    ? <p>履歴書が投稿されていません</p>
-                    : <p>投稿済みです</p>
+                  {profile["CVファイル名"] && profile["CVファイル名"].length === 0
+                    ? <p style={{fontSize: "14px"}}>履歴書が投稿されていません</p>
+                    : <p style={{fontSize: "14px"}}>{profile["CVファイル名"]} が投稿済みです。</p>
                   }
                   <form
                     onSubmit={uploadCV}
@@ -689,9 +691,9 @@ export default function showProfile({
               {profile.uid
                 && <>
                   <h4>職務経歴書</h4>
-                  {profile.Resume.length === 0
-                    ? <p>職務経歴書が投稿されていません</p>
-                    : <p>投稿済みです</p>
+                  {profile["Resumeファイル名"] && profile["Resumeファイル名"].length === 0
+                    ? <p style={{fontSize: "14px"}}>職務経歴書が投稿されていません</p>
+                    : <p style={{fontSize: "14px"}}>{profile["Resumeファイル名"]} 投稿済みです</p>
                   }
                   <form
                     onSubmit={uploadResume}

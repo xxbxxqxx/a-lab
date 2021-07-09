@@ -3,17 +3,9 @@ import Head from 'next/head'
 import Layout from '../components/layout';
 import { useUser, getSession } from '@auth0/nextjs-auth0';
 
-import { table, minifyRecords } from './api/utils/Airtable';
-import Todo from '../components/Todo';
-import { TodosContext } from '../contexts/TodosContext';
-import TodoForm from '../components/TodoForm';
+//import ShowFlashMessage from '../components/ShowFlashMessage';
 
-import ShowProfile from '../components/AtShowProfile';
-import ShowJobAtMypage from '../components/ShowJobAtMypage';
-import CreateProfile from '../components/AtCreateProfile';
-import ShowFlashMessage from '../components/ShowFlashMessage';
-
-export default function Withdraw({ initialProfile, session_auth0_user, contentfulposts }) {
+export default function complereRegister({ initialProfile, session_auth0_user, contentfulposts }) {
 
   const { user, error, isLoading } = useUser();
   return (
@@ -52,13 +44,13 @@ export default function Withdraw({ initialProfile, session_auth0_user, contentfu
 }
 
 export async function getServerSideProps(context) {
-  const { user } = await getSession(context.req, context.res);
-  const at_record = await table.select({ maxRecords: 1, filterByFormula: `{uid} = '${user.sub}'` }).firstPage();
+  //const { user } = await getSession(context.req, context.res);
+  //const at_record = await table.select({ maxRecords: 1, filterByFormula: `{uid} = '${user.sub}'` }).firstPage();
 
   return {
     props: {
-      initialProfile: minifyRecords(at_record),
-      session_auth0_user: user,
+      //initialProfile: minifyRecords(at_record),
+      //session_auth0_user: user,
     },
   };
 }
