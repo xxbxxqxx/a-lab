@@ -659,6 +659,20 @@ export default function showProfile({
             </div>
           </form>
         </div>
+        {profile.uid &&
+        <div style={{margin: "20px 0", padding: "30px 20px", background: "#eee", border: "solid 1px #ccc"}}>
+          <div className="row">
+            <div className="col-sm-9">退会手続きはこちら</div>
+            <div className="col-sm-3" style={{textAlign: "center"}}>
+              <a href="/withdraw"
+                style={{background: "#fff", padding: "10px 30px",borderRadius: "0.3rem", border: "solid 2px #ccc"}}
+              >
+                退会申請
+              </a>
+            </div>
+          </div>
+        </div>
+        }
       </div>
 
       <div className="col-sm-3">

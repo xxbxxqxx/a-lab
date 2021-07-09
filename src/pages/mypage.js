@@ -51,6 +51,7 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
     "障害種別(その他)": prf ? prf.fields["障害種別(その他)"] ? prf.fields["障害種別(その他)"] : "" : "",
     "添削希望": prf ? prf.fields["添削希望"] ? prf.fields["添削希望"] : "No" : "No",
     "面談希望": prf ? prf.fields["面談希望"] ? prf.fields["面談希望"] : "No" : "No",
+    "退会フラグ": prf ? prf.fields["退会フラグ"] ? prf.fields["退会フラグ"] : "" : "",
   })
 
   const { updateUserOnAirtable } = useContext(TodosContext);
@@ -89,47 +90,54 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
           <ShowFlashMessage flashMessage={flashMessage} setFlashMessage={setFlashMessage} flashType={flashType} />
 
           <h1><i class="fa fa-info-circle" aria-hidden="true"></i>マイページ</h1>
-          {user ? 
-            user.email_verified === true
-          ? (<>
-          <ShowJobAtMypage
-            flashMessage={flashMessage}
-            setFlashMessage={setFlashMessage}
-            flashType={flashType}
-            setFlashType={setFlashType}
-            initialProfile={initialProfile}
-            contentfulposts={contentfulposts}
-            auth0Profile={session_auth0_user}
-          />
+          {user
+            ? user.email_verified === true
+              ? profile["退会フラグ"] === "退会済み"
+                ? 
+                  (<>
+                     <p style={{margin: "40px auto", maxWidth: "700px"}}>ログインに問題が発生しました。<br />OpenGate Careers事務局 contact@opengate.careers までご連絡ください。</p>
+                   </>
+                  )
+                :
+                  (<>
+                  <ShowJobAtMypage
+                    flashMessage={flashMessage}
+                    setFlashMessage={setFlashMessage}
+                    flashType={flashType}
+                    setFlashType={setFlashType}
+                    initialProfile={initialProfile}
+                    contentfulposts={contentfulposts}
+                    auth0Profile={session_auth0_user}
+                  />
 
-          <div style={{ marginTop: "0px" }}>
-            <ShowProfile
-              atRecord={initialProfile}
-              flashMessage={flashMessage}
-              setFlashMessage={setFlashMessage}
-              flashType={flashType}
-              setFlashType={setFlashType}
-              profile={profile}
-              setProfile={setProfile}
-              auth0Profile={session_auth0_user}
-            />
-          </div>
-          </>
-          )
-          : (<div>
-              <h1>仮新規登録受付</h1>
-              <div style={{maxWidth: "700px", margin: "20px auto 40px", textAlign: "center"}}>
-              <p>ご登録ありがとうございます。<br />仮登録メールをお送りしました。</p>
-              <p>
-                本人確認のため、ご登録いただいたメールアドレスに仮登録メールをお送りしました。<br />
-                本文に記載されているURLから、本登録を完了してください。
-              </p>
-              <p>48時間以内に仮登録メールが届かない場合は、OpenGate Careers事務局（contact@opengate.careers）までお問い合わせください。</p>
-              </div>
-            </div>)
-          : (<div>
-              <h1>登録をしてください。</h1>
-            </div>)
+                  <div style={{ marginTop: "0px" }}>
+                    <ShowProfile
+                      atRecord={initialProfile}
+                      flashMessage={flashMessage}
+                      setFlashMessage={setFlashMessage}
+                      flashType={flashType}
+                      setFlashType={setFlashType}
+                      profile={profile}
+                      setProfile={setProfile}
+                      auth0Profile={session_auth0_user}
+                    />
+                  </div>
+                  </>
+                  )
+              : (<div>
+                  <h1>仮新規登録受付</h1>
+                  <div style={{maxWidth: "700px", margin: "20px auto 40px", textAlign: "center"}}>
+                  <p>ご登録ありがとうございます。<br />仮登録メールをお送りしました。</p>
+                  <p>
+                    本人確認のため、ご登録いただいたメールアドレスに仮登録メールをお送りしました。<br />
+                    本文に記載されているURLから、本登録を完了してください。
+                  </p>
+                  <p>48時間以内に仮登録メールが届かない場合は、OpenGate Careers事務局（contact@opengate.careers）までお問い合わせください。</p>
+                  </div>
+                </div>)
+            : (<div>
+                <h1>登録をしてください。</h1>
+              </div>)
           }
           {/*}
           <div style={{ marginTop: "0px" }}>
@@ -145,7 +153,6 @@ export default function Home({ initialProfile, session_auth0_user, contentfulpos
             </div>
           </div>
         */}
-
         </main>
       </div>
     </Layout>
