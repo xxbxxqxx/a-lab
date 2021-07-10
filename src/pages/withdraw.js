@@ -8,14 +8,14 @@ import { TodosContext } from '../contexts/TodosContext';
 import ShowFlashMessage from '../components/ShowFlashMessage';
 import { useRouter } from 'next/router';
 
-export default function Withdraw({ initialProfile, session_auth0_user, contentfulposts }) {
+export default function Withdraw({ initialProfile, contentfulposts }) {
 
   const router = useRouter();
   const { user, error, isLoading } = useUser();
   const { updateUserOnAirtable } = useContext(TodosContext);
   const moment = require("moment");
 
-  const profile = initialProfile[0].fields
+  const profile = initialProfile[0]&& initialProfile[0].fields
 
     //プロフィールアップデート処理
   const handleSubmitUpdate = async (e) => {
@@ -36,8 +36,6 @@ export default function Withdraw({ initialProfile, session_auth0_user, contentfu
     //Toユーザー
     const emailBodyContentUser = 'OpenGate Careers(オープンゲートキャリアズ)の退会手続きが完了いたしましたので、お知らせいたします。' + '<br />'
       + 'ご利用いただきまして誠にありがとうございました。' + '<br />' + '<br />'
-      + '▼ご注意事項' + '<br />'
-      + '・退会したアカウントの情報を元に戻すことはできません' + '<br />' + '<br />'
       + '自動配信メールです。このメールには返信できません。' + '<br />' + '<br />'
       + '――――――――――――――――――――――――――――――――――――' + '<br />'
       + 'OpenGate Careers（オープンゲートキャリアズ）：https://www.opengate.careers/' + '<br />'
@@ -122,17 +120,19 @@ export default function Withdraw({ initialProfile, session_auth0_user, contentfu
 }
 
 export async function getServerSideProps(context) {
-  const { user } = await getSession(context.req, context.res);
   let minifiedAtRecord = ""
-  if( user ){
+  if(getSession(context.req, context.res) ){
+    const { user } = await getSession(context.req, context.res) 
     const at_record = await table.select({ maxRecords: 1, filterByFormula: `{uid} = '${user.sub}'` }).firstPage();
     minifiedAtRecord = minifyRecords(at_record)
+  }else{
+    minifiedAtRecord = {}
   }
 
   return {
     props: {
       initialProfile: minifiedAtRecord,
-      session_auth0_user: user,
+      //session_auth0_user: user,
     },
   };
 }
