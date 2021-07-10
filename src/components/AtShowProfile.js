@@ -87,7 +87,6 @@ export default function showProfile({
       + '【マイページURL】<br />'
       + '<a href="https://opengate.careers/mypage/">https://opengate.careers/mypage/</a><br />'
       + '<br />'
-      + '-- <br />'
       + '※このメールは OpenGate Careers（オープンゲートキャリアズ）からの自動返信メールです<br />'
       + '※このメールには返信はできませんのでご注意ください<br />'
       + '※配信停止（退会）をご希望の方は、<a href="https://opengate.careers/withdraw">こちらのページ</a>から手続きを行ってください<br />'
