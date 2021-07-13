@@ -253,9 +253,9 @@ header.header-common{
 
   .alert-dismissible{
     @include breakpoint(tablet){
-      position: relative !important;
+      //position: relative !important;
       width: 100% !important;
-      top: 0px !important;
+      top: 30px !important;
       left: 0px !IMPORTANT;
       left: calc(100vw / 0)!important;
       }
