@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { TodosContext } from '../contexts/TodosContext';
 import GetEmailComponent from "../components/GetEmailContent";
 import { useUser } from '@auth0/nextjs-auth0';
-import Moment from 'react-moment';
+import Moment from 'moment-timezone/builds/moment-timezone-with-data';
 import { useRouter } from 'next/router';
 
 export default function showProfile({
@@ -54,7 +54,7 @@ export default function showProfile({
   //プロフィール作成処理
   const handleSubmitCreate = async (e) => {
     profile.uid = auth0Profile.sub
-    profile["登録日"] = moment().format("YYYY/MM/DD HH:mm")
+    profile["登録日"] = moment().tz('Asia/Tokyo').format("YYYY/MM/DD HH:mm")
     e.preventDefault();
     createUserOnAirtable(
       profile
